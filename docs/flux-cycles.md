@@ -12,118 +12,84 @@ because once you start implementing your flux loops, that's precisely
 what you'll need to do.
 
 
-## Note Cycles
+## Photo Cycles
 
-### Notes API Request Actions
+### Photos API Request Actions
 
-* `fetchAllNotes`
-  0. invoked from `NotesIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/notes` is called.
-  0. `receiveAllNotes` is set as the callback.
+* `fetchAllPhotos`
+  0. invoked from `PhotosIndex` `didMount`/`willReceiveProps`
+  0. `GET /api/photos` is called.
+  0. `receiveAllPhotos` is set as the callback.
 
-* `createNote`
-  0. invoked from new note button `onClick`
+* `uploadPhoto`
+  0. invoked from upload button `onClick`
+  0. `POST /api/photos` is called.
+  0. `receiveSinglePhoto` is set as the callback.
+
+* `fetchSinglePhoto`
+  0. invoked from `PhotoDetail` `didMount`/`willReceiveProps`
+  0. `GET /api/photos/:id` is called.
+  0. `receiveSinglePhoto` is set as the callback.
+
+* `updatePhoto`
+  0. invoked from `PhotoForm` `onSubmit`
   0. `POST /api/notes` is called.
-  0. `receiveSingleNote` is set as the callback.
+  0. `receiveSinglePhoto` is set as the callback.
 
-* `fetchSingleNote`
-  0. invoked from `NoteDetail` `didMount`/`willReceiveProps`
-  0. `GET /api/notes/:id` is called.
-  0. `receiveSingleNote` is set as the callback.
+* `destroyPhoto`
+  0. invoked from delete photo button `onClick`
+  0. `DELETE /api/photos/:id` is called.
+  0. `removePhoto` is set as the callback.
 
-* `updateNote`
-  0. invoked from `NoteForm` `onSubmit`
-  0. `POST /api/notes` is called.
-  0. `receiveSingleNote` is set as the callback.
+### Photos API Response Actions
 
-* `destroyNote`
-  0. invoked from delete note button `onClick`
-  0. `DELETE /api/notes/:id` is called.
-  0. `removeNote` is set as the callback.
-
-### Notes API Response Actions
-
-* `receiveAllNotes`
+* `receiveAllPhotos`
   0. invoked from an API callback.
-  0. `Note` store updates `_notes` and emits change.
+  0. `Photo` store updates `_photos` and emits change.
 
-* `receiveSingleNote`
+* `receiveSinglePhoto`
   0. invoked from an API callback.
-  0. `Note` store updates `_notes[id]` and emits change.
+  0. `Photo` store updates `_photos[id]` and emits change.
 
-* `removeNote`
+* `removePhoto`
   0. invoked from an API callback.
-  0. `Note` store removes `_notes[id]` and emits change.
+  0. `Photo` store removes `_photos[id]` and emits change.
 
 ### Store Listeners
 
-* `NotesIndex` component listens to `Note` store.
-* `NoteDetail` component listens to `Note` store.
+* `PhotosIndex` component listens to `Photo` store.
+* `PhotoDetail` component listens to `Photo` store.
 
 
-## Notebook Cycles
+## Users Cycles
 
-### Notebooks API Request Actions
+### Users API Request Actions
 
-* `fetchAllNotebooks`
-  0. invoked from `NotebooksIndex` `didMount`/`willReceiveProps`
-  0. `GET /api/notebooks` is called.
-  0. `receiveAllNotebooks` is set as the callback.
+* `fetchAllUsers`
+  0. invoked from `UsersIndex` `didMount`/`willReceiveProps`
+  0. `GET /api/users` is called.
+  0. `receiveAllUsers` is set as the callback.
 
-* `createNotebook`
-  0. invoked from new notebook button `onClick`
-  0. `POST /api/notebooks` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `fetchSingleUser`
+  0. invoked from `ProfilePage` `didMount`/`willReceiveProps`
+  0. `GET /api/user/:id` is called.
+  0. `receiveSingleUser` is set as the callback.
 
-* `fetchSingleNotebook`
-  0. invoked from `NotebookDetail` `didMount`/`willReceiveProps`
-  0. `GET /api/notebooks/:id` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+* `updateUser`
+  0. invoked from `ProfileEditForm` `onSubmit`
+  0. `POST /api/user` is called.
+  0. `receiveSingleUser` is set as the callback.
 
-* `updateNotebook`
-  0. invoked from `NotebookForm` `onSubmit`
-  0. `POST /api/notebooks` is called.
-  0. `receiveSingleNotebook` is set as the callback.
+### Users API Response Actions
 
-* `destroyNotebook`
-  0. invoked from delete notebook button `onClick`
-  0. `DELETE /api/notebooks/:id` is called.
-  0. `removeNotebook` is set as the callback.
-
-### Notebooks API Response Actions
-
-* `receiveAllNotebooks`
+* `receiveAllUsers`
   0. invoked from an API callback.
-  0. `Notebook` store updates `_notebooks` and emits change.
+  0. `User` store updates `_users` and emits change.
 
-* `receiveSingleNotebook`
+* `receiveSingleUser`
   0. invoked from an API callback.
-  0. `Notebook` store updates `_notebooks[id]` and emits change.
-
-* `removeNotebook`
-  0. invoked from an API callback.
-  0. `Notebook` store removes `_notebooks[id]` and emits change.
+  0. `User` store updates `_users[id]` and emits change.
 
 ### Store Listeners
 
-* `NotebooksIndex` component listens to `Notebook` store.
-
-
-## SearchSuggestion Cycles
-
-* `fetchSearchSuggestions`
-  0. invoked from `NoteSearchBar` `onChange` when there is text
-  0. `GET /api/notes` is called with `text` param.
-  0. `receiveSearchSuggestions` is set as the callback.
-
-* `receiveSearchSuggestions`
-  0. invoked from an API callback.
-  0. `SearchSuggestion` store updates `_suggestions` and emits change.
-
-* `removeSearchSuggestions`
-  0. invoked from `NoteSearchBar` `onChange` when empty
-  0. `SearchSuggestion` store resets `_suggestions` and emits change.
-
-### Store Listeners
-
-* `SearchBarSuggestions` component listens to `SearchSuggestion` store.
+* `UsersIndex` component listens to `User` store.
