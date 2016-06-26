@@ -131,6 +131,8 @@
 - [ ] Search
 - [ ] Discover
 - [ ] Notifications
+- [ ] Comments
+- [ ] Likes
 
 [phase-one]: docs/phases/phase1.md
 [phase-two]: docs/phases/phase2.md
