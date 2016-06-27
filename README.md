@@ -11,22 +11,22 @@
 - [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README (**NB**: check out the [sample production README](docs/production_readme.md) -- you'll write this later)
-- [ ] Post Pictures
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+- [ ] Upload Photos
+  - [ ] Integrate Cloudinary for uploading
+  - [ ] Photo detail page has description and poster information
+  - [ ] Ability to edit description
 - [ ] Follows
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+  - [ ] Users can follow and be followed by many users
+  - [ ] Dynamic follow/unfollow button on profile page
 - [ ] Home Feed
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+  - [ ] Displays all photos of the current user's followees
+  - [ ] Clicking on photo brings up Photo detail page
+  - [ ] Clicking on poster renders the user profile page
 - [ ] Profile Page
-  - [ ] Smooth, bug-free navigation
-  - [ ] Adequate seed data to demonstrate the site's features
-  - [ ] Adequate CSS styling
+  - [ ] Has profile edit form
+  - [ ] Has a profile picture and description
+  - [ ] Index of all photos uploaded by this user
+  - [ ] Has option to show the user's followers and followees
 
 ## Design Docs
 * [View Wireframes][views]
@@ -43,13 +43,14 @@
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Front End User Authentication (1 day, W1 Tu 6pm)
+### Phase 1: Backend setup and Front End User Authentication (1.5 day, W1 Tu 10pm)
 
 **Objective:** Functioning rails project with Authentication
 
 - [x] create new project
 - [ ] create `User` model
-- [ ] authentication
+- [ ] back-end authentication
+- [ ] front-end authentication
 - [ ] user signup/signin pages
 - [ ] blank landing page after signin
 

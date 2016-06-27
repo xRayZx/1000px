@@ -19,7 +19,7 @@ _**exactly**_ match the nesting of your routes.)
     * **PhotoIndex**
       * PhotoIndexItem
         * **PhotoDetail**
-        * PhotoLikes
+          * PhotoLikes
           * PhotoComments
             * PhotoCommentsIndex
               * PhotoCommentsForm
@@ -34,8 +34,6 @@ _**exactly**_ match the nesting of your routes.)
 ## Routes
 
 * **component:** `App` **path:** `/`
-  * **component:** `Landing` **path:** index
-  * **component:** `HomeFeed` **path:** `users/:userid/follows`
   * **component:** `ProfilePage` **path:** `users/:userid`
     * **component:** `PhotoIndex` **path:** `users/:userid/photos`
       * **component:** `PhotoDetail` **path:** `photo/:photoId`
