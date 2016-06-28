@@ -13,8 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require jquery.cloudinary.js
-//= require jquery.ui.widget.js
-//= require jquery.iframe-transport.js
-//= require jquery.fileupload.js
 //= require bundle.js
