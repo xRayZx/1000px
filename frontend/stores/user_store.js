@@ -3,7 +3,8 @@ const Store = require('flux/utils').Store;
 
 const UserStore = new Store(AppDispatcher);
 
-let _currentUser, _errors;
+let _currentUser;
+let _errors;
 
 UserStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
