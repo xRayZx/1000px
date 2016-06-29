@@ -1,4 +1,14 @@
 const PhotoApiUtil = {
+	fetchAllPhotos (success) {
+		$.ajax({
+			url: '/api/photos',
+			type: 'GET',
+			dataType: 'json',
+			success: function (resp) {
+				success(resp);
+			}
+		});
+	},
   uploadPhoto (photo, success) {
 		$.ajax({
 			url: '/api/photos',

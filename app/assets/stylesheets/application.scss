@@ -16,9 +16,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
 .auth-form {
   background-color: lightblue;
-  width: 250px;
+  width: 275px;
   height: 215px;
   padding: 3px 20px 15px 20px;
 }

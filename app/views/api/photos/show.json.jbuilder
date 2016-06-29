@@ -1,1 +1,1 @@
-json.array! @photo, :id, :title, :description, :poster_id, :url
+json.extract! @photo, :id, :title, :description, :poster_id, :url

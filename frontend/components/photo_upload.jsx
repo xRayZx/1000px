@@ -1,5 +1,6 @@
 const React = require('react');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
+const PhotoActions = require('../actions/photo_actions.js');
 
 const PhotoUploadForm = React.createClass({
 	getInitialState () {
@@ -20,7 +21,8 @@ const PhotoUploadForm = React.createClass({
 	getUrl (photo) {
 		this.setState({url: photo.secure_url});
 	},
-	getUploadedPhoto () {
+	getUploadedPhoto (e) {
+		e.preventDefault();
 		CloudinaryUtil.openUploadWidget(this.getUrl);
 	},
 	handleSubmit () {
@@ -30,7 +32,7 @@ const PhotoUploadForm = React.createClass({
 			url: this.state.url,
 			poster_id: this.state.poster_id
 		};
-		console.log(newPhoto);
+		PhotoActions.uploadPhoto(newPhoto);
 	},
 	render () {
 		return (

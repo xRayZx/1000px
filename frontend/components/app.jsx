@@ -2,6 +2,8 @@ const React = require('react');
 const UserStore = require('../stores/user_store');
 const UserActions = require('../actions/user_actions');
 
+window.PhotoStore = require('../stores/photo_store.js');
+
 //Components
 const LoginForm = require('./login_form');
 const SignupForm = require('./signup_form');
@@ -33,7 +35,7 @@ const App = React.createClass({
   showSignup () {
     this.refs.signupModal.show();
   },
-	openWidget () {
+	showUpload () {
 		this.refs.uploadModal.show();
 	},
   render () {
@@ -68,7 +70,7 @@ const App = React.createClass({
         <nav>
           <ul>
             <li>Profile</li>
-            <li onClick={this.openWidget}>Upload</li>
+            <li onClick={this.showUpload}>Upload</li>
 						<WaveModal ref="uploadModal">
 							<PhotoUploadForm currentUser={this.state.currentUser}/>
 						</WaveModal>
