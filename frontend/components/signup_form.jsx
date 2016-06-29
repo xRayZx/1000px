@@ -5,8 +5,6 @@ const UserStore = require('../stores/user_store');
 const SignupForm = React.createClass({
   getInitialState () {
     return {
-      currentUser: UserStore.currentUser(),
-      userErrors: UserStore.errors(),
       username: "",
       password: ""
     };

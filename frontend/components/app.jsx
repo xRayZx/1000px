@@ -5,6 +5,7 @@ const UserStore = require('../stores/user_store');
 const UserActions = require('../actions/user_actions');
 const HomeFeed = require('./home_feed');
 const Landing = require('./landing');
+const Modal = require('boron/DropModal');
 
 const App = React.createClass({
   getInitialState () {
@@ -20,20 +21,34 @@ const App = React.createClass({
       currentUser: UserStore.currentUser()
     });
   },
+  showLogin () {
+    this.refs.loginModal.show();
+  },
+  showSignup () {
+    this.refs.signupModal.show();
+  },
   render () {
-    let homePage = (
-      <div className="under-header">
-        <Landing />
-        <LoginForm/>
-      </div>
-    );
+    const modalStyle = {
+      width: '250px'
+    };
     let navButtons = (
       <nav>
         <ul>
-          <li>Log In</li>
-          <li>Sign Up</li>
+          <li onClick={this.showLogin}>Log In</li>
+          <Modal ref="loginModal" modalStyle={modalStyle}>
+            <LoginForm/>
+          </Modal>
+          <li onClick={this.showSignup}>Sign Up</li>
+          <Modal ref="signupModal" modalStyle={modalStyle}>
+            <SignupForm/>
+          </Modal>
         </ul>
       </nav>
+    );
+    let homePage = (
+      <div className="under-header">
+      <Landing modalStyle={modalStyle}/>
+      </div>
     );
     if (this.state.currentUser) {
       homePage = (
