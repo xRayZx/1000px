@@ -27,6 +27,10 @@ const App = React.createClass({
   showSignup () {
     this.refs.signupModal.show();
   },
+	openWidget () {
+		cloudinary.openUploadWidget({ cloud_name: "dlgyh9jw", upload_preset: "twwfu72j" },
+			function(error, result) {console.log("this is the error: ", error, " | this is results: ", result) });
+	},
   render () {
     const modalStyle = {
       width: '250px'
@@ -61,7 +65,7 @@ const App = React.createClass({
         <nav>
           <ul>
             <li>Profile</li>
-            <li>Upload</li>
+            <li onClick={this.openWidget} >Upload</li>
           </ul>
         </nav>
       );
