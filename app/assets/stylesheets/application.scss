@@ -21,16 +21,31 @@
   width: 250px;
   height: 215px;
   padding: 3px 20px 15px 20px;
+  border-radius: 7%;
 }
 
 header {
   display: flex;
+  position: fixed;
+  z-index: 999;
   height: 75px;
+  width: 100%;
+  background-color: hsla(0, 0%, 0%, 0.75)
+}
+
+header > img {
+  cursor: pointer;
 }
 
 header > nav {
   margin-left: auto;
   height: 100%;
+}
+
+.under-header {
+  margin-top: 75px;
+  display: inline-block;
+  width: 100%;
 }
 
 nav > ul {
@@ -40,12 +55,18 @@ nav > ul {
 
 nav > ul > li {
   display: inline-block;
+  position: relative;
   text-align: center;
   width: 120px;
   padding: 30px 20px;
   list-style: none;
   cursor: pointer;
   border: 1px solid black;
+  background-color: lightblue;
+}
+
+nav > ul > li:active {
+  top: 3px;
 }
 
 .form-header {
@@ -59,4 +80,26 @@ nav > ul > li {
 
 .auth-button {
   margin: 0 10px;
+}
+
+.splash > h1, .splash > h3 {
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px #000000
+}
+
+.splash > h1 {
+  margin: 250px auto 40px;
+}
+
+.splash {
+  width: 100%;
+  min-height: 700px;
+  background-image: url("https://images.unsplash.com/photo-1464054313797-e27fb58e90a9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=576bb45620043f729baef96301c9acb6");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }

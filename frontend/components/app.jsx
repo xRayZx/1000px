@@ -3,6 +3,8 @@ const LoginForm = require('./login_form');
 const SignupForm = require('./signup_form');
 const UserStore = require('../stores/user_store');
 const UserActions = require('../actions/user_actions');
+const HomeFeed = require('./home_feed');
+const Landing = require('./landing');
 
 const App = React.createClass({
   getInitialState () {
@@ -20,9 +22,8 @@ const App = React.createClass({
   },
   render () {
     let homePage = (
-      <div>
-        Show this page if not logged in
-        <br/>
+      <div className="under-header">
+        <Landing />
         <LoginForm/>
       </div>
     );
@@ -36,8 +37,8 @@ const App = React.createClass({
     );
     if (this.state.currentUser) {
       homePage = (
-        <div>
-          Hello {this.state.currentUser.username}
+        <div className="under-header">
+          <HomeFeed currentUser={this.state.currentUser}/>
           <button onClick={UserActions.logout} className="btn btn-danger">Log Out</button>
         </div>
       );
@@ -52,13 +53,13 @@ const App = React.createClass({
     }
     const header = (
       <header>
-          <img src="/logo.png" width="120px" height="75px"/>
+          <img src="/1000px-logo.png" width="120px" height="75px"/>
           {navButtons}
       </header>
     );
     return (
       <div>
-      {header}
+        {header}
         {homePage}
       </div>
     );
