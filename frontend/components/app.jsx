@@ -1,11 +1,17 @@
 const React = require('react');
-const LoginForm = require('./login_form');
-const SignupForm = require('./signup_form');
 const UserStore = require('../stores/user_store');
 const UserActions = require('../actions/user_actions');
+
+//Components
+const LoginForm = require('./login_form');
+const SignupForm = require('./signup_form');
 const HomeFeed = require('./home_feed');
 const Landing = require('./landing');
-const Modal = require('boron/DropModal');
+const PhotoUploadForm = require('./photo_upload.jsx');
+
+//Modals
+const WaveModal = require('boron/WaveModal');
+const DropModal = require('boron/DropModal');
 
 const App = React.createClass({
   getInitialState () {
@@ -28,8 +34,7 @@ const App = React.createClass({
     this.refs.signupModal.show();
   },
 	openWidget () {
-		cloudinary.openUploadWidget({ cloud_name: "dlgyh9jw", upload_preset: "twwfu72j" },
-			function(error, result) {console.log("this is the error: ", error, " | this is results: ", result) });
+		this.refs.uploadModal.show();
 	},
   render () {
     const modalStyle = {
@@ -39,24 +44,22 @@ const App = React.createClass({
       <nav>
         <ul>
           <li onClick={this.showLogin}>Log In</li>
-          <Modal ref="loginModal" modalStyle={modalStyle}>
+          <DropModal ref="loginModal" modalStyle={modalStyle}>
             <LoginForm/>
-          </Modal>
+          </DropModal>
           <li onClick={this.showSignup}>Sign Up</li>
-          <Modal ref="signupModal" modalStyle={modalStyle}>
+          <DropModal ref="signupModal" modalStyle={modalStyle}>
             <SignupForm/>
-          </Modal>
+          </DropModal>
         </ul>
       </nav>
     );
     let homePage = (
-      <div className="under-header">
       <Landing modalStyle={modalStyle}/>
-      </div>
     );
     if (this.state.currentUser) {
       homePage = (
-        <div className="under-header">
+        <div className="home-page">
           <HomeFeed currentUser={this.state.currentUser}/>
           <button onClick={UserActions.logout} className="btn btn-danger">Log Out</button>
         </div>
@@ -65,7 +68,10 @@ const App = React.createClass({
         <nav>
           <ul>
             <li>Profile</li>
-            <li onClick={this.openWidget} >Upload</li>
+            <li onClick={this.openWidget}>Upload</li>
+						<WaveModal ref="uploadModal">
+							<PhotoUploadForm currentUser={this.state.currentUser}/>
+						</WaveModal>
           </ul>
         </nav>
       );

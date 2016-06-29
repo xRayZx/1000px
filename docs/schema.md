@@ -6,6 +6,7 @@ column name | data type | details
 id          | integer   | not null, primary key
 title       | string    | not null
 description | text      | not null
+url         | text      | not null
 poster_id   | integer   | not null, foreign key (references users), indexed
 
 ## follows

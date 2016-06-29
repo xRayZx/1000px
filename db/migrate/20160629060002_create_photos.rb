@@ -4,6 +4,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.text :title, null: false
       t.text :description
       t.integer :poster_id, null: false
+			t.text :url, null: false
 
       t.timestamps null: false
     end
