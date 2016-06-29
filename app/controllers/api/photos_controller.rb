@@ -1,6 +1,7 @@
 class Api::PhotosController < ApplicationController
 	def index
 		@photos = Photo.all
+		render "api/photos/index"
 	end
 
 	def create

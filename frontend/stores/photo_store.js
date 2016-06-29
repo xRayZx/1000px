@@ -11,6 +11,7 @@ PhotoStore.all = function () {
 PhotoStore._resetPhotos = function (photos) {
 	_photos = {};
 	_photos = photos;
+	PhotoStore.__emitChange();
 };
 
 PhotoStore._resetSinglePhoto = function (photo) {

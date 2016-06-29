@@ -1,6 +1,7 @@
 const React = require('react');
 const Modal = require('boron/DropModal');
 const SignupForm = require('./signup_form');
+const PhotoIndex = require('../components/photo_index.jsx');
 
 const Landing = React.createClass({
   componentDidMount () {
@@ -19,6 +20,7 @@ const Landing = React.createClass({
               <SignupForm />
             </Modal>
         </div>
+				<PhotoIndex source="Landing"/>
       </div>
     );
   }

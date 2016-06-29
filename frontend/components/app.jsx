@@ -7,9 +7,9 @@ window.PhotoStore = require('../stores/photo_store.js');
 //Components
 const LoginForm = require('./login_form');
 const SignupForm = require('./signup_form');
+const PhotoUploadForm = require('./photo_upload.jsx');
 const HomeFeed = require('./home_feed');
 const Landing = require('./landing');
-const PhotoUploadForm = require('./photo_upload.jsx');
 
 //Modals
 const WaveModal = require('boron/WaveModal');
