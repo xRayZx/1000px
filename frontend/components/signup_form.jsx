@@ -37,15 +37,20 @@ const SignupForm = React.createClass({
   },
   render () {
     return (
-      <div className="signup-form">
-        <h3>Sign Up</h3>
+      <div className="auth-form">
         <form onSubmit={this.handleSubmit}>
+        <h3>Sign Up</h3>
           <section>
-            <input type="text" value={this.state.username} placeholder="Username" onChange={this.updateUsername}/>
-            <input type="password" value={this.state.password} placeholder="Password" onChange={this.updatePassword}/>
+            <fieldset className="form-group">
+              <input type="text" value={this.state.username} placeholder="Username" onChange={this.updateUsername}/>
+            </fieldset>
+            <fieldset className="form-group">
+              <input type="password" value={this.state.password} placeholder="Password" onChange={this.updatePassword}/>
+            </fieldset>
           </section>
-          <input type="submit" className="auth-button" value="Sign Up!" />
+          <input type="submit" className="auth-button btn btn-success" value="Sign Up!" />
         </form>
+        {UserStore.errors()}
       </div>
     );
   }

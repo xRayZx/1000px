@@ -1,9 +1,9 @@
-var UserConstants = require('../constants/user_constants');
-var UserApiUtil = require('../util/user_api_util');
-var UserStore = require('../stores/user_store');
-var AppDispatcher = require('../dispatcher/dispatcher');
+const UserConstants = require('../constants/user_constants');
+const UserApiUtil = require('../util/user_api_util');
+const UserStore = require('../stores/user_store');
+const AppDispatcher = require('../dispatcher/dispatcher');
 
-var UserActions = {
+const UserActions = {
 	fetchCurrentUser: function(){
 		UserApiUtil.fetchCurrentUser(UserActions.receiveCurrentUser, UserActions.handleError);
 	},
@@ -33,6 +33,7 @@ var UserActions = {
 		});
 	},
 	handleError: function(error) {
+		debugger
 		AppDispatcher.dispatch({
 			actionType: UserConstants.ERROR,
 			errors: error.responseJSON.errors

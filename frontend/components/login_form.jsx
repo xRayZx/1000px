@@ -35,18 +35,27 @@ const LoginForm = React.createClass({
     UserActions.login(user);
     this.setState({username: '', password: ''});
   },
+  guestLogin (e) {
+    e.preventDefault();
+    UserActions.guestLogin();
+  },
   render () {
     return (
-      <div className="login-form">
-        <h3>Log In</h3>
+      <div className="auth-form">
         <form onSubmit={this.handleSubmit}>
+        <h3 className="form-header">Log In</h3>
           <section>
-            <input type="text" value={this.state.username} placeholder="Username" onChange={this.updateUsername}/>
-            <input type="password" value={this.state.password} placeholder="Password" onChange={this.updatePassword}/>
+            <fieldset className="form-group">
+              <input type="text" value={this.state.username} placeholder="Username" onChange={this.updateUsername}/>
+            </fieldset>
+            <fieldset className="form-group">
+              <input type="password" value={this.state.password} placeholder="Password" onChange={this.updatePassword}/>
+            </fieldset>
           </section>
-          <input type="submit" className="auth-button" value="Log In" />
-          <button onClick={this.guestLogin} className="auth-button">Guest Login</button>
+          <input type="submit" className="auth-button btn btn-success" value="Log In" />
+          <button onClick={this.guestLogin} className="auth-button btn btn-primary">Guest Login</button>
         </form>
+        {UserStore.errors()}
       </div>
     );
   }

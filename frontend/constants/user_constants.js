@@ -1,4 +1,4 @@
-var UserConstants = {
+const UserConstants = {
 	LOGIN: "LOGIN",
 	ERROR: "ERROR",
 	LOGOUT: "LOGOUT"

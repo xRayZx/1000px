@@ -11,7 +11,7 @@ const hashHistory = ReactRouter.hashHistory;
 const UserActions = require('./actions/user_actions');
 
 //Components
-const App = require('./components/App');
+const App = require('./components/app');
 
 const routes = (
   <Route path="/" component={App}>

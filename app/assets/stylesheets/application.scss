@@ -13,3 +13,50 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.auth-form {
+  background-color: lightblue;
+  width: 250px;
+  height: 215px;
+  padding: 3px 20px 15px 20px;
+}
+
+header {
+  display: flex;
+  height: 75px;
+}
+
+header > nav {
+  margin-left: auto;
+  height: 100%;
+}
+
+nav > ul {
+  display: flex;
+  height: 100%;
+}
+
+nav > ul > li {
+  display: inline-block;
+  text-align: center;
+  width: 120px;
+  padding: 30px 20px;
+  list-style: none;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.form-header {
+  text-align: center;
+}
+
+.form-group {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.auth-button {
+  margin: 0 10px;
+}
