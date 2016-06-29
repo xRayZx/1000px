@@ -1,7 +1,14 @@
-const PhotoActions = {
-	uploadPhoto (photo, success) {
-		$.ajax({
+const Dispatcher = require('../dispatcher/dispatcher.js');
+const PhotoApiUtil = require('../util/photo_api_util.js');
 
+const PhotoActions = {
+	uploadPhoto (photo) {
+		PhotoApiUtil.uploadPhoto(photo, PhotoActions.receivePhoto);
+	},
+	receivePhoto (photo) {
+		Dispatcher.dispatch({
+			actionType: "PHOTO_RECEIVED",
+			photo: photo
 		});
 	}
 };
