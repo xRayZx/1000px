@@ -1,4 +1,5 @@
 const React = require('react');
+const hashHistory = require('react-router').hashHistory;
 const CloudinaryUtil = require('../util/cloudinary_util.js');
 const PhotoActions = require('../actions/photo_actions.js');
 
@@ -34,6 +35,7 @@ const PhotoUploadForm = React.createClass({
 		};
 		PhotoActions.uploadPhoto(newPhoto);
 		this.props.close();
+		hashHistory.push(`/profile/${this.props.currentUser.id}`);
 	},
 	render () {
 		return (

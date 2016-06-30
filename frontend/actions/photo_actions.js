@@ -11,6 +11,9 @@ const PhotoActions = {
 	uploadPhoto (photo) {
 		PhotoApiUtil.uploadPhoto(photo, PhotoActions.receivePhoto);
 	},
+	fetchPhoto (photoId) {
+		PhotoApiUtil.fetchPhoto(photoId, PhotoActions.receivePhoto);
+	},
 	receiveAllPhotos (photos) {
 		Dispatcher.dispatch({
 			actionType: "PHOTOS_RECEIVED",

@@ -15,19 +15,27 @@ PhotoStore.profile = function () {
 
 PhotoStore._resetPhotos = function (photos) {
 	_photos = {};
-	_photos = photos;
+	photos.forEach( (photo) => {
+		_photos[photo.id] = photo;
+	} );
 	PhotoStore.__emitChange();
 };
 
-PhotoStore._resetProfile = function (profile) {
+PhotoStore._resetProfile = function (profilePics) {
 	_profilePhotos = {};
-	_profilePhotos = profile;
+	profilePics.forEach( (profile) => {
+		_profilePhotos[profile.id] = profile;
+	} );
 	PhotoStore.__emitChange();
 };
 
 PhotoStore._resetSinglePhoto = function (photo) {
 	_photos[photo.id] = photo;
 	PhotoStore.__emitChange();
+};
+
+PhotoStore.find = function (photoId) {
+	return _photos[photoId];
 };
 
 PhotoStore.__onDispatch = function (payload) {

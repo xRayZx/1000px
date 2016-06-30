@@ -29,7 +29,17 @@ const PhotoApiUtil = {
 				success(resp);
 			}
 		});
-	}  
+	},
+	fetchPhoto (photoId, success) {
+		$.ajax({
+			url: `/api/photos/${photoId}`,
+			type: 'GET',
+			dataType: 'json',
+			success: function (resp) {
+				success(resp);
+			}
+		});
+	}
 };
 
 module.exports = PhotoApiUtil;

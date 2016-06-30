@@ -189,6 +189,10 @@ nav > ul > li:active {
   border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
 }
+.grid-item:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
 
 .grid.effect-3 li.animate {
   -webkit-transform: scale(0.8);
