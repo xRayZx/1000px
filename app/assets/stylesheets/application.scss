@@ -199,6 +199,7 @@ nav > ul > li:active {
   transform: scale(0.8);
   -webkit-animation: scaleUp 0.65s ease-in-out forwards;
   animation: scaleUp 0.65s ease-in-out forwards;
+  cursor: pointer;
 }
 
 .profile-pic {

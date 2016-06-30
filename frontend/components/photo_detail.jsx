@@ -4,7 +4,13 @@ const PhotoActions = require('../actions/photo_actions.js');
 const PhotoDetail = React.createClass({
 	getInitialState () {
 		return (
-			{photo: PhotoStore.find(this.props.photo.id)}
+			{
+				id: this.props.photo.id,
+				title: '',
+				description: '',
+				posterId: null,
+				url: ''
+			}
 		);
 	},
 	componentDidMount () {
@@ -18,9 +24,17 @@ const PhotoDetail = React.createClass({
 		let photo = PhotoStore.find(this.props.photo.id);
 		this.setState({
 			title: photo.title,
-			description: photo.description
-			
+			description: photo.description,
+			posterId: photo.poster_id,
+			url: photo.url
 		});
+	},
+	render () {
+		return (
+			<div>
+				Hello from details
+			</div>
+		)
 	}
 });
 
