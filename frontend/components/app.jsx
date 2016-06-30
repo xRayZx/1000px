@@ -1,4 +1,5 @@
 const React = require('react');
+const hashHistory = require('react-router').hashHistory;
 const UserStore = require('../stores/user_store');
 const UserActions = require('../actions/user_actions');
 
@@ -35,6 +36,9 @@ const App = React.createClass({
   },
 	showUpload () {
 		this.refs.uploadModal.show();
+	},
+	returnHome () {
+		hashHistory.push('/');
 	},
   render () {
     const modalStyle = {
@@ -78,7 +82,7 @@ const App = React.createClass({
     }
     const header = (
       <header>
-          <img src="/1000px-logo.png" width="120px" height="75px"/>
+          <img src="/1000px-logo.png" width="120px" height="75px" onClick={this.returnHome}/>
           {navButtons}
       </header>
     );
