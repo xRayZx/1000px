@@ -9,9 +9,9 @@ const PhotoApiUtil = {
 			}
 		});
 	},
-	fetchMyPhotos (success) {
+	fetchProfilePhotos (profileId, success) {
 		$.ajax({
-			url: '/api/my_photos',
+			url: `/api/profile_photos/${profileId}`,
 			type: 'GET',
 			dataType: 'json',
 			success: function (resp) {

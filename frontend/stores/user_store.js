@@ -5,6 +5,7 @@ const UserStore = new Store(AppDispatcher);
 
 let _currentUser = null;
 let _errors = [];
+let _profile = null;
 
 UserStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
@@ -16,7 +17,10 @@ UserStore.__onDispatch = function (payload) {
       break;
     case "ERROR":
       UserStore.setErrors(payload.errors);
-      break;
+			break;
+		case "PROFILE_RECEIVED":
+			UserStore.setProfile(payload.profile);
+			break;
   }
   UserStore.__emitChange();
 };
@@ -45,6 +49,14 @@ UserStore.errors = function(){
   if (_errors){
     return [].slice.call(_errors);
   }
+};
+
+UserStore.setProfile = function (profile) {
+	_profile = profile;
+};
+
+UserStore.profile = function () {
+	return _profile;
 };
 
 module.exports = UserStore;

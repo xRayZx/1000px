@@ -46,7 +46,7 @@ header > nav {
   height: 100%;
 }
 
-.home-page {
+.home-page, .profile-page {
   padding-top: 75px;
 }
 
@@ -195,4 +195,10 @@ nav > ul > li:active {
   transform: scale(0.8);
   -webkit-animation: scaleUp 0.65s ease-in-out forwards;
   animation: scaleUp 0.65s ease-in-out forwards;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }

@@ -1,6 +1,16 @@
 const AppDispatcher = require('../dispatcher/dispatcher');
 
 const UserApiUtil = {
+	fetchProfile (userId, success) {
+		$.ajax({
+			url: `/api/user/${userId}`,
+			type: 'GET',
+			dataType: 'json',
+			success: function (resp) {
+				success(resp);
+			}
+		});
+	},
 	post: function(options){
 		$.ajax({
 			url: options.url,

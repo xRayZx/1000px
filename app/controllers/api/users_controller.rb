@@ -20,13 +20,9 @@ class Api::UsersController < ApplicationController
 		end
 	end
 
-	def index
-		@users = User.all
-		render "api/users/index"
-	end
-
 	def profile
-		@user = User.find({username: params[:id]})
+		@user = User.find(params[:id])
+		render "api/users/show"
 	end
 
 	private

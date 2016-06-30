@@ -5,8 +5,8 @@ const PhotoActions = {
 	fetchAllPhotos () {
 		PhotoApiUtil.fetchAllPhotos(PhotoActions.receiveAllPhotos);
 	},
-	fetchMyPhotos () {
-		PhotoApiUtil.fetchMyPhotos(PhotoActions.receiveAllPhotos);
+	fetchProfilePhotos (profileId) {
+		PhotoApiUtil.fetchProfilePhotos(profileId, PhotoActions.receiveProfile);
 	},
 	uploadPhoto (photo) {
 		PhotoApiUtil.uploadPhoto(photo, PhotoActions.receivePhoto);
@@ -22,6 +22,12 @@ const PhotoActions = {
 			actionType: "PHOTO_RECEIVED",
 			photo: photo
 		});
+	},
+	receiveProfile (profile) {
+		Dispatcher.dispatch({
+			actionType: "PROFILE_PHOTOS_RECEIVED",
+			profile: profile
+		})
 	}
 };
 

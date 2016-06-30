@@ -4,8 +4,8 @@ class Api::PhotosController < ApplicationController
 		render "api/photos/index"
 	end
 
-	def my_index
-		@photos = Photo.where(poster: current_user)
+	def profile_index
+		@photos = Photo.where(poster_id: params[:id])
 		render "api/photos/index"
 	end
 

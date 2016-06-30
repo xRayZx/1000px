@@ -4,6 +4,15 @@ const UserStore = require('../stores/user_store');
 const AppDispatcher = require('../dispatcher/dispatcher');
 
 const UserActions = {
+	fetchProfile: function (userId) {
+		UserApiUtil.fetchProfile(userId, UserActions.receiveProfile)
+	},
+	receiveProfile: function (profile) {
+		AppDispatcher.dispatch({
+			actionType: "PROFILE_RECEIVED",
+			profile: profile
+		});
+	},
 	fetchCurrentUser: function(){
 		UserApiUtil.fetchCurrentUser(UserActions.receiveCurrentUser, UserActions.handleError);
 	},

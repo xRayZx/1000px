@@ -9,6 +9,7 @@ const SignupForm = require('./signup_form');
 const PhotoUploadForm = require('./photo_upload.jsx');
 const HomeFeed = require('./home_feed');
 const Landing = require('./landing');
+const ProfilePage = require('./profile_page.jsx');
 
 //Modals
 const WaveModal = require('boron/WaveModal');
@@ -40,8 +41,15 @@ const App = React.createClass({
 	hideUpload () {
 		this.refs.uploadModal.hide();
 	},
+	logout () {
+		UserActions.logout();
+		hashHistory.push('/');
+	},
 	returnHome () {
 		hashHistory.push('/');
+	},
+	myProfile () {
+		hashHistory.push(`/profile/${this.state.currentUser.id}`);
 	},
   render () {
     const modalStyle = {
@@ -68,13 +76,13 @@ const App = React.createClass({
       homePage = (
         <div className="home-page">
           <HomeFeed currentUser={this.state.currentUser}/>
-          <button onClick={UserActions.logout} className="btn btn-danger">Log Out</button>
+          <button onClick={this.logout} className="btn btn-danger">Log Out</button>
         </div>
       );
       navButtons = (
         <nav>
           <ul>
-            <li>Profile</li>
+            <li onClick={this.myProfile}>Profile</li>
             <li onClick={this.showUpload}>Upload</li>
 						<WaveModal ref="uploadModal">
 							<PhotoUploadForm currentUser={this.state.currentUser} close={this.hideUpload}/>
@@ -92,7 +100,7 @@ const App = React.createClass({
     return (
       <div>
         {header}
-        {homePage}
+				{this.props.children ? this.props.children : homePage}
       </div>
     );
   }
