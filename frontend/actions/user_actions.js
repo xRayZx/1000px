@@ -33,7 +33,6 @@ const UserActions = {
 		});
 	},
 	handleError: function(error) {
-		debugger
 		AppDispatcher.dispatch({
 			actionType: UserConstants.ERROR,
 			errors: error.responseJSON.errors

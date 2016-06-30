@@ -5,6 +5,9 @@ const PhotoActions = {
 	fetchAllPhotos () {
 		PhotoApiUtil.fetchAllPhotos(PhotoActions.receiveAllPhotos);
 	},
+	fetchMyPhotos () {
+		PhotoApiUtil.fetchMyPhotos(PhotoActions.receiveAllPhotos);
+	},
 	uploadPhoto (photo) {
 		PhotoApiUtil.uploadPhoto(photo, PhotoActions.receivePhoto);
 	},

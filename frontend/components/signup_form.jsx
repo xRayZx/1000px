@@ -5,10 +5,21 @@ const UserStore = require('../stores/user_store');
 const SignupForm = React.createClass({
   getInitialState () {
     return {
+			currentUser: UserStore.currentUser(),
+			userErrors: UserStore.errors(),
       username: "",
       password: ""
     };
   },
+	componentDidMount () {
+		UserStore.addListener(this._updateUser);
+	},
+	_updateUser () {
+		this.setState({
+			currentUser: UserStore.currentUser(),
+			userErrors: UserStore.errors()
+		});
+	},
   updateUsername (e) {
     this.setState({username: e.target.value});
   },

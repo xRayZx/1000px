@@ -4,6 +4,11 @@ class Api::PhotosController < ApplicationController
 		render "api/photos/index"
 	end
 
+	def my_index
+		@photos = Photo.where(poster: current_user)
+		render "api/photos/index"
+	end
+
 	def create
 		@photo = Photo.new(photo_params)
 		if @photo.save
