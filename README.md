@@ -2,17 +2,17 @@
 
 [Heroku link][heroku] **Note:** This should be a link to your production site
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://l000px.herokuapp.com/
 
 ## Minimum Viable Product
 
 1000px is a web application inspired by 500px that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
 
-- [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
+- [x] Hosting on Heroku
+- [x] New account creation, login, and guest/demo login
 - [ ] A production README, replacing this README (**NB**: check out the [sample production README](docs/production_readme.md) -- you'll write this later)
-- [ ] Upload Photos
-  - [ ] Integrate Cloudinary for uploading
+- [x] Upload Photos
+  - [x] Integrate Cloudinary for uploading
   - [ ] Photo detail page has description and poster information
   - [ ] Ability to edit description
 - [ ] Follows
@@ -48,23 +48,23 @@
 **Objective:** Functioning rails project with Authentication
 
 - [x] create new project
-- [ ] create `User` model
-- [ ] back-end authentication
-- [ ] front-end authentication
-- [ ] user signup/signin pages
-- [ ] blank landing page after signin
+- [x] create `User` model
+- [x] back-end authentication
+- [x] front-end authentication
+- [x] user signup/signin pages
+- [x] blank landing page after signin
 
 ### Phase 2: Photos Model, API, and basic APIUtil (2 days, W1 Th 6pm)
 
 **Objective:** Photos can be uploaded, displayed, edited and destroyed through the API.
 
-- [ ] create `Photo` model
+- [x] create `Photo` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for photos (`Cloudinary`)
-- [ ] jBuilder views for photos
-- [ ] setup Webpack & Flux scaffold
+- [x] CRUD API for photos (`Cloudinary`)
+- [x] jBuilder views for photos
+- [x] setup Webpack & Flux scaffold
 - [ ] setup `APIUtil` to interact with the API
-- [ ] test out API interaction in the console.
+- [x] test out API interaction in the console.
 
 ### Phase 3: Flux Architecture and Router (2 days, W1 Sat 6pm)
 
