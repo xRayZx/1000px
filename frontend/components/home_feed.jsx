@@ -9,17 +9,17 @@ const HomeFeed = React.createClass({
 		);
 	},
 	componentDidMount () {
-		PhotoStore.addListener(this._updateFeed);
+		this.listener = PhotoStore.addListener(this._updateFeed);
 		PhotoActions.fetchAllPhotos();
 	},
 	_updateFeed () {
-		debugger
 		this.setState({photos: PhotoStore.all()});
 	},
   render () {
     return (
       <div>
         Hello, {this.props.currentUser.username}!
+				<p>{JSON.stringify(this.state.photos)}</p>
       </div>
     );
   }

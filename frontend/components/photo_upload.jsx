@@ -33,6 +33,7 @@ const PhotoUploadForm = React.createClass({
 			poster_id: this.state.poster_id
 		};
 		PhotoActions.uploadPhoto(newPhoto);
+		this.props.close();
 	},
 	render () {
 		return (

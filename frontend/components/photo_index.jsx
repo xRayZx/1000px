@@ -10,8 +10,11 @@ const PhotoIndex = React.createClass({
 		);
 	},
 	componentDidMount () {
-		PhotoStore.addListener(this._onChange);
+		this.listener = PhotoStore.addListener(this._onChange);
 		PhotoActions.fetchAllPhotos();
+	},
+	componentWillUnmount () {
+		this.listener.remove();
 	},
 	_onChange () {
 		this.setState({photos: PhotoStore.all()});

@@ -37,6 +37,9 @@ const App = React.createClass({
 	showUpload () {
 		this.refs.uploadModal.show();
 	},
+	hideUpload () {
+		this.refs.uploadModal.hide();
+	},
 	returnHome () {
 		hashHistory.push('/');
 	},
@@ -74,7 +77,7 @@ const App = React.createClass({
             <li>Profile</li>
             <li onClick={this.showUpload}>Upload</li>
 						<WaveModal ref="uploadModal">
-							<PhotoUploadForm currentUser={this.state.currentUser}/>
+							<PhotoUploadForm currentUser={this.state.currentUser} close={this.hideUpload}/>
 						</WaveModal>
           </ul>
         </nav>
