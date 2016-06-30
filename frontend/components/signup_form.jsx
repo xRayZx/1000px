@@ -9,18 +9,6 @@ const SignupForm = React.createClass({
       password: ""
     };
   },
-  componentDidMount () {
-    this.listener = UserStore.addListener(this._updateUser);
-  },
-  componentWillUnmount () {
-    this.listener.remove();
-  },
-  _updateUser () {
-    this.setState({
-      currentUser: UserStore.currentUser(),
-      userErrors: UserStore.errors()
-    });
-  },
   updateUsername (e) {
     this.setState({username: e.target.value});
   },
@@ -37,7 +25,7 @@ const SignupForm = React.createClass({
     return (
       <div className="auth-form">
         <form onSubmit={this.handleSubmit}>
-        <h3>Sign Up</h3>
+        <h3 className="form-header">Sign Up</h3>
           <section>
             <fieldset className="form-group">
               <input type="text" value={this.state.username} placeholder="Username" onChange={this.updateUsername}/>

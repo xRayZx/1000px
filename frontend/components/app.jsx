@@ -2,8 +2,6 @@ const React = require('react');
 const UserStore = require('../stores/user_store');
 const UserActions = require('../actions/user_actions');
 
-window.PhotoStore = require('../stores/photo_store.js');
-
 //Components
 const LoginForm = require('./login_form');
 const SignupForm = require('./signup_form');

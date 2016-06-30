@@ -5,17 +5,9 @@ const UserStore = require('../stores/user_store');
 const LoginForm = React.createClass({
   getInitialState () {
     return {
-      currentUser: UserStore.currentUser(),
-      userErrors: UserStore.errors(),
       username: "",
       password: ""
     };
-  },
-  componentDidMount () {
-    this.listener = UserStore.addListener(this._updateUser);
-  },
-  componentWillUnmount () {
-    this.listener.remove();
   },
   _updateUser () {
     this.setState({
@@ -52,8 +44,10 @@ const LoginForm = React.createClass({
               <input type="password" value={this.state.password} placeholder="Password" onChange={this.updatePassword}/>
             </fieldset>
           </section>
-          <input type="submit" className="auth-button btn btn-success" value="Log In" />
-          <button onClick={this.guestLogin} className="auth-button btn btn-primary">Guest Login</button>
+					<ul className="auth-buttons">
+						<li className="auth-button"><input type="submit" className="btn btn-success" value="Log In" /></li>
+						<li className="auth-button"><button onClick={this.guestLogin} className="btn btn-primary">Guest Login</button></li>
+					</ul>
         </form>
         {UserStore.errors()}
       </div>

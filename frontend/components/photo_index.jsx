@@ -1,6 +1,7 @@
 const React = require('react');
 const PhotoStore = require('../stores/photo_store.js');
 const PhotoActions = require('../actions/photo_actions.js');
+const PhotoIndexItem = require('./photo_index_item.jsx');
 
 const PhotoIndex = React.createClass({
 	getInitialState () {
@@ -22,11 +23,7 @@ const PhotoIndex = React.createClass({
 			photoKeys.forEach( (key) => {
 				let photo = this.state.photos[key];
 				let indexItem = (
-					<div key={photo.id}>
-						{photo.title}
-						<br/>
-						<img src={photo.url} width='30%' height='30%'/>
-					</div>
+					<PhotoIndexItem photo={photo} key={photo.id} />
 				);
 				indexItems.push(indexItem);
 			} );
