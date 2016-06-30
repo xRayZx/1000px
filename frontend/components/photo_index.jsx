@@ -32,9 +32,9 @@ const PhotoIndex = React.createClass({
 			} );
 		}
 		return (
-			<div>
+			<ul className="grid effect-3">
 				{indexItems}
-			</div>
+			</ul>
 		);
 	}
 });
