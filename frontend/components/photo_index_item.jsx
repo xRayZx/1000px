@@ -8,11 +8,11 @@ const PhotoIndexItem = React.createClass({
 	},
 	render () {
 		return (
-			<li className="animate" onClick={this.showDetails}>
+			<li className="image-element-class" onClick={this.showDetails}>
 				<ScaleModal ref="detailsModal">
 					<PhotoDetail photo={this.props.photo}/>
 				</ScaleModal>
-				<img className="grid-item" src={this.props.photo.url}/>
+				<img className="img-idx" src={this.props.photo.url}/>
 			</li>
 		)
 	}

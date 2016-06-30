@@ -1,4 +1,5 @@
 const React = require('react');
+const Masonry = require('react-masonry-component');
 const PhotoStore = require('../stores/photo_store.js');
 const PhotoActions = require('../actions/photo_actions.js');
 const PhotoIndexItem = require('./photo_index_item.jsx');
@@ -32,9 +33,9 @@ const PhotoIndex = React.createClass({
 			} );
 		}
 		return (
-			<ul className="grid effect-3">
+			<Masonry className="my-gallery-class" elementType='ul'>
 				{indexItems}
-			</ul>
+			</Masonry>
 		);
 	}
 });
