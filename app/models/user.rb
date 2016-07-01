@@ -10,8 +10,23 @@ class User < ActiveRecord::Base
 
 	has_many :photos,
 		class_name: "Photo",
-		primary_key: :id,
 		foreign_key: :poster_id
+
+	has_many :follows,
+		class_name: "Follow",
+		foreign_key: :followee_id
+
+	has_many :followers,
+		through: :follows,
+		source: :follower
+
+	has_many :followed,
+		class_name: "Follow",
+		foreign_key: :follower_id
+
+	has_many :followings,
+		through: :followed,
+		source: :followee
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
