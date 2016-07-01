@@ -6,6 +6,11 @@ const UserActions = require('../actions/user_actions.js');
 const PhotoIndexItem = require('./photo_index_item.jsx');
 const Masonry = require('react-masonry-component');
 
+const masonryOptions = {
+	isFitWidth: true,
+	gutter: 10
+};
+
 const ProfilePage = React.createClass({
 	getInitialState () {
 		return (
@@ -42,7 +47,7 @@ const ProfilePage = React.createClass({
 				photoKeys.forEach( (key) => {
 					let photo = this.state.photos[key];
 					let indexItem = (
-						<PhotoIndexItem photo={photo} key={photo.id} />
+						<PhotoIndexItem photo={photo} key={photo.id} size="profile"/>
 					);
 					indexItems.push(indexItem);
 				} );
@@ -53,7 +58,7 @@ const ProfilePage = React.createClass({
 						<img className="profile-pic" src={this.state.profile.pic_url}/>
 						<h3 className="profile-name">{this.state.profile.first_name} {this.state.profile.last_name}</h3>
 					</div>
-					<Masonry elementType='ul' className='my-gallery-class'>
+					<Masonry elementType='ul' className='my-gallery-class' options={masonryOptions}>
 						{indexItems}
 					</Masonry>
 				</div>

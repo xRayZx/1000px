@@ -32,7 +32,7 @@ const PhotoIndex = React.createClass({
 			photoKeys.forEach( (key) => {
 				let photo = this.state.photos[key];
 				let indexItem = (
-					<PhotoIndexItem photo={photo} key={photo.id} />
+					<PhotoIndexItem photo={photo} key={photo.id} size="landing"/>
 				);
 				indexItems.push(indexItem);
 			} );
