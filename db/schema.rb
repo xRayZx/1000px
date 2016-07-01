@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630170128) do
+ActiveRecord::Schema.define(version: 20160701165109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20160630170128) do
     t.text     "pic_url"
     t.text     "first_name"
     t.text     "last_name"
+    t.text     "description"
+    t.text     "cover"
   end
 
   add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree

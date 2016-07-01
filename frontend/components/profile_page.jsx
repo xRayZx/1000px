@@ -5,6 +5,7 @@ const UserStore = require('../stores/user_store.js');
 const UserActions = require('../actions/user_actions.js');
 const PhotoIndexItem = require('./photo_index_item.jsx');
 const Masonry = require('react-masonry-component');
+const CloudinaryUtil = require('../util/cloudinary_util.js');
 
 const masonryOptions = {
 	isFitWidth: true,
@@ -55,7 +56,7 @@ const ProfilePage = React.createClass({
 			profile = (
 				<div>
 					<div className="profile-info">
-						<img className="profile-pic" src={this.state.profile.pic_url}/>
+						<img className="profile-pic" src={CloudinaryUtil.image(this.state.profile.pic_url, {width: 100, gravity: 'face', crop: 'thumb'})}/>
 						<h3 className="profile-name">{this.state.profile.first_name} {this.state.profile.last_name}</h3>
 					</div>
 					<Masonry elementType='ul' className='my-gallery-class' options={masonryOptions}>

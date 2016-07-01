@@ -27,7 +27,7 @@ const imgOptions = {
 const CloudinaryUtil = {
 	openUploadWidget (setUrl) {
 		cloudinary.openUploadWidget({
-			cloud_name: "dlgyh9jw", upload_preset: "twwfu72j" },
+			cloud_name: "dlgyh9jw", upload_preset: "twwfu72j", multiple: false },
 			(error, result) => {
 				setUrl(result[0]);
 			}

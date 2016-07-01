@@ -12,8 +12,8 @@ const size = {
 const PhotoIndexItem = React.createClass({
 	getInitialState () {
 		return (
-			{photoURL: CloudinaryUtil.image(this.props.photo.url, 
-			 	 {width: size[this.props.size], 
+			{photoURL: CloudinaryUtil.image(this.props.photo.url,
+			 	 {width: size[this.props.size],
 					 crop: "limit",
 					  alt: this.props.photo.title
 				 })
