@@ -20,7 +20,7 @@ const PhotoUploadForm = React.createClass({
 		this.setState({description: e.target.value});
 	},
 	getUrl (photo) {
-		this.setState({url: photo.secure_url});
+		this.setState({url: photo.path});
 	},
 	getUploadedPhoto (e) {
 		e.preventDefault();

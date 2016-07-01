@@ -21,6 +21,9 @@ module.exports = {
       }
     ]
   },
+	node: {
+		fs: "empty"
+	},
   devtool: 'source-maps',
   resolve: {
     extensions: ["", ".js", ".jsx" ]
