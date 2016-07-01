@@ -93,7 +93,7 @@ const App = React.createClass({
     }
     const header = (
       <header>
-          <img src="/1000px-logo.png" width="120px" height="75px" onClick={this.returnHome}/>
+          <img src="/1000px-logo.png" height="50px" onClick={this.returnHome}/>
           {navButtons}
       </header>
     );

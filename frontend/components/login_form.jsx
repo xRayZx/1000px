@@ -1,6 +1,9 @@
 const React = require("react");
 const UserActions = require("../actions/user_actions");
 const UserStore = require('../stores/user_store');
+const FormGroup = require('react-bootstrap').FormGroup;
+const FormControl = require('react-bootstrap').FormControl;
+const Button = require('react-bootstrap').Button;
 
 const LoginForm = React.createClass({
   getInitialState () {
@@ -37,19 +40,19 @@ const LoginForm = React.createClass({
         <form onSubmit={this.handleSubmit}>
         <h3 className="form-header">Log In</h3>
           <section>
-            <fieldset className="form-group">
-              <input type="text" value={this.state.username} placeholder="Username" onChange={this.updateUsername}/>
-            </fieldset>
-            <fieldset className="form-group">
-              <input type="password" value={this.state.password} placeholder="Password" onChange={this.updatePassword}/>
-            </fieldset>
+						<FormGroup controlId="formControlsText">
+								<FormControl type="text" placeholder="Username" onChange={this.updateUsername}/>
+						</FormGroup>
+						<FormGroup controlId="formControlsPassword">
+              <FormControl type="password" placeholder="Password" onChange={this.updatePassword}/>
+						</FormGroup>
           </section>
+        	{UserStore.errors()}
 					<ul className="auth-buttons">
-						<li className="auth-button"><input type="submit" className="btn btn-success" value="Log In" /></li>
-						<li className="auth-button"><button onClick={this.guestLogin} className="btn btn-primary">Guest Login</button></li>
+						<li className="auth-button"><Button type="submit" className="btn btn-success">Log In</Button></li>
+						<li className="auth-button"><Button onClick={this.guestLogin} className="btn btn-primary">Guest Login</Button></li>
 					</ul>
         </form>
-        {UserStore.errors()}
       </div>
     );
   }

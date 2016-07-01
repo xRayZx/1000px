@@ -32,6 +32,7 @@
     "cloudinary-jquery-file-upload": "^2.1.0",
     "flux": "^2.1.1",
     "react": "^15.1.0",
+    "react-bootstrap": "^0.29.5",
     "react-cloudinary": "^0.4.0",
     "react-dom": "^15.1.0",
     "react-masonry-component": "^4.1.0",

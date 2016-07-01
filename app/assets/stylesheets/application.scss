@@ -23,7 +23,6 @@ body {
 .auth-form {
   background-color: lightblue;
   width: 275px;
-  height: 215px;
   padding: 3px 20px 15px 20px;
 }
 
@@ -31,7 +30,7 @@ header {
   display: flex;
   position: fixed;
   z-index: 999;
-  height: 75px;
+  height: 50px;
   width: 100%;
   background-color: hsla(0, 0%, 0%, 0.75)
 }
@@ -46,7 +45,7 @@ header > nav {
 }
 
 .home-page, .profile-page {
-  padding-top: 75px;
+  padding-top: 50px;
 }
 
 .fade-in {
@@ -95,8 +94,8 @@ nav > ul > li {
   display: inline-block;
   position: relative;
   text-align: center;
-  width: 120px;
-  padding: 30px 20px;
+  width: 100px;
+  padding: 15px;
   list-style: none;
   cursor: pointer;
   border: 1px solid black;
@@ -144,7 +143,7 @@ nav > ul > li:active {
 }
 
 .splash {
-  padding-top: 75px;
+  padding-top: 50px;
   width: 100%;
   min-height: 700px;
   background-position: 50% 50%;
