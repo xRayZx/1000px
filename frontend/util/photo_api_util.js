@@ -19,6 +19,16 @@ const PhotoApiUtil = {
 			}
 		});
 	},
+	fetchHomeFeed (success) {
+		$.ajax({
+			url: '/api/home_photos',
+			type: 'GET',
+			dataType: 'json',
+			success: function (resp) {
+				success(resp);
+			}
+		});
+	},
   uploadPhoto (photo, success) {
 		$.ajax({
 			url: '/api/photos',

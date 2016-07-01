@@ -5,14 +5,17 @@ const PhotoActions = {
 	fetchAllPhotos () {
 		PhotoApiUtil.fetchAllPhotos(PhotoActions.receiveAllPhotos);
 	},
+	fetchHomeFeed () {
+		PhotoApiUtil.fetchHomeFeed(PhotoActions.receiveHomeFeed);
+	},
 	fetchProfilePhotos (profileId) {
 		PhotoApiUtil.fetchProfilePhotos(profileId, PhotoActions.receiveProfile);
 	},
-	uploadPhoto (photo) {
-		PhotoApiUtil.uploadPhoto(photo, PhotoActions.receivePhoto);
-	},
 	fetchPhoto (photoId) {
 		PhotoApiUtil.fetchPhoto(photoId, PhotoActions.receivePhoto);
+	},
+	uploadPhoto (photo) {
+		PhotoApiUtil.uploadPhoto(photo, PhotoActions.receivePhoto);
 	},
 	receiveAllPhotos (photos) {
 		Dispatcher.dispatch({
@@ -31,6 +34,12 @@ const PhotoActions = {
 			actionType: "PROFILE_PHOTOS_RECEIVED",
 			profile: profile
 		})
+	},
+	receiveHomeFeed (homeFeed) {
+		Dispatcher.dispatch({
+			actionType: "HOMEFEED_RECEIVED",
+			feed: homeFeed
+		});
 	}
 };
 

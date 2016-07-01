@@ -9,6 +9,12 @@ class Api::PhotosController < ApplicationController
 		render "api/photos/index"
 	end
 
+	def home
+		following = current_user.followings.map {|acct| acct.id}
+		@photos = Photo.where(poster_id: following)
+		render "api/photos/index"
+	end
+
 	def create
 		@photo = Photo.new(photo_params)
 		if @photo.save

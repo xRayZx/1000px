@@ -4,6 +4,7 @@ const Dispatcher = require('../dispatcher/dispatcher.js');
 const PhotoStore = new Store(Dispatcher);
 let _photos = {};
 let _profilePhotos = {};
+let _home = {};
 
 PhotoStore.all = function () {
 	return Object.assign({}, _photos);
@@ -11,6 +12,18 @@ PhotoStore.all = function () {
 
 PhotoStore.profile = function () {
 	return Object.assign({}, _profilePhotos);
+};
+
+PhotoStore.home = function () {
+	return Object.assign({}, _home);
+};
+
+PhotoStore._resetHome = function (feed) {
+	_home = {};
+	feed.forEach( (photo) => {
+		_home[photo.id] = photo;
+	} );
+	PhotoStore.__emitChange();
 };
 
 PhotoStore._resetPhotos = function (photos) {
@@ -48,6 +61,9 @@ PhotoStore.__onDispatch = function (payload) {
 			break;
 		case 'PROFILE_PHOTOS_RECEIVED':
 			PhotoStore._resetProfile(payload.profile);
+			break;
+		case 'HOMEFEED_RECEIVED':
+			PhotoStore._resetHome(payload.feed);
 			break;
 	}
 };
