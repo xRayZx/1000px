@@ -4,6 +4,11 @@ const PhotoStore = require('../stores/photo_store.js');
 const PhotoActions = require('../actions/photo_actions.js');
 const PhotoIndexItem = require('./photo_index_item.jsx');
 
+const masonryOptions = {
+	isFitWidth: true,
+	gutter: 10
+};
+
 const PhotoIndex = React.createClass({
 	getInitialState () {
 		return (
@@ -33,7 +38,7 @@ const PhotoIndex = React.createClass({
 			} );
 		}
 		return (
-			<Masonry className="my-gallery-class" elementType='ul'>
+			<Masonry className="my-gallery-class" elementType='ul' options={masonryOptions}>
 				{indexItems}
 			</Masonry>
 		);
