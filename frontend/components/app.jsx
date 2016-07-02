@@ -92,12 +92,12 @@ const App = React.createClass({
       navButtons = (
         <nav>
           <ul>
-						<li>
+						<li className="dropdown-li">
 							<NavDropdown title={this.state.currentUser.first_name} id="nav-dropdown">
 								<MenuItem onClick={this.myProfile}>My Profile</MenuItem>
 								<MenuItem>Edit Profile</MenuItem>
 								<MenuItem divider />
-								<MenuItem onClick={this.logout}>Log Out</MenuItem>
+								<MenuItem onClick={this.logout} >Log Out</MenuItem>
 							</NavDropdown>
 						</li>
             <li onClick={this.showUpload}>Upload</li>

@@ -37,11 +37,13 @@ header {
 
 header > img {
   cursor: pointer;
+  margin-left: 25px;
 }
 
 header > nav {
   margin-left: auto;
   height: 100%;
+  margin-right: 50px;
 }
 
 .home-page, .profile-page {
@@ -100,6 +102,16 @@ nav > ul > li {
   cursor: pointer;
   border: 1px solid black;
   background-color: lightblue;
+}
+
+#nav-dropdown {
+  display: block;
+  padding: 15px;
+  color: inherit;
+}
+
+.dropdown-li {
+  padding: 0px;
 }
 
 nav > ul > li:active {
