@@ -2,6 +2,11 @@ const React = require('react');
 const hashHistory = require('react-router').hashHistory;
 const UserStore = require('../stores/user_store');
 const UserActions = require('../actions/user_actions');
+const NavDropdown = require('react-bootstrap').NavDropdown;
+const MenuItem = require('react-bootstrap').MenuItem;
+
+//Utils
+const CloudinaryUtil = require('../util/cloudinary_util.js');
 
 //Components
 const LoginForm = require('./login_form');
@@ -76,13 +81,25 @@ const App = React.createClass({
       homePage = (
         <div className="home-page">
           <HomeFeed currentUser={this.state.currentUser}/>
-          <button onClick={this.logout} className="btn btn-danger">Log Out</button>
         </div>
       );
+			let navDrop= (
+				<div>
+					<img src={CloudinaryUtil.image(this.state.currentUser.pic_url, {width: 25, gravity: 'face', crop: 'crop'})}/>
+					<span>{this.state.currentUser.first_name}</span>
+				</div>
+			);
       navButtons = (
         <nav>
           <ul>
-            <li onClick={this.myProfile}>Profile</li>
+						<li>
+							<NavDropdown title={this.state.currentUser.first_name} id="nav-dropdown">
+								<MenuItem onClick={this.myProfile}>My Profile</MenuItem>
+								<MenuItem>Edit Profile</MenuItem>
+								<MenuItem divider />
+								<MenuItem onClick={this.logout}>Log Out</MenuItem>
+							</NavDropdown>
+						</li>
             <li onClick={this.showUpload}>Upload</li>
 						<WaveModal ref="uploadModal">
 							<PhotoUploadForm currentUser={this.state.currentUser} close={this.hideUpload}/>

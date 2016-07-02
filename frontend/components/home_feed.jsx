@@ -4,6 +4,7 @@ const PhotoActions = require('../actions/photo_actions.js');
 const PhotoIndexItem = require('./photo_index_item.jsx');
 const Masonry = require('react-masonry-component');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
+const hashHistory = require('react-router').hashHistory;
 
 const HomeFeed = React.createClass({
 	getInitialState () {
@@ -21,6 +22,9 @@ const HomeFeed = React.createClass({
 	_updateFeed () {
 		this.setState({photos: PhotoStore.home()});
 	},
+	showProfile (userId) {
+		hashHistory.push(`/profile/${userId}`)
+	},
   render () {
 		let indexItems = [];
 		if (this.state.photos) {
@@ -30,8 +34,8 @@ const HomeFeed = React.createClass({
 				let indexItem = (
 					<div className="home-post" key={photo.id}>
 						<p>
-							<img className="home-profile-pic" src={CloudinaryUtil.image(photo.poster_pic, {width: 50, gravity: 'face', crop: 'crop'})}/>
-							<span><strong>{photo.poster}</strong> posted:</span>
+							<img className="home-profile-pic home-poster" src={CloudinaryUtil.image(photo.poster_pic, {width: 50, gravity: 'face', crop: 'crop'})} onClick={this.showProfile.bind(_, photo.poster_id)}/>
+							<span><strong className="home-poster" onClick={this.showProfile.bind(_, photo.poster_id)}>{photo.poster}</strong> posted:</span>
 						</p>
 						<PhotoIndexItem photo={photo} key={photo.id} size="home"/>
 					</div>
@@ -41,7 +45,7 @@ const HomeFeed = React.createClass({
 		}
     return (
       <div>
-        Hello, {this.props.currentUser.username}!
+        Hello, {this.props.currentUser.first_name}!
 				<Masonry className="my-gallery-class" elementType='ul'>
 					{indexItems}
 				</Masonry>

@@ -30,6 +30,10 @@ const ProfilePage = React.createClass({
 		this.userListener.remove();
 		this.photoListener.remove();
 	},
+	componentWillReceiveProps (newProps) {
+		UserActions.fetchProfile(newProps.params.id);
+		PhotoActions.fetchProfilePhotos(newProps.params.id);
+	},
 	_setProfile () {
 		this.setState({profile: UserStore.profile()});
 	},
