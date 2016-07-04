@@ -5,7 +5,7 @@ const CloudinaryUtil = require('../util/cloudinary_util.js');
 
 const size = {
 	landing: 250,
-	home: 400,
+	home: 700,
 	profile: 350
 };
 

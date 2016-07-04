@@ -1,13 +1,7 @@
 const React = require('react');
+const FollowAction = require('../actions/follow_actions.js');
 
 const Follow = React.createClass({
-	getInitialState () {
-		return (
-			{
-				following: this.props.following
-			}
-		);
-	},
 	_toggleFollow () {
 		if (this.props.following) {
 			FollowAction.unfollow(this.props.user);
@@ -18,7 +12,7 @@ const Follow = React.createClass({
 	render () {
 		return (
 			<button onClick={this._toggleFollow}>
-				{this.state.following ? "Unfollow" : "Follow"}
+				{this.props.following ? "Unfollow" : "Follow"}
 			</button>
 		)
 	}

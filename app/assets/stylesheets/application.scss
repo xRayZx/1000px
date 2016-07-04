@@ -214,7 +214,7 @@ ul.my-gallery-class {
 }
 
 ul.my-gallery-class.home {
-  width: 700px;
+  width: 66%;
   display: inline-block;
 }
 
@@ -223,6 +223,7 @@ ul.my-gallery-class.home {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 5px;
+  width: 100%;
 }
 
 .profile-pic {

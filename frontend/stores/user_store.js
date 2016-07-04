@@ -6,6 +6,7 @@ const UserStore = new Store(AppDispatcher);
 let _currentUser = null;
 let _errors = [];
 let _profile = null;
+let _followStatus = null;
 
 UserStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
@@ -20,6 +21,9 @@ UserStore.__onDispatch = function (payload) {
 			break;
 		case "PROFILE_RECEIVED":
 			UserStore.setProfile(payload.profile);
+			break;
+		case "FOLLOW":
+			UserStore.setFollow(payload.following);
 			break;
   }
   UserStore.__emitChange();
@@ -57,6 +61,14 @@ UserStore.setProfile = function (profile) {
 
 UserStore.profile = function () {
 	return _profile;
+};
+
+UserStore.setFollow = function (status) {
+	_followStatus = status;
+};
+
+UserStore.following = function () {
+	return _followStatus;
 };
 
 module.exports = UserStore;
