@@ -56,6 +56,7 @@ const PhotoUploadForm = React.createClass({
 					<br/>
 					<input type="submit" className="btn btn-primary" value="Upload Photo!"/>
 				</form>
+				{this.state.url === '' ? <div className="empty-preview"/> : <img className="upload-preview" src={CloudinaryUtil.image(this.state.url, {width: 200})}/> }
 			</div>
 		)
 	}

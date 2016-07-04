@@ -12,6 +12,9 @@ const LoginForm = React.createClass({
       password: ""
     };
   },
+	componentWillUnmount () {
+		UserStore.setErrors([]);
+	},
   _updateUser () {
     this.setState({
       currentUser: UserStore.currentUser(),

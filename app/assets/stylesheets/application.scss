@@ -18,6 +18,7 @@
 
 body {
   font-family: 'Noto Sans', sans-serif;
+  background-color: #f7f8fa;
 }
 
 .auth-form {
@@ -110,8 +111,12 @@ nav > ul > li {
   color: inherit;
 }
 
-.dropdown-li {
+.dropdown {
   padding: 0px;
+}
+
+nav > ul > li:hover {
+  text-decoration: underline;
 }
 
 nav > ul > li:active {
@@ -139,6 +144,37 @@ nav > ul > li:active {
 .auth-button {
   display: block;
   margin: 0 auto;
+}
+
+.photo-upload {
+
+}
+
+.photo-upload form label {
+  width: 500px;
+  margin-left: 50px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.photo-upload form input {
+  display: block;
+  margin-left: 50px;
+}
+
+.empty-preview {
+  display: block;
+  width: 200px;
+  height: 100px;
+  float: right;
+  border: 1px solid lightgray;
+}
+
+.upload-preview {
+  display: block;
+  width: 200px;
+  float: right;
+  border: 1px solid lightgray;
 }
 
 .splash > h1, .splash > h3 {
@@ -177,6 +213,11 @@ ul.my-gallery-class {
   list-style: none;
 }
 
+ul.my-gallery-class.home {
+  width: 700px;
+  display: inline-block;
+}
+
 .img-idx {
   border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
@@ -204,4 +245,35 @@ ul.my-gallery-class {
 
 .home-poster {
   cursor: pointer;
+}
+
+.img-container {
+  display: inline-block;
+  position: relative;
+  width: 1000px;
+  height: 700px;
+  float: left;
+  background-color: black;
+}
+
+.detail-img {
+  max-width: 900px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.info {
+  float: right;
+  width: 300px;
+  height: 700px;
+  padding: 15px;
+  overflow-y: scroll;
+  background-color: #f7f8fa;
+}
+
+.photo-info {
+  margin: 25px 0;
 }

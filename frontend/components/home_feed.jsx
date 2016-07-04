@@ -34,7 +34,7 @@ const HomeFeed = React.createClass({
 				let indexItem = (
 					<div className="home-post" key={photo.id}>
 						<p>
-							<img className="home-profile-pic home-poster" src={CloudinaryUtil.image(photo.poster_pic, {width: 50, gravity: 'face', crop: 'crop'})} onClick={this.showProfile.bind(_, photo.poster_id)}/>
+							<img className="home-profile-pic home-poster" src={CloudinaryUtil.image(photo.poster_pic, {gravity: 'face', crop: 'crop'})} onClick={this.showProfile.bind(_, photo.poster_id)}/>
 							<span><strong className="home-poster" onClick={this.showProfile.bind(_, photo.poster_id)}>{photo.poster}</strong> posted:</span>
 						</p>
 						<PhotoIndexItem photo={photo} key={photo.id} size="home"/>
@@ -46,7 +46,7 @@ const HomeFeed = React.createClass({
     return (
       <div>
         Hello, {this.props.currentUser.first_name}!
-				<Masonry className="my-gallery-class" elementType='ul'>
+				<Masonry className="my-gallery-class home" elementType='ul'>
 					{indexItems}
 				</Masonry>
       </div>

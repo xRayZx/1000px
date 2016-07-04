@@ -9,6 +9,10 @@ const size = {
 	profile: 500
 };
 
+const modalStyle = {
+	width: 1300
+};
+
 const PhotoIndexItem = React.createClass({
 	getInitialState () {
 		return (
@@ -26,7 +30,7 @@ const PhotoIndexItem = React.createClass({
 	render () {
 		return (
 			<li className="image-element-class" onClick={this.showDetails}>
-				<ScaleModal ref="detailsModal">
+				<ScaleModal ref="detailsModal" modalStyle={modalStyle}>
 					<PhotoDetail photo={this.props.photo}/>
 				</ScaleModal>
 				<img className="img-idx" src={this.state.photoURL}/>

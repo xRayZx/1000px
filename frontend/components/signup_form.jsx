@@ -16,7 +16,11 @@ const SignupForm = React.createClass({
     };
   },
 	componentDidMount () {
-		UserStore.addListener(this._updateUser);
+		this.listener = UserStore.addListener(this._updateUser);
+	},
+	componentWillUnmount () {
+		this.listener.remove();
+		UserStore.setErrors([]);
 	},
 	_updateUser () {
 		this.setState({
