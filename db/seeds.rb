@@ -38,3 +38,12 @@ imgPublicIds.each do |pId|
 	description = Faker::Hipster.sentence
 	Photo.create({title: title, description: description, poster_id: poster, url: pId})
 end
+
+84.times do
+	follower = user_ids.sample
+	following = user_ids.sample
+	while follower == following do
+		following = user_ids.sample
+	end
+	Follow.create({follower_id: follower, followed_id: following})
+end

@@ -35,6 +35,9 @@ const PhotoIndex = React.createClass({
 					<PhotoIndexItem photo={photo} key={photo.id} size="landing"/>
 				);
 				indexItems.push(indexItem);
+				if (indexItems.length > 25) {
+					return;
+				}
 			} );
 		}
 		return (
