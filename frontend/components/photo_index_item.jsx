@@ -4,13 +4,13 @@ const ScaleModal = require('boron/ScaleModal');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
 
 const size = {
-	landing: 400,
-	home: 600,
-	profile: 500
+	landing: 250,
+	home: 400,
+	profile: 350
 };
 
 const modalStyle = {
-	width: 1300
+	width: 900
 };
 
 const PhotoIndexItem = React.createClass({
@@ -19,8 +19,10 @@ const PhotoIndexItem = React.createClass({
 			{photoURL: CloudinaryUtil.image(this.props.photo.url,
 			 	 {width: size[this.props.size],
 					 crop: "limit",
-					  alt: this.props.photo.title
-				 })
+					 alt: this.props.photo.title,
+				 }),
+			 poster: this.props.photo.poster,
+			 profilePic: CloudinaryUtil.image(this.props.photo.poster_pic, {width: 40, gravity: 'face', crop: 'thumb'})
 			}
 		);
 	},
@@ -34,6 +36,10 @@ const PhotoIndexItem = React.createClass({
 					<PhotoDetail photo={this.props.photo}/>
 				</ScaleModal>
 				<img className="img-idx" src={this.state.photoURL}/>
+				<div className="thumb-credits">
+					<img className="thumb-profile-pic" src={this.state.profilePic}/>
+					<span>{this.state.poster}</span>
+				</div>
 			</li>
 		)
 	}

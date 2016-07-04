@@ -6,7 +6,7 @@ const PhotoIndexItem = require('./photo_index_item.jsx');
 
 const masonryOptions = {
 	isFitWidth: true,
-	gutter: 10
+	gutter: 5
 };
 
 const PhotoIndex = React.createClass({
@@ -29,19 +29,21 @@ const PhotoIndex = React.createClass({
 		let indexItems = [];
 		if (this.state.photos) {
 			const photoKeys = Object.keys(this.state.photos);
-			photoKeys.forEach( (key) => {
+			photoKeys.every( (key) => {
 				let photo = this.state.photos[key];
 				let indexItem = (
 					<PhotoIndexItem photo={photo} key={photo.id} size="landing"/>
 				);
 				indexItems.push(indexItem);
-				if (indexItems.length > 25) {
-					return;
+				if (indexItems.length > 16) {
+					return false;
+				} else {
+					return true;
 				}
 			} );
 		}
 		return (
-			<Masonry className="my-gallery-class" elementType='ul' options={masonryOptions}>
+			<Masonry className="my-gallery-class" elementType='ul' options={masonryOptions} disableImagesLoaded={true}>
 				{indexItems}
 			</Masonry>
 		);

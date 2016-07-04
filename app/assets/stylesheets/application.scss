@@ -222,18 +222,59 @@ ul.my-gallery-class.home {
   border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.img-idx:hover {
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
+  margin-bottom: 5px;
 }
 
 .profile-pic {
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.profile-name, .profile-desc {
+  text-align: center;
+}
+
+.profile-info {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.thumb-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.image-element-class {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: margin 0.2s ease-in-out;
+  -moz-transition: margin 0.2s ease-in-out;
+  transition: margin 0.2s ease-in-out;
+}
+
+.thumb-credits {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  color: #fff;
+  text-align: left;
+  text-shadow: 0 0 1px rgba(0,0,0,0.6);
+  min-height: 45px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.6) 100%);
+  width: 100%;
+}
+
+.image-element-class:hover .thumb-credits {
+  opacity: 1;
+  bottom: 10px;
+  -webkit-transition: bottom 0.2s;
+  -moz-transition: bottom 0.2s;
+  transition: bottom 0.2s;
 }
 
 .home-profile-pic {
@@ -250,14 +291,14 @@ ul.my-gallery-class.home {
 .img-container {
   display: inline-block;
   position: relative;
-  width: 1000px;
-  height: 700px;
+  width: 600px;
+  height: 600px;
   float: left;
   background-color: black;
 }
 
 .detail-img {
-  max-width: 900px;
+  max-width: 550px;
   display: block;
   position: absolute;
   top: 50%;
@@ -268,7 +309,7 @@ ul.my-gallery-class.home {
 .info {
   float: right;
   width: 300px;
-  height: 700px;
+  height: 600px;
   padding: 15px;
   overflow-y: scroll;
   background-color: #f7f8fa;
