@@ -8809,13 +8809,13 @@ button.close {
 /* line 20, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 body {
   font-family: 'Noto Sans', sans-serif;
+  background-color: #f7f8fa;
 }
 
-/* line 24, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 25, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .auth-form {
   background-color: lightblue;
   width: 275px;
-  height: 215px;
   padding: 3px 20px 15px 20px;
 }
 
@@ -8824,7 +8824,7 @@ header {
   display: flex;
   position: fixed;
   z-index: 999;
-  height: 75px;
+  height: 50px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.75);
 }
@@ -8832,20 +8832,22 @@ header {
 /* line 40, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 header > img {
   cursor: pointer;
+  margin-left: 25px;
 }
 
-/* line 44, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 45, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 header > nav {
   margin-left: auto;
   height: 100%;
+  margin-right: 50px;
 }
 
-/* line 49, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 51, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .home-page, .profile-page {
-  padding-top: 75px;
+  padding-top: 50px;
 }
 
-/* line 53, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 55, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .fade-in {
   -webkit-animation: fadein 4s;
   /* Safari, Chrome and Opera > 12.1 */
@@ -8902,59 +8904,110 @@ header > nav {
     opacity: 1;
   }
 }
-/* line 90, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 92, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 nav > ul {
   display: flex;
   height: 100%;
 }
 
-/* line 95, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 97, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 nav > ul > li {
   display: inline-block;
   position: relative;
   text-align: center;
-  width: 120px;
-  padding: 30px 20px;
+  width: 100px;
+  padding: 15px;
   list-style: none;
   cursor: pointer;
   border: 1px solid black;
   background-color: lightblue;
 }
 
-/* line 107, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 109, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+#nav-dropdown {
+  display: block;
+  padding: 15px;
+  color: inherit;
+}
+
+/* line 115, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.dropdown {
+  padding: 0px;
+}
+
+/* line 119, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+nav > ul > li:hover {
+  text-decoration: underline;
+}
+
+/* line 123, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 nav > ul > li:active {
   top: 3px;
 }
 
-/* line 111, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 127, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .form-header {
   text-align: center;
 }
 
-/* line 115, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 131, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .form-group {
   margin: 20px auto;
   text-align: center;
 }
 
-/* line 120, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 136, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .auth-buttons {
   display: flex;
   padding: 0px;
 }
 
-/* line 125, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 141, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .auth-buttons > li {
   list-style-type: none;
 }
 
-/* line 129, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 145, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .auth-button {
   display: block;
   margin: 0 auto;
 }
 
-/* line 134, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 150, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.photo-upload {
+  padding: 20px;
+}
+
+/* line 154, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.photo-upload form label {
+  width: 500px;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* line 160, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.photo-upload form input {
+  display: block;
+}
+
+/* line 164, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.empty-preview {
+  display: block;
+  width: 200px;
+  height: 100px;
+  margin: 10px auto;
+  border: 1px solid lightgray;
+}
+
+/* line 172, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.upload-preview {
+  display: block;
+  margin: 10px auto;
+  width: 200px;
+  border: 1px solid lightgray;
+}
+
+/* line 179, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .splash > h1, .splash > h3 {
   position: relative;
   text-align: center;
@@ -8964,14 +9017,14 @@ nav > ul > li:active {
   text-shadow: 2px 2px #000000;
 }
 
-/* line 143, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 188, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .splash > h1 {
   margin: 250px auto 40px;
 }
 
-/* line 147, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 192, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .splash {
-  padding-top: 75px;
+  padding-top: 50px;
   width: 100%;
   min-height: 700px;
   background-position: 50% 50%;
@@ -8981,37 +9034,176 @@ nav > ul > li:active {
   overflow: hidden;
 }
 
-/* line 158, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 203, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .get-started {
   display: block;
   margin: 30px auto;
   padding: 10px 60px;
 }
 
-/* line 164, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 209, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 ul.my-gallery-class {
   display: block;
-  margin: 0 auto;
+  margin: 5px auto;
   list-style: none;
 }
 
-/* line 170, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 215, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+ul.my-gallery-class.home {
+  width: 66%;
+  display: inline-block;
+}
+
+/* line 220, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .img-idx {
   border-color: rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  width: 100%;
 }
 
-/* line 177, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
-.img-idx:hover {
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
-}
-
-/* line 182, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+/* line 228, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
 .profile-pic {
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 236, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.profile-name, .profile-desc {
+  text-align: center;
+}
+
+/* line 240, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.profile-info {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+/* line 245, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.thumb-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+/* line 252, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.follow-btn {
+  display: block;
+  margin: 10px auto;
+}
+
+/* line 257, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.image-element-class {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: margin 0.2s ease-in-out;
+  -moz-transition: margin 0.2s ease-in-out;
+  transition: margin 0.2s ease-in-out;
+}
+
+/* line 265, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.thumb-credits {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  color: #fff;
+  text-align: left;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+  min-height: 45px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+  width: 100%;
+}
+
+/* line 277, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.image-element-class:hover .thumb-credits {
+  opacity: 1;
+  bottom: 10px;
+  -webkit-transition: bottom 0.2s;
+  -moz-transition: bottom 0.2s;
+  transition: bottom 0.2s;
+}
+
+/* line 285, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.home-profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* line 292, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.home-poster {
+  cursor: pointer;
+}
+
+/* line 296, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.home-post {
+  margin-top: 20px;
+}
+
+/* line 300, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.img-container {
+  display: inline-block;
+  position: relative;
+  width: 600px;
+  height: 600px;
+  float: left;
+  background-color: black;
+}
+
+/* line 309, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.detail-img {
+  max-width: 550px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* line 318, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.info {
+  float: right;
+  width: 300px;
+  height: 600px;
+  padding: 15px;
+  overflow-y: scroll;
+  background-color: #f7f8fa;
+}
+
+/* line 327, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.photo-info {
+  margin: 25px 0;
+}
+
+/* line 331, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.profile-edit {
+  padding: 20px;
+}
+
+/* line 335, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.name-field-container {
+  display: flex;
+}
+
+/* line 338, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.name-field-container .form-group {
+  margin: 0 auto;
+}
+
+/* line 342, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.name-field {
+  display: block;
+  text-align: left;
+}
+
+/* line 347, /Users/RayZ/Documents/App_Academy/Capstone/app/assets/stylesheets/application.scss */
+.edit-submit {
+  display: block;
+  margin: 0 auto;
 }
