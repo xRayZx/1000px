@@ -16,15 +16,15 @@
   - [x] Photo detail page has description and poster information
   - [ ] Ability to edit description
 - [x] Follows
-  - [ ] Users can follow and be followed by many users
-  - [ ] Dynamic follow/unfollow button on profile page
+  - [x] Users can follow and be followed by many users
+  - [x] Dynamic follow/unfollow button on profile page
 - [x] Home Feed
   - [x] Displays all photos of the current user's followees
   - [x] Clicking on photo brings up Photo detail page
   - [x] Clicking on poster renders the user profile page
 - [x] Profile Page
-  - [ ] Has profile edit form
-  - [ ] Has a profile picture and description
+  - [x] Has profile edit form
+  - [x] Has a profile picture and description
   - [x] Index of all photos uploaded by this user
   - [ ] Has option to show the user's followers and followees
 
@@ -93,9 +93,9 @@
 
 **Objective:** Existing pages (including signup/signin) will look good.
 
-- [ ] create a basic style guide
-- [ ] position elements on the page
-- [ ] add basic colors & styles
+- [x] create a basic style guide
+- [x] position elements on the page
+- [x] add basic colors & styles
 
 ### Phase 6: Follows (1.5 day, W2 W 6pm)
 
@@ -104,7 +104,7 @@
 - [x] create `Follow` model
 - build out API, Flux loop, and components for:
   - [x] creating followee/follower associations
-  - [ ] implement follows component, building out the flux loop as needed
+  - [x] implement follows component, building out the flux loop as needed
     - [x] `FollowsIndex`
   - [ ] display followers on profile page
 - Use CSS to style new views
