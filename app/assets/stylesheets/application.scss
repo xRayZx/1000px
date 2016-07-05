@@ -147,19 +147,17 @@ nav > ul > li:active {
 }
 
 .photo-upload {
-
+  padding: 20px;
 }
 
 .photo-upload form label {
   width: 500px;
-  margin-left: 50px;
   text-align: left;
   font-weight: bold;
 }
 
 .photo-upload form input {
   display: block;
-  margin-left: 50px;
 }
 
 .empty-preview {
@@ -250,6 +248,11 @@ ul.my-gallery-class.home {
   margin: 0 10px;
 }
 
+.follow-btn {
+  display: block;
+  margin: 10px auto;
+}
+
 .image-element-class {
   position: relative;
   overflow: hidden;
@@ -287,6 +290,10 @@ ul.my-gallery-class.home {
 
 .home-poster {
   cursor: pointer;
+}
+
+.home-post {
+  margin-top: 20px;
 }
 
 .img-container {

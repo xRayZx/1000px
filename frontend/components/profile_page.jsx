@@ -65,7 +65,7 @@ const ProfilePage = React.createClass({
 						<img className="profile-pic" src={CloudinaryUtil.image(this.state.profile.pic_url, {width: 100, gravity: 'face', crop: 'thumb'})}/>
 						<h3 className="profile-name">{this.state.profile.first_name} {this.state.profile.last_name}</h3>
 						<div className="profile-desc">{this.state.profile.description}</div>
-						<FollowButton following={this.state.profile.following} user={this.props.params.id}/>
+						<FollowButton following={this.state.profile.following} user={this.props.params.id} />
 					</div>
 					<Masonry elementType='ul' className='my-gallery-class' options={masonryOptions}>
 						{indexItems}

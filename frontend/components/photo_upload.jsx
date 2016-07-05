@@ -1,5 +1,9 @@
 const React = require('react');
 const hashHistory = require('react-router').hashHistory;
+const FormGroup = require('react-bootstrap').FormGroup;
+const ControlLabel = require('react-bootstrap').ControlLabel;
+const FormControl = require('react-bootstrap').FormControl;
+const Button = require('react-bootstrap').Button;
 const CloudinaryUtil = require('../util/cloudinary_util.js');
 const PhotoActions = require('../actions/photo_actions.js');
 
@@ -42,21 +46,20 @@ const PhotoUploadForm = React.createClass({
 			<div className="photo-upload">
 				<form onSubmit={this.handleSubmit}>
 					<h3 className="form-header">Upload Photo</h3>
-					<fieldset className="form-group">
-						<label>Title</label>
-						<br/>
-						<input type="text" value={this.state.title} onChange={this.updateTitle} />
-					</fieldset>
-					<fieldset className="form-group">
-						<label>Description</label>
-						<br/>
-						<input type="text" value={this.state.description} onChange={this.updateDescription} />
-					</fieldset>
-					<button onClick={this.getUploadedPhoto} className="btn btn-primary">Select Photo</button>
-					<br/>
-					<input type="submit" className="btn btn-primary" value="Upload Photo!"/>
-				</form>
+					<FormGroup controlId="formsControlsText">
+						<ControlLabel>Title</ControlLabel>
+						<FormControl type="text" value={this.state.title} onChange={this.updateTitle} />
+					</FormGroup>
+					<FormGroup controlId="formsControlsTextarea">
+						<ControlLabel>Description</ControlLabel>
+						<FormControl componentClass="textarea" value={this.state.description} onChange={this.updateDescription} />
+					</FormGroup>
+					<div>
+						<Button onClick={this.getUploadedPhoto} className="btn btn-primary edit-submit">Select Photo</Button>
+					</div>
 				{this.state.url === '' ? <div className="empty-preview"/> : <img className="upload-preview" src={CloudinaryUtil.image(this.state.url, {width: 200})}/> }
+					<Button type="submit" className="btn btn-primary edit-submit">Upload Photo!</Button>
+				</form>
 			</div>
 		)
 	}

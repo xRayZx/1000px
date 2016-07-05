@@ -11,7 +11,7 @@ const Follow = React.createClass({
 	},
 	render () {
 		return (
-			<button onClick={this._toggleFollow}>
+			<button onClick={this._toggleFollow} className="follow-btn">
 				{this.props.following ? "Unfollow" : "Follow"}
 			</button>
 		)
