@@ -53,7 +53,7 @@ const PhotoIndex = React.createClass({
 			} );
 		}
 		return (
-			<Masonry className="my-gallery-class" elementType='ul' options={masonryOptions} disableImagesLoaded={true}>
+			<Masonry className="my-gallery-class" elementType='ul' options={masonryOptions} disableImagesLoaded={false} updateOnEachImageLoad={true}>
 				{indexItems}
 			</Masonry>
 		);
