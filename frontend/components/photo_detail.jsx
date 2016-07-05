@@ -1,6 +1,7 @@
 const React = require('react');
 const hashHistory = require('react-router').hashHistory;
 const PhotoActions = require('../actions/photo_actions.js');
+const PhotoStore = require('../stores/photo_store.js');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
 
 const PhotoDetail = React.createClass({

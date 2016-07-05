@@ -99,10 +99,10 @@ nav > ul > li {
   text-align: center;
   width: 100px;
   padding: 15px;
+  font-weight: bold;
+  color: #e0e0e0;
   list-style: none;
   cursor: pointer;
-  border: 1px solid black;
-  background-color: lightblue;
 }
 
 #nav-dropdown {
@@ -115,12 +115,40 @@ nav > ul > li {
   padding: 0px;
 }
 
+#nav-dropdown.dropdown-toggle {
+  text-decoration: none;
+}
+
+.nav-img {
+  margin-right: 5px;
+}
+
+.nav-upload {
+  width: auto;
+  background-color: #34bf49;
+  color: #fff;
+}
+
+.nav-upload:hover {
+  background-color: #57d169
+}
+
+.fa-cloud-upload {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
 nav > ul > li:hover {
-  text-decoration: underline;
+  background-color: #696969;
+  color: #fff;
 }
 
 nav > ul > li:active {
   top: 3px;
+}
+
+.profile-dropdown {
+  width: auto;
 }
 
 .form-header {
@@ -346,4 +374,42 @@ ul.my-gallery-class.home {
 .edit-submit {
   display: block;
   margin: 0 auto;
+}
+
+.follow-index {
+  right: 0px;
+  margin: 5px auto;
+  width: 30%;
+  position: fixed;
+}
+
+.follow-index-item {
+  margin: 20px 0px;
+}
+
+.follow-pic {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.suggest-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.suggest-follow-btn {
+  display: block;
+  margin: 0;
+  height: 20px;
+  font-size: 10px;
+}
+
+.suggest-pics {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
 }

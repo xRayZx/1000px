@@ -7,8 +7,8 @@ const Route = ReactRouter.Route;
 const IndexRoute = ReactRouter.IndexRoute;
 const hashHistory = ReactRouter.hashHistory;
 
-window.PhotoStore = require('./stores/photo_store.js');
-window.PhotoActions = require('./actions/photo_actions.js');
+window.FollowActions = require('./actions/follow_actions.js');
+window.FollowStore = require('./stores/follow_store.js');
 
 //Auth
 const UserActions = require('./actions/user_actions');

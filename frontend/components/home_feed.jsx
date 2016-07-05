@@ -5,6 +5,7 @@ const PhotoIndexItem = require('./photo_index_item.jsx');
 const Masonry = require('react-masonry-component');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
 const hashHistory = require('react-router').hashHistory;
+const FollowIndex = require('./follow_index.jsx');
 
 const HomeFeed = React.createClass({
 	getInitialState () {
@@ -48,6 +49,7 @@ const HomeFeed = React.createClass({
 				<div className="greeting">
 					Hello, {this.props.currentUser.first_name}!
 				</div>
+				<FollowIndex/>
 				<Masonry className="my-gallery-class home" elementType='ul' disableImagesLoad={false} updateOnEachImageLoad={true}>
 					{indexItems}
 				</Masonry>

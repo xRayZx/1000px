@@ -57,7 +57,7 @@ const SignupForm = React.createClass({
     e.preventDefault();
     let user = {username: this.state.username, password: this.state.password};
     UserActions.signup(user);
-    this.setState({username: '', password: ''});
+    this.setState({password: "", password2: ""});
   },
   render () {
     return (

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resource :user, only: [:create, :show, :update]
 		get 'user/:id', :to => 'users#profile'
+		get 'follow', :to => 'follows#index'
 		get 'follow/:id', :to => 'follows#status'
 		post 'follow/:id', :to => 'follows#create'
 		delete 'follow/:id', :to => 'follows#destroy'

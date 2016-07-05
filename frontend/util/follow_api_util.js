@@ -1,4 +1,14 @@
 const FollowApiUtil = {
+	fetchIndex (success) {
+		$.ajax({
+			url: '/api/follow',
+			type: 'GET',
+			dataType: 'json',
+			success: function (resp) {
+				success(resp);
+			}
+		});
+	},
 	follow (userId, success) {
 		$.ajax({
 			url: `/api/follow/${userId}`,

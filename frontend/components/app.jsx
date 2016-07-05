@@ -92,21 +92,21 @@ const App = React.createClass({
         </div>
       );
 			let navDrop= (
-				<div>
-					<img src={CloudinaryUtil.image(this.state.currentUser.pic_url, {width: 25, gravity: 'face', crop: 'thumb'})}/>
-					<span>{this.state.currentUser.first_name}</span>
-				</div>
+				<span>
+					<img className="nav-img" src={CloudinaryUtil.image(this.state.currentUser.pic_url, {width: 25, gravity: 'face', crop: 'thumb'})}/>
+					{this.state.currentUser.first_name}
+					</span>
 			);
       navButtons = (
         <nav>
           <ul>
-							<NavDropdown title={this.state.currentUser.first_name} id="nav-dropdown">
+							<NavDropdown className="profile-dropdown" title={navDrop} id="nav-dropdown">
 								<MenuItem onClick={this.myProfile}>My Profile</MenuItem>
 								<MenuItem onClick={this.showEdit}>Edit Profile</MenuItem>
 								<MenuItem divider />
 								<MenuItem onClick={this.logout} >Log Out</MenuItem>
 							</NavDropdown>
-            <li onClick={this.showUpload}>Upload</li>
+            <li onClick={this.showUpload} className="nav-upload"><i className="fa fa-cloud-upload"/>Upload</li>
 						<WaveModal ref="uploadModal">
 							<PhotoUploadForm currentUser={this.state.currentUser} close={this.hideUpload}/>
 						</WaveModal>
