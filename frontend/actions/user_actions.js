@@ -4,8 +4,11 @@ const UserStore = require('../stores/user_store');
 const AppDispatcher = require('../dispatcher/dispatcher');
 
 const UserActions = {
+	updateProfile: function (user) {
+		UserApiUtil.updateProfile(user, UserActions.receiveProfile);
+	},
 	fetchProfile: function (userId) {
-		UserApiUtil.fetchProfile(userId, UserActions.receiveProfile)
+		UserApiUtil.fetchProfile(userId, UserActions.receiveProfile);
 	},
 	receiveProfile: function (profile) {
 		AppDispatcher.dispatch({

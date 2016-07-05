@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "static_pages#root"
   
   namespace :api, defaults: {format: :json} do
-    resource :user, only: [:create, :show]
+    resource :user, only: [:create, :show, :update]
 		get 'user/:id', :to => 'users#profile'
 		get 'follow/:id', :to => 'follows#status'
 		post 'follow/:id', :to => 'follows#create'

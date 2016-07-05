@@ -20,6 +20,12 @@ class Api::UsersController < ApplicationController
 		end
 	end
 
+	def update
+		@user = current_user
+		@user.update_columns(user_edit_params)
+		render "api/users/show"
+	end
+
 	def profile
 		@user = User.find(params[:id])
 		render "api/users/show"
@@ -29,6 +35,10 @@ class Api::UsersController < ApplicationController
 
 	def user_params
 		params.require(:user).permit(:username, :password)
+	end
+
+	def user_edit_params
+		params.require(:user).permit(:first_name, :last_name, :description, :pic_url)
 	end
 
 end

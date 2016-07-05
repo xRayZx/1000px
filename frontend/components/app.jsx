@@ -15,6 +15,7 @@ const PhotoUploadForm = require('./photo_upload.jsx');
 const HomeFeed = require('./home_feed');
 const Landing = require('./landing');
 const ProfilePage = require('./profile_page.jsx');
+const ProfileEdit = require('./profile_edit.jsx');
 
 //Modals
 const WaveModal = require('boron/WaveModal');
@@ -46,8 +47,15 @@ const App = React.createClass({
 	hideUpload () {
 		this.refs.uploadModal.hide();
 	},
+	showEdit () {
+		this.refs.editModal.show();
+	},
+	hideEdit () {
+		this.refs.editModal.hide();
+	},
 	logout () {
 		UserActions.logout();
+		this._updateCurrentUser();
 		hashHistory.push('/');
 	},
 	returnHome () {
@@ -85,7 +93,7 @@ const App = React.createClass({
       );
 			let navDrop= (
 				<div>
-					<img src={CloudinaryUtil.image(this.state.currentUser.pic_url, {width: 25, gravity: 'face', crop: 'crop'})}/>
+					<img src={CloudinaryUtil.image(this.state.currentUser.pic_url, {width: 25, gravity: 'face', crop: 'thumb'})}/>
 					<span>{this.state.currentUser.first_name}</span>
 				</div>
 			);
@@ -94,7 +102,7 @@ const App = React.createClass({
           <ul>
 							<NavDropdown title={this.state.currentUser.first_name} id="nav-dropdown">
 								<MenuItem onClick={this.myProfile}>My Profile</MenuItem>
-								<MenuItem>Edit Profile</MenuItem>
+								<MenuItem onClick={this.showEdit}>Edit Profile</MenuItem>
 								<MenuItem divider />
 								<MenuItem onClick={this.logout} >Log Out</MenuItem>
 							</NavDropdown>
@@ -102,6 +110,9 @@ const App = React.createClass({
 						<WaveModal ref="uploadModal">
 							<PhotoUploadForm currentUser={this.state.currentUser} close={this.hideUpload}/>
 						</WaveModal>
+						<DropModal ref="editModal">
+							<ProfileEdit currentUser={this.state.currentUser} close={this.hideEdit}/>
+						</DropModal>
           </ul>
         </nav>
       );

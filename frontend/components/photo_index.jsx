@@ -4,6 +4,16 @@ const PhotoStore = require('../stores/photo_store.js');
 const PhotoActions = require('../actions/photo_actions.js');
 const PhotoIndexItem = require('./photo_index_item.jsx');
 
+let shuffle = function (a) {
+    let j, x, i;
+    for (i = a.length; i; i -= 1) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
+
 const masonryOptions = {
 	isFitWidth: true,
 	gutter: 5
@@ -35,7 +45,7 @@ const PhotoIndex = React.createClass({
 					<PhotoIndexItem photo={photo} key={photo.id} size="landing"/>
 				);
 				indexItems.push(indexItem);
-				if (indexItems.length > 16) {
+				if (indexItems.length > 20) {
 					return false;
 				} else {
 					return true;

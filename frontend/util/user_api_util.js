@@ -11,6 +11,17 @@ const UserApiUtil = {
 			}
 		});
 	},
+	updateProfile (user, success) {
+		$.ajax({
+			url: '/api/user',
+			type: 'PATCH',
+			dataType: 'json',
+			data: {user: user},
+			success: function (resp) {
+				success(resp);
+			}
+		});
+	},
 	post: function(options){
 		$.ajax({
 			url: options.url,

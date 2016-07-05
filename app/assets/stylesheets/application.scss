@@ -166,14 +166,14 @@ nav > ul > li:active {
   display: block;
   width: 200px;
   height: 100px;
-  float: right;
+  margin: 10px auto;
   border: 1px solid lightgray;
 }
 
 .upload-preview {
   display: block;
+  margin: 10px auto;
   width: 200px;
-  float: right;
   border: 1px solid lightgray;
 }
 
@@ -318,4 +318,25 @@ ul.my-gallery-class.home {
 
 .photo-info {
   margin: 25px 0;
+}
+
+.profile-edit {
+  padding: 20px;
+}
+
+.name-field-container {
+  display: flex;
+}
+.name-field-container .form-group {
+  margin: 0 auto;
+}
+
+.name-field {
+  display: block;
+  text-align: left;
+}
+
+.edit-submit {
+  display: block;
+  margin: 0 auto;
 }

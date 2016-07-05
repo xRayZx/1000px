@@ -10,7 +10,10 @@ class Api::PhotosController < ApplicationController
 	end
 
 	def home
-		following = current_user.followings.map {|acct| acct.id}
+		following = []
+		if current_user
+			following = current_user.followings.map {|acct| acct.id}
+		end
 		@photos = Photo.where(poster_id: following)
 		render "api/photos/home"
 	end
