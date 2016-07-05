@@ -48,7 +48,7 @@ const HomeFeed = React.createClass({
 				<div className="greeting">
 					Hello, {this.props.currentUser.first_name}!
 				</div>
-				<Masonry className="my-gallery-class home" elementType='ul'>
+				<Masonry className="my-gallery-class home" elementType='ul' disableImagesLoad={false} updateOnEachImageLoad={true}>
 					{indexItems}
 				</Masonry>
       </div>
