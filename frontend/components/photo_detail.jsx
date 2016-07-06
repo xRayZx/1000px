@@ -86,7 +86,7 @@ const PhotoDetail = React.createClass({
 					<OutlineModal ref="editModal">
 						<PhotoEdit photoId={this.props.params.id}/>
 					</OutlineModal>
-					</button>
+				</button>
 			)
 		} 
 		return (

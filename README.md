@@ -14,7 +14,7 @@
 - [x] Upload Photos
   - [x] Integrate Cloudinary for uploading
   - [x] Photo detail page has description and poster information
-  - [ ] Ability to edit description
+  - [x] Ability to edit description
 - [x] Follows
   - [x] Users can follow and be followed by many users
   - [x] Dynamic follow/unfollow button on profile page

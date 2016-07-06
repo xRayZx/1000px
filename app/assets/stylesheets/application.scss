@@ -362,7 +362,7 @@ ul.my-gallery-class.home {
   justify-content: center;
   align-items: center;
   background-color: black;
-  padding: 50px;
+  padding: 25px;
 }
 
 .img-container-modal {
@@ -450,7 +450,7 @@ ul.my-gallery-class.home {
   margin: 30px 0px;
 }
 
-.follow-index-item:first-of-type {
+.follow-index-item:nth-of-type(2) {
   margin: 10px 0px;
 }
 
@@ -469,10 +469,20 @@ ul.my-gallery-class.home {
   cursor: pointer;
 }
 
+.follow-header {
+  border-bottom: 1px solid lightgray;
+}
+
+.follow-title {
+  display: inline-block;
+}
+
 .refresh {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
+  float: right;
+  margin-top: 10px;
 }
 
 .suggest-follow-btn {
