@@ -67,8 +67,16 @@ const ProfilePage = React.createClass({
 						<FollowButton following={this.state.profile.following} user={this.props.params.id} />
 						<div className="profile-desc">{this.state.profile.description}</div>
 					</div>
-					<div>
-						{Object.keys(this.state.photos).length} Photos
+					<div className="profile-stats">
+						<div>
+							Photos {Object.keys(this.state.photos).length} 
+						</div>
+						<div>
+							Followers {this.state.profile.followerCount}
+						</div>
+						<div>
+							Following {this.state.profile.followingCount} 
+						</div>
 					</div>
 					<Masonry elementType='ul' className='my-gallery-class' options={masonryOptions}>
 						{indexItems}

@@ -22,7 +22,7 @@ const Follow = React.createClass({
 			value = "Following";
 		}
 		return (
-			<button onClick={this._toggleFollow} className={style} value={value}/>
+			<button onClick={this._toggleFollow} className={style}>{value}</button>
 		)
 	}
 });

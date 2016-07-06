@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
 	has_many :follows,
 		class_name: "Follow",
-		foreign_key: :followee_id
+		foreign_key: :followed_id
 
 	has_many :followers,
 		through: :follows,
