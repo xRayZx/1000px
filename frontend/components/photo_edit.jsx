@@ -35,9 +35,13 @@ const PhotoEdit = React.createClass({
 		let newInfo = {id: this.state.id, title: this.state.title, description: this.state.description};
 		PhotoActions.updatePhoto(newInfo);
 	},
+	_deletePhoto () {
+		
+	},
 	render () {
 		return (
-			<form onSubmit={this._handleSubmit}>
+			<form className="photo-edit-form" onSubmit={this._handleSubmit}>
+				<h3 className="form-header">Edit Photo</h3>
 				<FormGroup controlId="formControlsText">
 					<ControlLabel>Title</ControlLabel>
 					<FormControl type="text" value={this.state.title} onChange={this._updateTitle}/>
@@ -46,8 +50,8 @@ const PhotoEdit = React.createClass({
 					<ControlLabel>Description</ControlLabel>
 					<FormControl componentClass="textarea" value={this.state.description} onChange={this._updateDesc}/>
 				</FormGroup>
-				<Button type="submit">Update Photo</Button>
-				<Button className="btn btn-danger" onClick={this._deletePhoto}>Delete Photo</Button>
+				<Button className="photo-edit-btn" type="submit">Update Photo</Button>
+				<Button className="btn btn-danger photo-edit-btn" onClick={this._deletePhoto}>Delete Photo</Button>
 			</form>
 		)
 	}

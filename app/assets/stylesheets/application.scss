@@ -153,6 +153,7 @@ nav > ul > li:active {
 
 .form-header {
   text-align: center;
+  color: black;
 }
 
 .form-group {
@@ -498,4 +499,13 @@ ul.my-gallery-class.home {
 
 .control-label {
   color: black;
+}
+
+.photo-edit-form {
+  padding: 25px;
+  cursor: auto;
+}
+
+.photo-edit-btn {
+  margin: 20px;
 }

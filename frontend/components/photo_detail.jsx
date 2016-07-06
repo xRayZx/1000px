@@ -103,7 +103,7 @@ const PhotoDetail = React.createClass({
 					<div className="photo-info">
 						<p className="photo-title">{this.state.title}</p>
 						<p className="photo-desc">{this.state.description}</p>
-						{editButton}
+						{this.state.posterId === window.currentUser.id ? editButton : null}
 					</div>
 				</div>
 			</div>
