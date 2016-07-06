@@ -8,8 +8,7 @@ const FollowButton = require('./follow_button.jsx');
 const FollowIndex = React.createClass({
 	getInitialState () {
 		return ({
-			index: FollowStore.index(),
-			toggle: false
+			index: FollowStore.index()
 		});
 	},
 	componentWillMount () {
@@ -37,6 +36,9 @@ const FollowIndex = React.createClass({
 		return (e) => {
 			hashHistory.push(`/profile/${userId}`);
 		}
+	},
+	refresh () {
+		FollowActions.fetchIndex();
 	},
 	render () {
 		let userList = [];
@@ -72,7 +74,8 @@ const FollowIndex = React.createClass({
 		}
 		return (
 			<div className="follow-index">
-				<h4>Follow Suggestions</h4>
+			<h4>Who To Follow</h4>
+			<span className="refresh" onClick={this.refresh}>Refresh</span>
 				{userList}
 			</div>
 		)

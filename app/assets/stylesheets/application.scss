@@ -317,7 +317,7 @@ ul.my-gallery-class.home {
 
 .image-element-class:hover .thumb-credits {
   opacity: 1;
-  bottom: 10px;
+  bottom: 5px;
   -webkit-transition: bottom 0.2s;
   -moz-transition: bottom 0.2s;
   transition: bottom 0.2s;
@@ -450,6 +450,10 @@ ul.my-gallery-class.home {
   margin: 30px 0px;
 }
 
+.follow-index-item:first-of-type {
+  margin: 10px 0px;
+}
+
 .follow-pic {
   display: inline-block;
   height: 40px;
@@ -462,6 +466,12 @@ ul.my-gallery-class.home {
 .suggest-text {
   display: inline-block;
   vertical-align: middle;
+  cursor: pointer;
+}
+
+.refresh {
+  color: blue;
+  text-decoration: underline;
   cursor: pointer;
 }
 
