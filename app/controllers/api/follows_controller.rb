@@ -21,7 +21,7 @@ class Api::FollowsController < ApplicationController
 		users.each do |user|
 			unless following.include?(user.id)
 				profile = {profile: user,
-										photos: user.photos.limit(3).select("id, url, poster_id"),
+										photos: user.photos.limit(5).select("id, url, poster_id"),
 										photoCount: user.photos.count}
 				@index << profile
 			end

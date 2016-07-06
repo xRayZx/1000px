@@ -13,15 +13,16 @@ const Follow = React.createClass({
 		}
 	},
 	render () {
-		let style = "follow-btn";
+		let style = "follow-btn btn btn-primary";
 		if (this.props.from === "suggest") {
 			style = "suggest-follow-btn";
 		}
-
+		let value = "Follow";
+		if (this.props.following) {
+			value = "Following";
+		}
 		return (
-			<button onClick={this._toggleFollow} className={style}>
-				{this.props.following ? "Unfollow" : "Follow"}
-			</button>
+			<button onClick={this._toggleFollow} className={style} value={value}/>
 		)
 	}
 });

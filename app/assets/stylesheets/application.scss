@@ -281,6 +281,19 @@ ul.my-gallery-class.home {
   margin: 10px auto;
 }
 
+.follow-btn:focus {
+  outline: 0px;
+}
+
+.follow-btn:before {
+  content: attr(value);
+}
+
+.follow-btn:hover:after {
+  content: 'Unfollow';
+  background-color: #ff6666;
+}
+
 .image-element-class {
   position: relative;
   overflow: hidden;
@@ -378,10 +391,11 @@ ul.my-gallery-class.home {
 
 .follow-index {
   right: 0px;
-  margin: 5px auto;
+  margin: 5px 20px;
   width: 30%;
-  max-width: 275px;
+  max-width: 290px;
   position: fixed;
+  padding-right: 18px;
 }
 
 .follow-index-item {
@@ -390,22 +404,26 @@ ul.my-gallery-class.home {
 
 .follow-pic {
   display: inline-block;
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .suggest-text {
   display: inline-block;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .suggest-follow-btn {
   display: block;
+  float: right;
   font-size: 12px;
   line-height: 22px;
   height: 24px;
+  margin-top: 10px;
   padding: 0 8px;
   background: none;
   text-shadow: none;
@@ -421,9 +439,18 @@ ul.my-gallery-class.home {
   background-color: rgba(0,153,229,0.1);
 }
 
+.suggest-follow-btn:focus {
+  outline: 0;
+}
+
 .suggest-pics {
   margin-top: 5px;
   display: flex;
-  justify-content: space-between;
   width: 80%;
+  cursor: pointer;
+}
+
+.suggest-pic-item {
+  margin-right: 5px;
+  cursor: pointer;
 }

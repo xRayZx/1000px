@@ -1,4 +1,5 @@
 const React = require('react');
+const hashHistory = require('react-router').hashHistory;
 const FollowActions = require('../actions/follow_actions.js');
 const FollowStore = require('../stores/follow_store.js');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
@@ -32,6 +33,11 @@ const FollowIndex = React.createClass({
 			this.followed.splice(idx, 1);
 		}
 	},
+	showProfile (userId) {
+		return (e) => {
+			hashHistory.push(`/profile/${userId}`);
+		}
+	},
 	render () {
 		let userList = [];
 		if (this.state.index) {
@@ -41,7 +47,7 @@ const FollowIndex = React.createClass({
 					let i = user.photos.length;
 					for (let l = 0; l < i; l++) {
 						let el = (
-							<img className="suggest-pic-item" src={CloudinaryUtil.image(user.photos[l].url, {height: 40})} key={l}/>
+							<img className="suggest-pic-item" onClick={this.showProfile(user.id)} src={CloudinaryUtil.image(user.photos[l].url, {height: 50, width: 50, crop: 'lfill'})} key={l}/>
 						);
 						photos.push(el);
 					}
@@ -49,12 +55,12 @@ const FollowIndex = React.createClass({
 				let element = (
 					<div className="follow-index-item" key={user.id}>
 						<div className="suggest-info">
-							<img className="follow-pic" src={CloudinaryUtil.image(user.pic, {width: 50, gravity: 'face', crop: 'thumb'})}/>
+							<img className="follow-pic" onClick={this.showProfile(user.id)} src={CloudinaryUtil.image(user.pic, {width: 40, gravity: 'face', crop: 'thumb'})}/>
 							<div className="suggest-text">
-								<span><strong>{user.name}</strong></span>
+								<span><strong onClick={this.showProfile(user.id)}>{user.name}</strong></span>
 								<div>{user.photoCount} Photos</div>
-								<FollowButton following={this.followed.includes(user.id)} user={user.id} from="suggest" updateButton={this.updateButtons}/>
 							</div>
+								<FollowButton following={this.followed.includes(user.id)} user={user.id} from="suggest" updateButton={this.updateButtons}/>
 							</div>
 							<div className="suggest-pics">
 								{photos}
