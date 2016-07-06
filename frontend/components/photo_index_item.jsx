@@ -2,6 +2,7 @@ const React = require('react');
 const PhotoDetail = require('./photo_detail.jsx');
 const ScaleModal = require('boron/ScaleModal');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
+const hashHistory = require('react-router').hashHistory;
 
 const size = {
 	landing: 250,

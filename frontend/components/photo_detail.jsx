@@ -6,9 +6,15 @@ const CloudinaryUtil = require('../util/cloudinary_util.js');
 
 const PhotoDetail = React.createClass({
 	getInitialState () {
+		let photoId = null;
+		if (this.props.photo) {
+			photoId = this.props.photo.id;
+		} else {
+			photoId = this.props.params.id
+		}
 		return (
 			{
-				id: this.props.photo.id,
+				id: photoId,
 				title: '',
 				description: '',
 				posterId: null,
@@ -21,13 +27,23 @@ const PhotoDetail = React.createClass({
 	},
 	componentDidMount () {
 		this.listener = PhotoStore.addListener(this._updateDetails);
-		PhotoActions.fetchPhoto(this.props.photo.id);
+		if (this.props.photo) {
+			PhotoActions.fetchPhoto(this.props.photo.id);
+		} else {
+			PhotoActions.fetchPhoto(this.props.params.id);
+		}
 	},
 	componentWillUnmount () {
 		this.listener.remove();
 	},
 	_updateDetails () {
-		let photo = PhotoStore.find(this.props.photo.id);
+		let photoId = null;
+		if (this.props.photo) {
+			photoId = this.props.photo.id;
+		} else {
+			photoId = this.props.params.id
+		}
+		let photo = PhotoStore.find(photoId);
 		this.setState({
 			title: photo.title,
 			description: photo.description,
@@ -41,13 +57,30 @@ const PhotoDetail = React.createClass({
 	showProfile () {
 		hashHistory.push(`/profile/${this.state.posterId}`);
 	},
+	redirectToDetail () {
+		if (this.props.photo) {
+		hashHistory.push(`/photos/${this.state.id}`);
+		}
+	},
 	render () {
+		let style = 'detail-page';
+		let contain = "img-container";
+		let height = 800;
+		let imgClass = "detail-img"
+		let infoClass = "info";
+		if (this.props.photo) {
+			style = 'detail-modal';
+			contain = "img-container-modal"
+			height = 600;
+			imgClass = "detail-img-modal"
+			infoClass = 'info-modal';
+		} 
 		return (
-			<div>
-				<div className="img-container">
-					<img className="detail-img" src={CloudinaryUtil.image(this.state.url, {height: 600})}/>
+			<div className={style}>
+				<div className={contain}>
+					<img className={imgClass} src={CloudinaryUtil.image(this.state.url, {height: height})} onClick={this.redirectToDetail}/>
 				</div>
-				<div className="info">
+				<div className={infoClass}>
 					<div className="poster-info">
 						<img className="home-profile-pic home-poster" src={CloudinaryUtil.image(this.state.profilePic, 
 							{gravity: 'face', crop: 'crop'})} onClick={this.showProfile}/>
