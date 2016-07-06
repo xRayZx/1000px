@@ -30,6 +30,9 @@ const PhotoIndexItem = React.createClass({
 	showDetails () {
 		this.refs.detailsModal.show();
 	},
+	showProfile () {
+		hashHistory.push(`/profile/${this.props.photo.poster_id}`);
+	},
 	render () {
 		return (
 			<li className="image-element-class" onClick={this.showDetails}>
@@ -38,8 +41,8 @@ const PhotoIndexItem = React.createClass({
 				</ScaleModal>
 				<img className="img-idx" src={this.state.photoURL}/>
 				<div className="thumb-credits">
-					<img className="thumb-profile-pic" src={this.state.profilePic}/>
-					<span>{this.state.poster}</span>
+					<img onClick={this.showProfile} className="thumb-profile-pic" src={this.state.profilePic}/>
+					<span onClick={this.showProfile}>{this.state.poster}</span>
 				</div>
 			</li>
 		)

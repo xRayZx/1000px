@@ -323,6 +323,12 @@ ul.my-gallery-class.home {
   transition: bottom 0.2s;
 }
 
+.thumb-credits > img:hover, .thumb-credits > span:hover {
+  background-color: rgba(255, 255, 255, 0.23);
+  -webkit-filter: brightness(1.2);
+  cursor: pointer;
+}
+
 .home-profile-pic {
   width: 50px;
   height: 50px;
