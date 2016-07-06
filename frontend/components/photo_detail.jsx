@@ -3,6 +3,8 @@ const hashHistory = require('react-router').hashHistory;
 const PhotoActions = require('../actions/photo_actions.js');
 const PhotoStore = require('../stores/photo_store.js');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
+const PhotoEdit = require('./photo_edit.jsx');
+const OutlineModal = require('boron/OutlineModal');
 
 const PhotoDetail = React.createClass({
 	getInitialState () {
@@ -62,18 +64,30 @@ const PhotoDetail = React.createClass({
 		hashHistory.push(`/photos/${this.state.id}`);
 		}
 	},
+	showEdit () {
+		this.refs.editModal.show();
+	},
 	render () {
-		let style = 'detail-page';
-		let contain = "img-container";
-		let height = 800;
-		let imgClass = "detail-img"
-		let infoClass = "info";
-		if (this.props.photo) {
-			style = 'detail-modal';
-			contain = "img-container-modal"
-			height = 600;
-			imgClass = "detail-img-modal"
-			infoClass = 'info-modal';
+		let style = 'detail-modal';
+		let contain = "img-container-modal"
+		let height = 600;
+		let imgClass = "detail-img-modal"
+		let infoClass = 'info-modal';
+		let editButton = null;
+		if (!this.props.photo) {
+			style = 'detail-page';
+			contain = "img-container";
+			height = 800;
+			imgClass = "detail-img"
+			infoClass = "info";
+			editButton = (
+				<button onClick={this.showEdit} className="btn btn-primary">
+					Edit Photo
+					<OutlineModal ref="editModal">
+						<PhotoEdit photoId={this.props.params.id}/>
+					</OutlineModal>
+					</button>
+			)
 		} 
 		return (
 			<div className={style}>
@@ -89,6 +103,7 @@ const PhotoDetail = React.createClass({
 					<div className="photo-info">
 						<p className="photo-title">{this.state.title}</p>
 						<p className="photo-desc">{this.state.description}</p>
+						{editButton}
 					</div>
 				</div>
 			</div>

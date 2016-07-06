@@ -49,6 +49,17 @@ const PhotoApiUtil = {
 				success(resp);
 			}
 		});
+	},
+	updatePhoto (photo, sucess) {
+		$.ajax({
+			url: `/api/photos/${photo.id}`,
+			type: 'PATCH',
+			dataType: 'json',
+			data: {photo: photo},
+			success: function (resp) {
+				success(resp);
+			}
+		})
 	}
 };
 

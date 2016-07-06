@@ -38,7 +38,11 @@ class Api::PhotosController < ApplicationController
 	end
 
 	def update
-
+		@photo = Photo.find(params[:id])
+		if @photo.poster === current_user
+			@photo.update_columns(photo_params)
+		end
+		render "api/photos/show"
 	end
 
 	def destroy
@@ -47,6 +51,6 @@ class Api::PhotosController < ApplicationController
 
 	private
 	def photo_params
-		params.require(:photo).permit(:title, :description, :url, :poster_id)
+		params.require(:photo).permit(:id, :title, :description, :url, :poster_id)
 	end
 end
