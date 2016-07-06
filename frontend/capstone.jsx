@@ -21,7 +21,7 @@ const PhotoDetail = require('./components/photo_detail.jsx');
 const routes = (
   <Route path="/" component={App}>
 		<Route path="profile/:id" component={ProfilePage}/>
-		<Route path="/photos/:id" component={PhotoDetail}/>
+		<Route path="photos/:id" component={PhotoDetail}/>
   </Route>
 );
 

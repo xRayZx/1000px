@@ -2,18 +2,15 @@ const React = require('react');
 const FollowAction = require('../actions/follow_actions.js');
 
 const Follow = React.createClass({
-	getInitialState () {
-		return ({
-			toggle: false
-		});
-	},
 	_toggleFollow () {
 		if (this.props.following) {
 			FollowAction.unfollow(this.props.user);
 		} else {
 			FollowAction.follow(this.props.user);
 		}
-		this.setState({toggle: !this.state.toggle});
+		if (this.props.updateButton) {
+			this.props.updateButton(this.props.user);
+		}
 	},
 	render () {
 		let style = "follow-btn";

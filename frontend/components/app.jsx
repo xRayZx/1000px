@@ -28,7 +28,10 @@ const App = React.createClass({
     );
   },
   componentDidMount () {
-    UserStore.addListener(this._updateCurrentUser);
+    this.listener = UserStore.addListener(this._updateCurrentUser);
+  },
+  componentWillUnmount () {
+    this.listener.remove()
   },
   _updateCurrentUser () {
     this.setState({

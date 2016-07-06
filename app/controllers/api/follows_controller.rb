@@ -20,7 +20,9 @@ class Api::FollowsController < ApplicationController
 		users = User.all.order('random()')
 		users.each do |user|
 			unless following.include?(user.id)
-				profile = {profile: user, photos: user.photos.limit(3).select("id, url, poster_id")}
+				profile = {profile: user,
+										photos: user.photos.limit(3).select("id, url, poster_id"),
+										photoCount: user.photos.count}
 				@index << profile
 			end
 			break if @index.length > 4

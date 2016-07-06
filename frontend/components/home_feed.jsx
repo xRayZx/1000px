@@ -10,8 +10,7 @@ const FollowIndex = require('./follow_index.jsx');
 const HomeFeed = React.createClass({
 	getInitialState () {
 		return (
-			{photos: PhotoStore.home()}
-		);
+			{photos: PhotoStore.home()});
 	},
 	componentDidMount () {
 		this.listener = PhotoStore.addListener(this._updateFeed);
@@ -24,7 +23,9 @@ const HomeFeed = React.createClass({
 		this.setState({photos: PhotoStore.home()});
 	},
 	showProfile (userId) {
-		hashHistory.push(`/profile/${userId}`)
+		return (e) => {
+			hashHistory.push(`/profile/${userId}`)
+		}
 	},
   render () {
 		let indexItems = [];
@@ -35,8 +36,8 @@ const HomeFeed = React.createClass({
 				let indexItem = (
 					<div className="home-post" key={photo.id}>
 						<p>
-							<img className="home-profile-pic home-poster" src={CloudinaryUtil.image(photo.poster_pic, {gravity: 'face', crop: 'crop'})} onClick={this.showProfile.bind(_, photo.poster_id)}/>
-							<span><strong className="home-poster" onClick={this.showProfile.bind(_, photo.poster_id)}>{photo.poster}</strong> posted:</span>
+							<img className="home-profile-pic home-poster" src={CloudinaryUtil.image(photo.poster_pic, {gravity: 'face', crop: 'crop'})} onClick={this.showProfile(photo.poster_id)}/>
+							<span><strong className="home-poster" onClick={this.showProfile(photo.poster_id)}>{photo.poster}</strong> posted:</span>
 						</p>
 						<PhotoIndexItem photo={photo} key={photo.id} size="home"/>
 					</div>

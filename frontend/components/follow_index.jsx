@@ -11,10 +11,12 @@ const FollowIndex = React.createClass({
 			toggle: false
 		});
 	},
+	componentWillMount () {
+		this.followed = [];
+	},
 	componentDidMount () {
 		this.listener = FollowStore.addListener(this._onChange);
 		FollowActions.fetchIndex();
-		this.followed = [];
 	},
 	componentWillUnmount () {
 		this.listener.remove();
@@ -23,14 +25,12 @@ const FollowIndex = React.createClass({
 		this.setState({index: FollowStore.index()})
 	},
 	updateButtons (userId) {
-		debugger
-		if (this.followed.includes(userId)) {
+		if (!this.followed.includes(userId)) {
 			this.followed.push(userId);
 		} else {
 			let idx = this.followed.indexOf(userId);
 			this.followed.splice(idx, 1);
 		}
-		this.setState({toggle: !this.state.toggle});
 	},
 	render () {
 		let userList = [];
@@ -52,7 +52,8 @@ const FollowIndex = React.createClass({
 							<img className="follow-pic" src={CloudinaryUtil.image(user.pic, {width: 50, gravity: 'face', crop: 'thumb'})}/>
 							<div className="suggest-text">
 								<span><strong>{user.name}</strong></span>
-								<FollowButton following={this.followed.includes(user.id)} user={user.id} from="suggest" onClick={this.updateButtons.bind(_, user.id)}/>
+								<div>{user.photoCount} Photos</div>
+								<FollowButton following={this.followed.includes(user.id)} user={user.id} from="suggest" updateButton={this.updateButtons}/>
 							</div>
 							</div>
 							<div className="suggest-pics">

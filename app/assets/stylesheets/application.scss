@@ -380,11 +380,12 @@ ul.my-gallery-class.home {
   right: 0px;
   margin: 5px auto;
   width: 30%;
+  max-width: 275px;
   position: fixed;
 }
 
 .follow-index-item {
-  margin: 20px 0px;
+  margin: 30px 0px;
 }
 
 .follow-pic {
@@ -402,9 +403,22 @@ ul.my-gallery-class.home {
 
 .suggest-follow-btn {
   display: block;
-  margin: 0;
-  height: 20px;
-  font-size: 10px;
+  font-size: 12px;
+  line-height: 22px;
+  height: 24px;
+  padding: 0 8px;
+  background: none;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #0099e5;
+  font-weight: normal;
+  border-color: #0099e5;
+  border-radius: 3px;
+}
+
+.suggest-follow-btn:hover {
+  background-color: rgba(0,153,229,0.1);
 }
 
 .suggest-pics {
