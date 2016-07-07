@@ -6,4 +6,7 @@ class Photo < ActiveRecord::Base
 		foreign_key: :poster_id,
 		class_name: "User"
 		
+	has_many :comments,
+		class_name: "Comment",
+		foreign_key: :photo_id
 end

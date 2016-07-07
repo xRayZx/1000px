@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
 		through: :followed,
 		source: :followee
 
+	has_many :comments,
+		class_name: "Comment",
+		foreign_key: :poster_id
+
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
     @password = password
