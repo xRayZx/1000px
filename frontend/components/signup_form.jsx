@@ -12,7 +12,8 @@ const SignupForm = React.createClass({
 			userErrors: UserStore.errors(),
       username: "",
 			password: "",
-			password2: ""
+			password2: "",
+			error: null
     };
   },
 	componentDidMount () {
@@ -59,16 +60,23 @@ const SignupForm = React.createClass({
 	},
   handleSubmit (e) {
     e.preventDefault();
-    let user = {username: this.state.username, password: this.state.password};
-    UserActions.signup(user);
-    this.setState({password: "", password2: ""});
+		if (this.state.password === this.state.password2) {
+			let user = {username: this.state.username, password: this.state.password};
+			UserActions.signup(user);
+			this.setState({password: "", password2: ""});
+		} else {
+			this.setState({error: "Passwords do not match"});
+		}
   },
   render () {
     return (
       <div className="auth-form">
         <form onSubmit={this.handleSubmit}>
         <h3 className="form-header">Sign Up</h3>
-        {UserStore.errors()}
+				<div className="auth-errors">
+					{this.state.error}
+					{UserStore.errors()}
+				</div>
           <section>
 						<FormGroup controlId="formControlsText">
 								<FormControl type="text" placeholder="Username" onChange={this.updateUsername}/>

@@ -37,6 +37,7 @@ const Follow = React.createClass({
 			style = "follow-btn btn btn-danger";
 		} else if (this.props.following && this.props.from === "suggest") {
 			value = "Following";
+			style = "suggest-follow-btn green";
 		} else if (this.props.following) {
 			style = "follow-btn btn btn-success";
 			value = "Following";
