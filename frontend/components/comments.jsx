@@ -2,6 +2,7 @@ const React = require('react');
 const hashHistory = require('react-router').hashHistory;
 const CommentStore = require('../stores/comment_store.js');
 const CommentActions = require('../actions/comment_actions.js');
+const CommentForm = require('./comment_form.jsx');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
 
 const Comments = React.createClass({
@@ -43,6 +44,7 @@ const Comments = React.createClass({
 		} )
 		return (
 			<div className="comments-container">
+				<CommentForm photoId={this.props.photoId}/>
 				<ul className="comments-list">
 					{comments}
 				</ul>

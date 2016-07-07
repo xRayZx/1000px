@@ -549,16 +549,21 @@ ul.my-gallery-class.home {
   border-bottom: 1px dotted lightgray;
 }
 
-.commentor-img {
+.commentor-img, .comment-form > img {
   display: inline-block;
   float: left;
   margin-right: 5px;
 }
 
-.commentor-img > img {
+.commentor-img > img, .comment-form > img {
   border-radius: 50%;
   width: 35px;
   height: 35px;
+}
+
+.comment-form {
+  display: flex;
+  margin-bottom: 10px;
 }
 
 .comments-list {
