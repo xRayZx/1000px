@@ -251,9 +251,10 @@ ul.my-gallery-class {
   list-style: none;
 }
 
-ul.my-gallery-class.home {
+.my-home-gallery {
   width: 95%;
-  display: inline-block;
+  display: block;
+  margin: 5px auto;
 }
 
 .img-idx {
@@ -307,6 +308,7 @@ ul.my-gallery-class.home {
 }
 
 .image-element-class {
+  list-style: none;
   position: relative;
   overflow: hidden;
   -webkit-transition: margin 0.2s ease-in-out;
@@ -352,7 +354,14 @@ ul.my-gallery-class.home {
 }
 
 .home-post {
-  margin-top: 20px;
+  margin: 40px 30px;
+}
+
+.home-post li {
+  height: 100%;
+}
+.img-idx {
+  height: 100%;
 }
 
 .detail-page {
@@ -475,8 +484,9 @@ ul.my-gallery-class.home {
   .follow-index {
     display: block;
   }
-  ul.my-gallery-class.home {
-    width: 66%
+  .my-home-gallery {
+    width: 66%;
+    display: inline-block;
   }
 }
 

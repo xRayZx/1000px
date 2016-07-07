@@ -31,6 +31,7 @@
     "cloudinary": "^1.4.1",
     "cloudinary-jquery-file-upload": "^2.1.0",
     "flux": "^2.1.1",
+    "imagesloaded": "^4.1.0",
     "react": "^15.1.0",
     "react-bootstrap": "^0.29.5",
     "react-cloudinary": "^0.4.0",
