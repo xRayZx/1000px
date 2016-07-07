@@ -9,6 +9,9 @@ const Landing = React.createClass({
   showSignup () {
     this.refs.signupModal.show();
   },
+	hideSignup () {
+		this.refs.signupModal.hide();
+	},
   render () {
     return (
       <div>
@@ -17,7 +20,7 @@ const Landing = React.createClass({
             <h3 className="fade-in">Showcase your photography and stay inspired!</h3>
             <button className="btn btn-primary get-started fade-in" onClick={this.showSignup}>Get Started!</button>
             <Modal ref="signupModal" modalStyle={this.props.modalStyle}>
-              <SignupForm />
+              <SignupForm close={this.hideSignup} showLogin={this.props.showLogin}/>
             </Modal>
         </div>
 				<PhotoIndex source="Landing"/>

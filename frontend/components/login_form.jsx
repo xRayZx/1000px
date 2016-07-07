@@ -13,7 +13,7 @@ const LoginForm = React.createClass({
     };
   },
 	componentWillUnmount () {
-		UserStore.setErrors([]);
+		UserStore.resetErrors;
 	},
   _updateUser () {
     this.setState({
@@ -34,27 +34,51 @@ const LoginForm = React.createClass({
   },
   guestLogin (e) {
     e.preventDefault();
-    UserActions.guestLogin();
+		let guestUser = ['g', 'u', 'e', 's', 't'];
+		let guestPw = ['p', 'a', 's', 's', 'w', 'o'];
+		let idx = 0;
+		window.interval = setInterval(()=>{
+			if (idx < 5) {
+				let name = this.state.username + guestUser[idx];
+				this.setState({username: name});
+			} else if (idx < 11){
+				let pw = this.state.password + guestPw[idx];
+				this.setState({password: pw}) 
+			} else {
+				UserActions.guestLogin();
+			}
+			idx = idx + 1;
+		}, 200);
   },
+	showSignup () {
+		this.props.close();
+		this.props.showSignup();
+	},
   render () {
     return (
       <div className="auth-form">
         <form onSubmit={this.handleSubmit}>
         <h3 className="form-header">Log In</h3>
+        	{UserStore.errors()}
           <section>
 						<FormGroup controlId="formControlsText">
-								<FormControl type="text" placeholder="Username" onChange={this.updateUsername}/>
+								<FormControl type="text" placeholder="Username" value={this.state.username} onChange={this.updateUsername}/>
 						</FormGroup>
 						<FormGroup controlId="formControlsPassword">
-              <FormControl type="password" placeholder="Password" onChange={this.updatePassword}/>
+              <FormControl type="password" placeholder="Password" value={this.state.password} onChange={this.updatePassword}/>
 						</FormGroup>
           </section>
-        	{UserStore.errors()}
 					<ul className="auth-buttons">
 						<li className="auth-button"><Button type="submit" className="btn btn-success">Log In</Button></li>
 						<li className="auth-button"><Button onClick={this.guestLogin} className="btn btn-primary">Guest Login</Button></li>
 					</ul>
         </form>
+				<br/>
+				<div className="auth-redirect">
+					<span>Don't have an account?</span>
+					<br/>
+					<span className="redirect-link" onClick={this.showSignup}>Sign up here!</span>
+				</div>
       </div>
     );
   }

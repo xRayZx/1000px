@@ -36,6 +36,7 @@ const UserActions = {
 		});
 	},
 	guestLogin: function(){
+		clearInterval(window.interval);
 		UserActions.login({username: "guest", password: "password"});
 	},
 	receiveCurrentUser: function(user){

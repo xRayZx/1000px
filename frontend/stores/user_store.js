@@ -31,11 +31,13 @@ UserStore.__onDispatch = function (payload) {
 
 UserStore.login = function(user){
 	_currentUser = user;
+	window.currentUser = _currentUser;
   _errors = null;
 };
 
 UserStore.logout = function(){
   _currentUser = null;
+	window.currentUser = _currentUser;
   _errors = null;
 };
 
@@ -54,6 +56,10 @@ UserStore.errors = function(){
     return [].slice.call(_errors);
   }
 };
+
+UserStore.resetErrors = function () {
+	_errors = null;
+}
 
 UserStore.setProfile = function (profile) {
 	_profile = profile;

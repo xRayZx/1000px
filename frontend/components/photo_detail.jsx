@@ -83,14 +83,16 @@ const PhotoDetail = React.createClass({
 			height = 800;
 			imgClass = "detail-img"
 			infoClass = "info";
-			editButton = (
-				<button onClick={this.showEdit} className="btn btn-primary">
-					Edit Photo
-					<OutlineModal ref="editModal">
-						<PhotoEdit photoId={this.photoId}/>
-					</OutlineModal>
-				</button>
-			)
+			if (window.currentUser && this.state.posterId === window._currentUser.id) {
+				editButton = (
+					<button onClick={this.showEdit} className="btn btn-primary">
+						Edit Photo
+						<OutlineModal ref="editModal">
+							<PhotoEdit photoId={this.photoId}/>
+						</OutlineModal>
+					</button>
+				)
+			}
 		} 
 		return (
 			<div className={style}>
@@ -106,7 +108,7 @@ const PhotoDetail = React.createClass({
 					<div className="photo-info">
 						<p className="photo-title">{this.state.title}</p>
 						<p className="photo-desc">{this.state.description}</p>
-						{this.state.posterId === window.currentUser.id ? editButton : null}
+						{editButton}
 						<Comments photoId={this.state.id}/>
 					</div>
 				</div>

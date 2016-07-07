@@ -53,6 +53,10 @@ const SignupForm = React.createClass({
 			return 'error';
 		}
 	},
+	showLogin () {
+		this.props.close();
+		this.props.showLogin();
+	},
   handleSubmit (e) {
     e.preventDefault();
     let user = {username: this.state.username, password: this.state.password};
@@ -64,6 +68,7 @@ const SignupForm = React.createClass({
       <div className="auth-form">
         <form onSubmit={this.handleSubmit}>
         <h3 className="form-header">Sign Up</h3>
+        {UserStore.errors()}
           <section>
 						<FormGroup controlId="formControlsText">
 								<FormControl type="text" placeholder="Username" onChange={this.updateUsername}/>
@@ -75,9 +80,14 @@ const SignupForm = React.createClass({
               <FormControl type="password" placeholder="Password (must match)" onChange={this.updatePassword2}/>
 						</FormGroup>
           </section>
-        {UserStore.errors()}
           <Button type="submit" className="auth-button btn btn-success">Sign Up!</Button>
         </form>
+				<br/>
+				<div className="auth-redirect">
+					<span>Already have an account?</span>
+					<br/>
+					<span>Want to demo? <span className="redirect-link" onClick={this.showLogin}>Log in here!</span></span>
+				</div>
       </div>
     );
   }

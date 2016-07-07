@@ -44,7 +44,7 @@ const Comments = React.createClass({
 		} )
 		return (
 			<div className="comments-container">
-				<CommentForm photoId={this.props.photoId}/>
+			{window.currentUser ? <CommentForm photoId={this.props.photoId}/> : null}
 				<ul className="comments-list">
 					{comments}
 				</ul>

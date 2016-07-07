@@ -22,9 +22,19 @@ body {
 }
 
 .auth-form {
-  background-color: lightblue;
+  background-color: #f7f8fa;
   width: 275px;
   padding: 3px 20px 15px 20px;
+}
+
+.auth-redirect {
+  text-align: center;
+}
+
+.redirect-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 header {

@@ -40,10 +40,16 @@ const App = React.createClass({
   },
   showLogin () {
     this.refs.loginModal.show();
-  },
+	},
+	hideLogin () {
+		this.refs.loginModal.hide();
+	},
   showSignup () {
     this.refs.signupModal.show();
   },
+	hideSignup () {
+		this.refs.signupModal.hide();
+	},
 	showUpload () {
 		this.refs.uploadModal.show();
 	},
@@ -76,17 +82,17 @@ const App = React.createClass({
         <ul>
           <li onClick={this.showLogin}>Log In</li>
           <DropModal ref="loginModal" modalStyle={modalStyle}>
-            <LoginForm/>
+            <LoginForm close={this.hideLogin} showSignup={this.showSignup}/>
           </DropModal>
           <li onClick={this.showSignup}>Sign Up</li>
           <DropModal ref="signupModal" modalStyle={modalStyle}>
-            <SignupForm/>
+            <SignupForm close={this.hideSignup} showLogin={this.showLogin}/>
           </DropModal>
         </ul>
       </nav>
     );
     let homePage = (
-      <Landing modalStyle={modalStyle}/>
+      <Landing modalStyle={modalStyle} showLogin={this.showLogin}/>
     );
     if (this.state.currentUser) {
       homePage = (
