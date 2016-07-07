@@ -336,7 +336,7 @@ ul.my-gallery-class.home {
   margin-right: 10px;
 }
 
-.home-poster {
+.home-poster, .commentor-img, .comment-text > span {
   cursor: pointer;
 }
 
@@ -396,7 +396,9 @@ ul.my-gallery-class.home {
   float: right;
   width: 30%;
   height: 100%;
-  min-height: 700px;
+  min-height: 600px;
+  max-height: 850px;
+
   padding: 15px;
   overflow-y: scroll;
   background-color: #f7f8fa;
@@ -541,6 +543,12 @@ ul.my-gallery-class.home {
   font-size: 14px;
 }
 
+.comment {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px dotted lightgray;
+}
+
 .commentor-img {
   display: inline-block;
   float: left;
@@ -549,6 +557,8 @@ ul.my-gallery-class.home {
 
 .commentor-img > img {
   border-radius: 50%;
+  width: 35px;
+  height: 35px;
 }
 
 .comments-list {
