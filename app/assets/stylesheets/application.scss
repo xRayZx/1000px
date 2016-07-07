@@ -536,9 +536,9 @@ ul.my-gallery-class.home {
   border-color: #0099e5;
   border-radius: 3px;
 }
-
-.suggest-follow-btn:hover {
-  background-color: rgba(0,153,229,0.1);
+.suggest-follow-btn.red {
+  color: red;
+  border-color: red;
 }
 
 .suggest-follow-btn:focus {
