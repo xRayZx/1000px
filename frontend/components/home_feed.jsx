@@ -7,6 +7,10 @@ const CloudinaryUtil = require('../util/cloudinary_util.js');
 const hashHistory = require('react-router').hashHistory;
 const FollowIndex = require('./follow_index.jsx');
 
+const masonryOptions = {
+	isAnimated: true
+};
+
 const HomeFeed = React.createClass({
 	getInitialState () {
 		return (
@@ -51,7 +55,7 @@ const HomeFeed = React.createClass({
 					Hello, {this.props.currentUser.first_name}!
 				</div>
 				<FollowIndex/>
-				<Masonry className="my-gallery-class home" elementType='ul' disableImagesLoad={false} updateOnEachImageLoad={true}>
+				<Masonry className="my-gallery-class home" elementType='ul' options={masonryOptions} disableImagesLoad={false} updateOnEachImageLoad={true}>
 					{indexItems}
 				</Masonry>
       </div>

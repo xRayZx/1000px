@@ -19,7 +19,7 @@ class Api::FollowsController < ApplicationController
 		following = current_user.followings.map {|user| user.id}
 		users = User.all.order('random()')
 		users.each do |user|
-			unless following.include?(user.id)
+			unless user.id == current_user.id || following.include?(user.id) 
 				profile = {profile: user,
 										photos: user.photos.limit(5).select("id, url, poster_id"),
 										photoCount: user.photos.count}

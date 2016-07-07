@@ -59,13 +59,19 @@ const ProfilePage = React.createClass({
 					indexItems.push(indexItem);
 				} );
 			}
+			let followBtn = (
+				<FollowButton following={this.state.profile.following} user={this.props.params.id} />
+			)
+			if (window.currentUser && window.currentUser.id === parseInt(this.props.params.id, 10)) {
+		 	 	followBtn = null;
+			}
 			profile = (
 				<div>
 					<div className="profile-info">
 						<img className="profile-pic" src={CloudinaryUtil.image(this.state.profile.pic_url, {width: 100, gravity: 'face', crop: 'thumb'})}/>
 						<h3 className="profile-name">{this.state.profile.first_name} {this.state.profile.last_name}</h3>
-						<FollowButton following={this.state.profile.following} user={this.props.params.id} />
 						<div className="profile-desc">{this.state.profile.description}</div>
+						{followBtn}
 					</div>
 					<div className="profile-stats">
 						<div>
