@@ -6,11 +6,13 @@ const Masonry = require('react-masonry-component');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
 const hashHistory = require('react-router').hashHistory;
 const FollowIndex = require('./follow_index.jsx');
+const InfiniteScroll = require('react-infinite-scroller');
 
 const HomeFeed = React.createClass({
 	getInitialState () {
 		return (
-			{photos: PhotoStore.home()});
+			{photos: PhotoStore.home(),
+				loaded: 15});
 	},
 	componentDidMount () {
 		this.listener = PhotoStore.addListener(this._updateFeed);
@@ -27,12 +29,16 @@ const HomeFeed = React.createClass({
 			hashHistory.push(`/profile/${userId}`)
 		}
 	},
+	hasMore () {
+		return (this.state.photos.length > this.state.loaded);
+	},
+	loadMore (pageNum) {
+		this.setState({loaded: (10 * pageNum + 1)});
+	},
   render () {
 		let indexItems = [];
 		if (this.state.photos) {
-			const photoKeys = Object.keys(this.state.photos);
-			photoKeys.forEach( (key) => {
-				let photo = this.state.photos[key];
+			this.state.photos.forEach( (photo) => {
 				let indexItem = (
 					<div className="home-post" key={photo.id}>
 						<p>
@@ -49,7 +55,9 @@ const HomeFeed = React.createClass({
       <div>
 				<FollowIndex/>
 				<div className="my-home-gallery">
-					{indexItems}
+					<InfiniteScroll pageStart={0} loadMore={this.loadMore} hasMore={this.hasMore()} loader={<div className="loader">Loading...</div>}>
+						{indexItems.slice(0, this.state.loaded)}
+					</InfiniteScroll>
 				</div>
       </div>
     );

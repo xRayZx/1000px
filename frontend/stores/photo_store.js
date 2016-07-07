@@ -15,7 +15,12 @@ PhotoStore.profile = function () {
 };
 
 PhotoStore.home = function () {
-	return Object.assign({}, _home);
+	let homeArray = [];
+	const homeKeys = Object.keys(_home);
+	homeKeys.forEach((key) => {
+		homeArray.push(_home[key]);
+	});
+	return homeArray;
 };
 
 PhotoStore._resetHome = function (feed) {
