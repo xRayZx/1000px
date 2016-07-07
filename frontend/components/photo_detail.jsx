@@ -5,14 +5,23 @@ const PhotoStore = require('../stores/photo_store.js');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
 const PhotoEdit = require('./photo_edit.jsx');
 const OutlineModal = require('boron/OutlineModal');
+const Comments = require('./comments.jsx');
 
 const PhotoDetail = React.createClass({
+	componentWillMount () {
+		this.photoId = null;
+		if (this.props.photo) {
+			this.photoId = this.props.photo.id;
+		} else {
+			this.photoId = this.props.params.id
+		}
+	},
 	getInitialState () {
 		let photoId = null;
 		if (this.props.photo) {
-			photoId = this.props.photo.id;
-		} else {
-			photoId = this.props.params.id
+				photoId = this.props.photo.id;
+			} else {
+				photoId = this.props.params.id;
 		}
 		return (
 			{
@@ -39,13 +48,7 @@ const PhotoDetail = React.createClass({
 		this.listener.remove();
 	},
 	_updateDetails () {
-		let photoId = null;
-		if (this.props.photo) {
-			photoId = this.props.photo.id;
-		} else {
-			photoId = this.props.params.id
-		}
-		let photo = PhotoStore.find(photoId);
+		let photo = PhotoStore.find(this.photoId);
 		this.setState({
 			title: photo.title,
 			description: photo.description,
@@ -84,7 +87,7 @@ const PhotoDetail = React.createClass({
 				<button onClick={this.showEdit} className="btn btn-primary">
 					Edit Photo
 					<OutlineModal ref="editModal">
-						<PhotoEdit photoId={this.props.params.id}/>
+						<PhotoEdit photoId={this.photoId}/>
 					</OutlineModal>
 				</button>
 			)
@@ -104,6 +107,7 @@ const PhotoDetail = React.createClass({
 						<p className="photo-title">{this.state.title}</p>
 						<p className="photo-desc">{this.state.description}</p>
 						{this.state.posterId === window.currentUser.id ? editButton : null}
+						<Comments photoId={this.state.id}/>
 					</div>
 				</div>
 			</div>

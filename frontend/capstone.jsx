@@ -9,6 +9,8 @@ const hashHistory = ReactRouter.hashHistory;
 
 window.FollowActions = require('./actions/follow_actions.js');
 window.FollowStore = require('./stores/follow_store.js');
+window.CommentActions = require('./actions/comment_actions.js');
+window.CommentStore = require('./stores/comment_store.js');
 
 //Auth
 const UserActions = require('./actions/user_actions');
