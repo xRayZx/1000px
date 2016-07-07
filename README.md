@@ -2,7 +2,7 @@
 
 [Heroku link][heroku] **Note:** This should be a link to your production site
 
-[heroku]: https://l000px.herokuapp.com/
+[heroku]: https://www.1000px.us
 
 ## Minimum Viable Product
 

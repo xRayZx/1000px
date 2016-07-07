@@ -535,3 +535,27 @@ ul.my-gallery-class.home {
 .photo-edit-btn {
   margin: 20px;
 }
+
+.comments-container {
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+.commentor-img {
+  display: inline-block;
+  float: left;
+  margin-right: 5px;
+}
+
+.commentor-img > img {
+  border-radius: 50%;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 1px;
+}
+
+.comment-text {
+  padding-top: 5px;
+}

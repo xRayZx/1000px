@@ -24,11 +24,12 @@ const Comments = React.createClass({
 		this.state.comments.forEach( (comment) => {
 			let element = (
 				<li className="comment" key={comment.id}>
-					<div className="commentor-info">
-						{comment.poster}
+					<div className="commentor-img">
+						<img src={CloudinaryUtil.image(comment.poster_pic, {width: 35, gravity: 'face', crop: 'thumb'})}/>
 					</div>
-					<div className="comment-body">
-						{comment.body}
+					<div className="comment-text">
+						<span><strong>{comment.poster} </strong></span>
+						<div>{comment.body}</div>
 					</div>
 				</li>
 			);
