@@ -83,7 +83,7 @@ const PhotoDetail = React.createClass({
 			height = 800;
 			imgClass = "detail-img"
 			infoClass = "info";
-			if (window.currentUser && this.state.posterId === window._currentUser.id) {
+			if (window.currentUser && this.state.posterId === window.currentUser.id) {
 				editButton = (
 					<button onClick={this.showEdit} className="btn btn-primary">
 						Edit Photo
