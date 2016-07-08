@@ -21,6 +21,10 @@ body {
   background-color: #f7f8fa;
 }
 
+ul {
+  padding: 0 5px;
+}
+
 .auth-form {
   background-color: #f7f8fa;
   width: 275px;
@@ -296,8 +300,25 @@ ul.my-gallery-class {
   margin: 20px auto;
   font-size: 18px;
 }
+
 .profile-stats > div {
+  display: inline-block;
+  width: 150px;
+  height: 30px;
+  margin: 0 6px;
+  padding-top: 3px;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid lightslategray;
   cursor: pointer;
+}
+
+.profile-stats > div:hover {
+  bottom: 3px;
+}
+
+.profile-stats > div:active {
+  top: 3px;
 }
 
 .follow-btn {
@@ -582,7 +603,7 @@ ul.my-gallery-class {
 
 .follows-list-container {
   list-style: none;
-  width: 300px;
+  width: 275px;
   height: 400px;
   padding: 25px;
   font-size: 14px;

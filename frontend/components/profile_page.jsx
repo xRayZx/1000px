@@ -18,7 +18,7 @@ const masonryOptions = {
 };
 
 const modalStyle = {
-	width: 300
+	width: 275
 };
 
 const ProfilePage = React.createClass({
@@ -81,7 +81,7 @@ const ProfilePage = React.createClass({
 			let followBtn = (
 				<FollowButton following={this.state.profile.following} user={this.props.params.id} />
 			)
-			if (window.currentUser && window.currentUser.id === parseInt(this.props.params.id, 10)) {
+			if (!window.currentUser || (window.currentUser && window.currentUser.id === parseInt(this.props.params.id, 10))) {
 		 	 	followBtn = null;
 			}
 			profile = (
@@ -98,17 +98,17 @@ const ProfilePage = React.createClass({
 						</div>
 						<div onClick={this.showFollowers}>
 							Followers {this.state.profile.followerCount}
-							<FadeModal ref="followers" modalStyle={modalStyle}>
-								<FollowerIndex userId={this.props.params.id} close={this.hideFollowers}/>
-							</FadeModal>
 						</div>
 						<div onClick={this.showFollowings}>
 							Following {this.state.profile.followingCount} 
+						</div>
+					</div>
+							<FadeModal ref="followers" modalStyle={modalStyle}>
+								<FollowerIndex userId={this.props.params.id} close={this.hideFollowers}/>
+							</FadeModal>
 							<FadeModal ref="followings" modalStyle={modalStyle}>
 								<FollowingIndex userId={this.props.params.id} close={this.hideFollowings}/>
 							</FadeModal>
-						</div>
-					</div>
 					<Masonry elementType='ul' className='my-gallery-class' options={masonryOptions}>
 						{indexItems}
 					</Masonry>
