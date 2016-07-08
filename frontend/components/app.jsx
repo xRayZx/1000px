@@ -23,6 +23,7 @@ const DropModal = require('boron/DropModal');
 
 const App = React.createClass({
   getInitialState () {
+		debugger
 	if (UserStore.currentUser()) {
 		this.headertext = UserStore.currentUser().first_name;
 	}
@@ -34,6 +35,7 @@ const App = React.createClass({
     );
   },
 	componentWillMount () {
+		debugger
 		if (UserStore.currentUser()) {
 			this.headertext = UserStore.currentUser().first_name;
 		} else {
@@ -41,6 +43,7 @@ const App = React.createClass({
 		}
 	},
 	componentWillReceiveProps () {
+		debugger
 		if (UserStore.currentUser()) {
 			this.setState({profileText: UserStore.currentUser().first_name});
 		} 
@@ -94,7 +97,7 @@ const App = React.createClass({
 	},
 	handleResize () {
 			let mq = window.matchMedia( "(min-width: 475px)" );
-			if (mq.matches) {
+			if (mq.matches && this.state.currentUser) {
 				this.setState({profileText: this.state.currentUser.first_name, uploadText: "Upload"});
 			} else {
 				this.setState({profileText: null, uploadText: null});
