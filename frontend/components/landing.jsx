@@ -3,6 +3,16 @@ const Modal = require('boron/DropModal');
 const SignupForm = require('./signup_form');
 const PhotoIndex = require('../components/photo_index.jsx');
 
+const settings = {
+	dots: true,
+	autoplay: true,
+	autoplaySpeed: 5000,
+	centerMode: true,
+	infinite: true,
+	lazyLoad: true,
+	slidesToShow: 1
+}
+
 const Landing = React.createClass({
   componentDidMount () {
   },
