@@ -50,7 +50,7 @@ const PhotoApiUtil = {
 			}
 		});
 	},
-	updatePhoto (photo, sucess) {
+	updatePhoto (photo, success) {
 		$.ajax({
 			url: `/api/photos/${photo.id}`,
 			type: 'PATCH',
@@ -60,6 +60,16 @@ const PhotoApiUtil = {
 				success(resp);
 			}
 		})
+	},
+	deletePhoto (photoId, success) {
+		$.ajax({
+			url: `/api/photos/${photoId}`,
+			type: 'DELETE',
+			dataType: 'json',
+			success: function (resp) {
+				success(resp);
+			}
+		});
 	}
 };
 

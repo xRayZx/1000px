@@ -5,6 +5,7 @@ const FormControl = require('react-bootstrap').FormControl;
 const Button = require('react-bootstrap').Button;
 const PhotoStore = require('../stores/photo_store.js');
 const PhotoActions = require('../actions/photo_actions.js');
+const hashHistory = require('react-router').hashHistory;
 
 const PhotoEdit = React.createClass({
 	getInitialState () {
@@ -36,7 +37,11 @@ const PhotoEdit = React.createClass({
 		PhotoActions.updatePhoto(newInfo);
 	},
 	_deletePhoto () {
-		
+		let result = confirm("Are you sure you want to delete this photo?");
+		if (result) {
+			PhotoActions.deletePhoto(this.state.id);
+			hashHistory.push(`/profile/${window.currentUser.id}`);
+		}
 	},
 	render () {
 		return (

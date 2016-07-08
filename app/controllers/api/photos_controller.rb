@@ -46,7 +46,10 @@ class Api::PhotosController < ApplicationController
 	end
 
 	def destroy
-
+		photo = Photo.find(params[:id])
+		photo.delete
+		@photos = Photo.where(poster_id: current_user.id)
+		render "api/photos/index"
 	end
 
 	private

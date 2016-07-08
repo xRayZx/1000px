@@ -20,6 +20,9 @@ const PhotoActions = {
 	updatePhoto (photo) {
 		PhotoApiUtil.updatePhoto(photo, PhotoActions.receivePhoto);
 	},
+	deletePhoto(photoId) {
+		PhotoApiUtil.deletePhoto(photoId, PhotoActions.receiveProfile);
+	},
 	receiveAllPhotos (photos) {
 		Dispatcher.dispatch({
 			actionType: "PHOTOS_RECEIVED",
