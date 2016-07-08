@@ -70,6 +70,9 @@ const PhotoDetail = React.createClass({
 	showEdit () {
 		this.refs.editModal.show();
 	},
+	hideEdit () {
+		this.refs.editModal.hide();
+	},
 	render () {
 		let style = 'detail-modal';
 		let contain = "img-container-modal"
@@ -88,7 +91,7 @@ const PhotoDetail = React.createClass({
 					<button onClick={this.showEdit} className="btn btn-primary">
 						Edit Photo
 						<OutlineModal ref="editModal">
-							<PhotoEdit photoId={this.photoId}/>
+							<PhotoEdit photoId={this.photoId} close={this.hideEdit}/>
 						</OutlineModal>
 					</button>
 				)

@@ -35,6 +35,7 @@ const PhotoEdit = React.createClass({
 	_handleSubmit () {
 		let newInfo = {id: this.state.id, title: this.state.title, description: this.state.description};
 		PhotoActions.updatePhoto(newInfo);
+		this.props.close();
 	},
 	_deletePhoto () {
 		let result = confirm("Are you sure you want to delete this photo?");
