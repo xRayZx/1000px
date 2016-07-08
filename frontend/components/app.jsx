@@ -24,11 +24,15 @@ const DropModal = require('boron/DropModal');
 const App = React.createClass({
   getInitialState () {
     return (
-      {currentUser: UserStore.currentUser()}
+			{currentUser: UserStore.currentUser(),
+				profileText: UserStore.currentUser().first_name,
+				uploadText: "Upload"
+			}
     );
   },
   componentDidMount () {
     this.listener = UserStore.addListener(this._updateCurrentUser);
+		window.addEventListener('resize', this.handleResize);
   },
   componentWillUnmount () {
     this.listener.remove()
@@ -73,6 +77,14 @@ const App = React.createClass({
 	myProfile () {
 		hashHistory.push(`/profile/${this.state.currentUser.id}`);
 	},
+	handleResize () {
+			let mq = window.matchMedia( "(min-width: 475px)" );
+			if (mq.matches) {
+				this.setState({profileText: this.state.currentUser.first_name, uploadText: "Upload"});
+			} else {
+				this.setState({profileText: null, uploadText: null});
+			}
+	},
   render () {
     const modalStyle = {
       width: '250px'
@@ -103,8 +115,8 @@ const App = React.createClass({
 			let navDrop= (
 				<span>
 					<img className="nav-img" src={CloudinaryUtil.image(this.state.currentUser.pic_url, {width: 25, gravity: 'face', crop: 'thumb'})}/>
-					{this.state.currentUser.first_name}
-					</span>
+					{this.state.profileText}
+				</span>
 			);
       navButtons = (
         <nav>
@@ -115,7 +127,7 @@ const App = React.createClass({
 								<MenuItem divider />
 								<MenuItem onClick={this.logout} >Log Out</MenuItem>
 							</NavDropdown>
-            <li onClick={this.showUpload} className="nav-upload"><i className="fa fa-cloud-upload"/>Upload</li>
+            <li onClick={this.showUpload} className="nav-upload"><i className="fa fa-cloud-upload"/>{this.state.uploadText}</li>
 						<WaveModal ref="uploadModal">
 							<PhotoUploadForm currentUser={this.state.currentUser} close={this.hideUpload}/>
 						</WaveModal>

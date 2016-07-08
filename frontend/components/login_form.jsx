@@ -34,16 +34,15 @@ const LoginForm = React.createClass({
   },
   guestLogin (e) {
     e.preventDefault();
-		let guestUser = ['g', 'u', 'e', 's', 't'];
-		let guestPw = ['p', 'a', 's', 's', 'w', 'o'];
+		let guestUser = ['g', 'u', 'e', 's', 't', 'p', 'a', 's', 's', 'w', 'o', 'r', 'd'];
 		let idx = 0;
 		window.interval = setInterval(()=>{
 			if (idx < 5) {
 				let name = this.state.username + guestUser[idx];
 				this.setState({username: name});
-			} else if (idx < 11){
-				let pw = this.state.password + guestPw[idx];
-				this.setState({password: pw}) 
+			} else if (idx < 13){
+				let pw = this.state.password + guestUser[idx];
+				this.setState({password: pw})
 			} else {
 				UserActions.guestLogin();
 			}

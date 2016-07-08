@@ -27,7 +27,6 @@ const FollowerIndex = React.createClass({
 		}
 	},
 	render () {
-		console.log(this.state.index);
 		let list = this.state.index.map((follower) => {
 			return (
 			<li className="follows-list" key={follower.id}>
@@ -39,7 +38,6 @@ const FollowerIndex = React.createClass({
 			</li>
 			);
 		});
-		console.log(list);
 		return (
 			<ul className="follows-list-container">
 				<div className="follows-header">Followers</div>
