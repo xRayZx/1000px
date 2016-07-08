@@ -47,7 +47,7 @@ const LoginForm = React.createClass({
 				UserActions.guestLogin();
 			}
 			idx = idx + 1;
-		}, 200);
+		}, 100);
   },
 	showSignup () {
 		this.props.close();

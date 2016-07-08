@@ -44,7 +44,7 @@ const PhotoIndex = React.createClass({
 				let indexItem = (
 					<PhotoIndexItem photo={photo} key={photo.id} size="landing"/>
 				);
-				indexItems.push(indexItem);
+				indexItems.unshift(indexItem);
 				if (indexItems.length > 20) {
 					return false;
 				} else {

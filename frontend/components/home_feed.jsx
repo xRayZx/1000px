@@ -48,7 +48,7 @@ const HomeFeed = React.createClass({
 						<PhotoIndexItem photo={photo} key={photo.id} size="home"/>
 					</div>
 				);
-				indexItems.push(indexItem);
+				indexItems.unshift(indexItem);
 			} );
 		}
     return (

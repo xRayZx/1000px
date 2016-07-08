@@ -75,7 +75,7 @@ const ProfilePage = React.createClass({
 					let indexItem = (
 						<PhotoIndexItem photo={photo} key={photo.id} size="profile"/>
 					);
-					indexItems.push(indexItem);
+					indexItems.unshift(indexItem);
 				} );
 			}
 			let followBtn = (
