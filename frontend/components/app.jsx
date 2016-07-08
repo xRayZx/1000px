@@ -23,13 +23,28 @@ const DropModal = require('boron/DropModal');
 
 const App = React.createClass({
   getInitialState () {
+	if (UserStore.currentUser()) {
+		this.headertext = UserStore.currentUser().first_name;
+	}
     return (
 			{currentUser: UserStore.currentUser(),
-				profileText: UserStore.currentUser().first_name,
+				profileText: this.headertext,
 				uploadText: "Upload"
 			}
     );
   },
+	componentWillMount () {
+		if (UserStore.currentUser()) {
+			this.headertext = UserStore.currentUser().first_name;
+		} else {
+			this.headertext = null;
+		}
+	},
+	componentWillReceiveProps () {
+		if (UserStore.currentUser()) {
+			this.setState({profileText: UserStore.currentUser().first_name});
+		} 
+	},
   componentDidMount () {
     this.listener = UserStore.addListener(this._updateCurrentUser);
 		window.addEventListener('resize', this.handleResize);
