@@ -8,10 +8,17 @@ const PhotoIndexItem = require('./photo_index_item.jsx');
 const Masonry = require('react-masonry-component');
 const CloudinaryUtil = require('../util/cloudinary_util.js');
 const FollowButton = require('./follow_button.jsx');
+const FollowerIndex = require('./follower_index.jsx');
+const FollowingIndex = require('./following_index.jsx');
+const FadeModal = require('boron/FadeModal');
 
 const masonryOptions = {
 	isFitWidth: true,
 	gutter: 10
+};
+
+const modalStyle = {
+	width: 300
 };
 
 const ProfilePage = React.createClass({
@@ -41,6 +48,18 @@ const ProfilePage = React.createClass({
 	},
 	_updateFeed () {
 		this.setState({photos: PhotoStore.profile()});
+	},
+	showFollowers () {
+		this.refs.followers.show();
+	},
+	showFollowings () {
+		this.refs.followings.show();
+	},
+	hideFollowers () {
+		this.refs.followers.hide();
+	},
+	hideFollowings () {
+		this.refs.followings.hide();
 	},
 	render () {
 		let indexItems = [];
@@ -75,13 +94,19 @@ const ProfilePage = React.createClass({
 					</div>
 					<div className="profile-stats">
 						<div>
-							Photos {Object.keys(this.state.photos).length} 
+							<strong>Photos {Object.keys(this.state.photos).length}</strong>
 						</div>
-						<div>
+						<div onClick={this.showFollowers}>
 							Followers {this.state.profile.followerCount}
+							<FadeModal ref="followers" modalStyle={modalStyle}>
+								<FollowerIndex userId={this.props.params.id} close={this.hideFollowers}/>
+							</FadeModal>
 						</div>
-						<div>
+						<div onClick={this.showFollowings}>
 							Following {this.state.profile.followingCount} 
+							<FadeModal ref="followings" modalStyle={modalStyle}>
+								<FollowingIndex userId={this.props.params.id} close={this.hideFollowings}/>
+							</FadeModal>
 						</div>
 					</div>
 					<Masonry elementType='ul' className='my-gallery-class' options={masonryOptions}>

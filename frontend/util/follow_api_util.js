@@ -38,6 +38,26 @@ const FollowApiUtil = {
 				success(resp);
 			}
 		});
+	},
+	fetchFollowerIndex (userId, success) {
+		$.ajax({
+			url: `/api/followers/${userId}`,
+			type: 'GET',
+			dataType: 'json',
+			success: function (resp) {
+				success(resp);
+			}
+		});
+	},
+	fetchFollowingIndex (userId, success) {
+		$.ajax({
+			url: `/api/following/${userId}`,
+			type: 'GET',
+			dataType: 'json',
+			success: function (resp) {
+				success(resp);
+			}
+		});
 	}
 };
 

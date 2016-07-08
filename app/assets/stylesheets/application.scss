@@ -296,7 +296,9 @@ ul.my-gallery-class {
   margin: 20px auto;
   font-size: 18px;
 }
-
+.profile-stats > div {
+  cursor: pointer;
+}
 
 .follow-btn {
   display: block;
@@ -465,16 +467,23 @@ ul.my-gallery-class {
   display: none;
   right: 0px;
   margin: 5px 20px;
-  width: 30%;
-  max-width: 290px;
+  width: 32%;
+  max-width: 300px;
   position: fixed;
   padding-right: 18px;
+  height: 80vh;
+}
+
+.follow-item-container {
   overflow-y: scroll;
   height: 80vh;
 }
 
-@media (min-height: 600px) {
+@media (min-height: 720px) {
   .follow-index {
+    height: auto;
+  }
+  .follow-item-container {
     overflow-y: auto;
     height: auto;
   }
@@ -569,6 +578,25 @@ ul.my-gallery-class {
 .suggest-pic-item {
   margin-right: 5px;
   cursor: pointer;
+}
+
+.follows-list-container {
+  list-style: none;
+  width: 300px;
+  height: 400px;
+  padding: 25px;
+  font-size: 14px;
+  overflow-y: scroll;
+}
+
+.follows-header {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid gray;
+}
+
+.follows-list {
+  margin: 10px auto;
 }
 
 .control-label {

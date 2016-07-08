@@ -14,6 +14,12 @@ const FollowAction = {
 	status (userId) {
 		FollowApiUtil.status(userId, FollowAction.receiveStatus);
 	},
+	fetchFollowerIndex (userId) {
+		FollowApiUtil.fetchFollowerIndex(userId, FollowAction.receiveFollowerIndex)
+	},
+	fetchFollowingIndex (userId) {
+		FollowApiUtil.fetchFollowingIndex(userId, FollowAction.receiveFollowingIndex)
+	},
 	receiveStatus (profile) {
 		Dispatcher.dispatch({
 			actionType: "PROFILE_RECEIVED",
@@ -23,6 +29,18 @@ const FollowAction = {
 	receiveIndex (index) {
 		Dispatcher.dispatch({
 			actionType: "FOLLOW_INDEX_RECEIVED",
+			index: index
+		});
+	},
+	receiveFollowerIndex (index) {
+		Dispatcher.dispatch({
+			actionType: "FOLLOWER_INDEX_RECEIVED",
+			index: index
+		});
+	},
+	receiveFollowingIndex (index) {
+		Dispatcher.dispatch({
+			actionType: "FOLLOWING_INDEX_RECEIVED",
 			index: index
 		});
 	}

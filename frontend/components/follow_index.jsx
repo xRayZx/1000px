@@ -78,7 +78,9 @@ const FollowIndex = React.createClass({
 					<h4 className="follow-title">Who To Follow</h4>
 					<span className="refresh" onClick={this.refresh}>Refresh</span>
 				</div>
-				{userList}
+				<div className="follow-item-container">
+					{userList}
+				</div>
 			</div>
 		)
 	}

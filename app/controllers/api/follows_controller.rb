@@ -30,4 +30,29 @@ class Api::FollowsController < ApplicationController
 		render '/api/follows/index'
 	end
 
+	def followers
+		user = User.find(params[:id])
+		followers = user.followers
+		@index = followers.map do |follower|
+			{id: follower.id, 
+		 	 	name: (follower.first_name + " " + follower.last_name),
+		  	pic: follower.pic_url,
+				photoCount: follower.photos.count
+			}
+		end
+		render '/api/follows/list'
+	end
+
+	def followings
+		user = User.find(params[:id])
+		followings = user.followings
+		@index = followings.map do |following|
+			{id: following.id, 
+		 	 	name: (following.first_name + " " + following.last_name),
+		  	pic: following.pic_url,
+				photoCount: following.photos.count
+			}
+		end
+		render '/api/follows/list'
+	end
 end
