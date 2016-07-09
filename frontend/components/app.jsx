@@ -23,34 +23,31 @@ const DropModal = require('boron/DropModal');
 
 const App = React.createClass({
   getInitialState () {
-		debugger
-	if (UserStore.currentUser()) {
-		this.headertext = UserStore.currentUser().first_name;
-	}
+	// if (UserStore.currentUser()) {
+	//   this.headertext = UserStore.currentUser().first_name;
+	// }
     return (
-			{currentUser: UserStore.currentUser(),
-				profileText: this.headertext,
-				uploadText: "Upload"
+			{currentUser: UserStore.currentUser()
+				// profileText: this.headertext,
+				// uploadText: "Upload"
 			}
     );
   },
-	componentWillMount () {
-		debugger
-		if (UserStore.currentUser()) {
-			this.headertext = UserStore.currentUser().first_name;
-		} else {
-			this.headertext = null;
-		}
-	},
-	componentWillReceiveProps () {
-		debugger
-		if (UserStore.currentUser()) {
-			this.setState({profileText: UserStore.currentUser().first_name});
-		} 
-	},
+	// componentWillMount () {
+	//   if (UserStore.currentUser()) {
+	//     this.headertext = UserStore.currentUser().first_name;
+	//   } else {
+	//     this.headertext = null;
+	//   }
+	// },
+	// componentWillReceiveProps () {
+	//   if (UserStore.currentUser()) {
+	//     this.setState({profileText: UserStore.currentUser().first_name});
+	//   } 
+	// },
   componentDidMount () {
     this.listener = UserStore.addListener(this._updateCurrentUser);
-		window.addEventListener('resize', this.handleResize);
+		// window.addEventListener('resize', this.handleResize);
   },
   componentWillUnmount () {
     this.listener.remove()
@@ -103,6 +100,9 @@ const App = React.createClass({
 				this.setState({profileText: null, uploadText: null});
 			}
 	},
+	// updateheader () {
+	//   this.setState({profileText: UserStore.currentUser().first_name});
+	// },
   render () {
     const modalStyle = {
       width: '250px'
@@ -133,7 +133,7 @@ const App = React.createClass({
 			let navDrop= (
 				<span>
 					<img className="nav-img" src={CloudinaryUtil.image(this.state.currentUser.pic_url, {width: 25, gravity: 'face', crop: 'thumb'})}/>
-					{this.state.profileText}
+					{this.state.currentUser.first_name}
 				</span>
 			);
       navButtons = (
@@ -145,7 +145,7 @@ const App = React.createClass({
 								<MenuItem divider />
 								<MenuItem onClick={this.logout} >Log Out</MenuItem>
 							</NavDropdown>
-            <li onClick={this.showUpload} className="nav-upload"><i className="fa fa-cloud-upload"/>{this.state.uploadText}</li>
+            <li onClick={this.showUpload} className="nav-upload"><i className="fa fa-cloud-upload"></i>Upload</li>
 						<WaveModal ref="uploadModal">
 							<PhotoUploadForm currentUser={this.state.currentUser} close={this.hideUpload}/>
 						</WaveModal>

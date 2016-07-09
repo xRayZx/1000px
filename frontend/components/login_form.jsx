@@ -31,6 +31,7 @@ const LoginForm = React.createClass({
     e.preventDefault();
     let user = {username: this.state.username, password: this.state.password};
     UserActions.login(user);
+		// this.props.updateHeader();
   },
   guestLogin (e) {
     e.preventDefault();
@@ -45,6 +46,7 @@ const LoginForm = React.createClass({
 				this.setState({password: pw})
 			} else {
 				UserActions.guestLogin();
+				this.props.updateHeader();
 			}
 			idx = idx + 1;
 		}, 100);
