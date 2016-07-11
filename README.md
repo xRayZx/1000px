@@ -97,8 +97,8 @@ end
         <img className="follow-pic" onClick={this.showProfile(follower.id)}
 				   src={CloudinaryUtil.image(follower.pic, {
 						 									width: 40,
-														   gravity: 'face',
-															  crop: 'thumb'})}/>
+														  gravity: 'face',
+															crop: 'thumb'})}/>
         <div className="suggest-text">
           <span>
 			<strong onClick={this.showProfile(follower.id)}>{follower.name}</strong>
