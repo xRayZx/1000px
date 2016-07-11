@@ -96,7 +96,7 @@ const PhotoDetail = React.createClass({
 					</button>
 				)
 			}
-		} 
+		}
 		return (
 			<div className={style}>
 				<div className={contain}>
@@ -104,7 +104,7 @@ const PhotoDetail = React.createClass({
 				</div>
 				<div className={infoClass}>
 					<div className="poster-info">
-						<img className="home-profile-pic home-poster" src={CloudinaryUtil.image(this.state.profilePic, 
+						<img className="home-profile-pic home-poster" src={CloudinaryUtil.image(this.state.profilePic,
 							{gravity: 'face', crop: 'crop'})} onClick={this.showProfile}/>
 						<span><strong className="home-poster" onClick={this.showProfile}>{this.state.poster}</strong></span>
 					</div>

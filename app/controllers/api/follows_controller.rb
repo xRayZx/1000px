@@ -17,15 +17,14 @@ class Api::FollowsController < ApplicationController
 	def index
 		@index = []
 		following = current_user.followings.map {|user| user.id}
-		users = User.all.order('random()')
+		users = User.where.not({id: following}).order('random()').limit(5)
 		users.each do |user|
-			unless user.id == current_user.id || following.include?(user.id) 
+			unless user.id == current_user.id
 				profile = {profile: user,
 										photos: user.photos.limit(5).select("id, url, poster_id"),
 										photoCount: user.photos.count}
 				@index << profile
 			end
-			break if @index.length > 4
 		end
 		render '/api/follows/index'
 	end
@@ -34,7 +33,7 @@ class Api::FollowsController < ApplicationController
 		user = User.find(params[:id])
 		followers = user.followers
 		@index = followers.map do |follower|
-			{id: follower.id, 
+			{id: follower.id,
 		 	 	name: (follower.first_name + " " + follower.last_name),
 		  	pic: follower.pic_url,
 				photoCount: follower.photos.count
@@ -47,7 +46,7 @@ class Api::FollowsController < ApplicationController
 		user = User.find(params[:id])
 		followings = user.followings
 		@index = followings.map do |following|
-			{id: following.id, 
+			{id: following.id,
 		 	 	name: (following.first_name + " " + following.last_name),
 		  	pic: following.pic_url,
 				photoCount: following.photos.count

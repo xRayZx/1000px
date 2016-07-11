@@ -1,142 +1,116 @@
 # 1000px
 
-[Heroku link][heroku] **Note:** This should be a link to your production site
+[1000px live][heroku]
 
-[heroku]: https://www.1000px.us
+[heroku]: http://www.1000px.us
 
-## Minimum Viable Product
+1000px is a full-stack web application inspired by 500px. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend. All JavaScript is written in ES6 syntax.
 
-1000px is a web application inspired by 500px that will be build using Ruby on Rails and React.js.  By the end of Week 9, this app will, at a minimum, satisfy the following criteria:
+## Features & Implementation
 
-- [x] Hosting on Heroku
-- [x] New account creation, login, and guest/demo login
-- [ ] A production README, replacing this README (**NB**: check out the [sample production README](docs/production_readme.md) -- you'll write this later)
-- [x] Upload Photos
-  - [x] Integrate Cloudinary for uploading
-  - [x] Photo detail page has description and poster information
-  - [x] Ability to edit description
-- [x] Follows
-  - [x] Users can follow and be followed by many users
-  - [x] Dynamic follow/unfollow button on profile page
-- [x] Home Feed
-  - [x] Displays all photos of the current user's followees
-  - [x] Clicking on photo brings up Photo detail page
-  - [x] Clicking on poster renders the user profile page
-- [x] Profile Page
-  - [x] Has profile edit form
-  - [x] Has a profile picture and description
-  - [x] Index of all photos uploaded by this user
-  - [ ] Has option to show the user's followers and followees
+### Single-Page App
 
-## Design Docs
-* [View Wireframes][views]
-* [React Components][components]
-* [Flux Cycles][flux-cycles]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
+1000px is truly a single-page; all content is delivered on one static page.  The root page listens to a `UserStore` and renders content based on a call to `UserStore.currentUser()`.  By using Jbuilder, sensitive information is filtered out of the frontend of the app.
 
-[views]: docs/views.md
-[components]: docs/components.md
-[flux-cycles]: docs/flux-cycles.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+```ruby
+json.extract! user, :id, :pic_url, :first_name, :last_name, :description, :cover
 
-## Implementation Timeline
+json.followingCount user.followings.count
+json.followerCount user.followers.count
 
-### Phase 1: Backend setup and Front End User Authentication (1.5 day, W1 Tu 10pm)
+if current_user
+	json.following current_user.followings.map {|user| user.id}.include?(user.id)
+end
+```
 
-**Objective:** Functioning rails project with Authentication
+### Photo Uploading, Rendering, and Editing
+  On the backend, the database holds a photos table which contains columns for `id`, `poster_id`, `title`, `description`, and `url`. Photos are uploaded through a built in Cloudinary widget and stored on the Cloudinary CDN. Upon successful upload, Cloudinary returns an object with information about the image. The `path` is extracted from the returned object, and stored as the `url` in the photos table. Storing the `path` rather than the `full_url` allows the app to dynamically fetch the photos from the Cloudinary CDN with an options hash. Since high quality photos can easily exceed 10MB in size, this limits the bandwidth usage to only what's necessary.
 
-- [x] create new project
-- [x] create `User` model
-- [x] back-end authentication
-- [x] front-end authentication
-- [x] user signup/signin pages
-- [x] blank landing page after signin
+  ```javascript
+  CloudinaryUtil.image(this.props.photo.url,
+     {width: size[this.props.size],
+       crop: "limit",
+       alt: this.props.photo.title,
+     })
+  ```
 
-### Phase 2: Photos Model, API, and basic APIUtil (2 days, W1 Th 6pm)
+  All photos are listed through a `PhotoIndexItem` component. This component holds some poster information that is displayed when the mouse hovers over the photo. It also holds the click handler to show the `PhotoDetail` component for that photo.
 
-**Objective:** Photos can be uploaded, displayed, edited and destroyed through the API.
+  ![hover_credits]
 
-- [x] create `Photo` model
-- [x] seed the database with a small amount of test data
-- [x] CRUD API for photos (`Cloudinary`)
-- [x] jBuilder views for photos
-- [x] setup Webpack & Flux scaffold
-- [x] setup `APIUtil` to interact with the API
-- [x] test out API interaction in the console.
 
-### Phase 3: Flux Architecture and Router (2 days, W1 Sat 6pm)
+  When a user is not logged in, the app renders the `Landing` component as the root. This component provides a preview of 25 random photos no users is logged in. Clicking on a photo pops the photo out into a modal with its details and comments. The user is also able to click on the poster of the photo to be redirected to their profile. The profile page component renders all photos uploaded by that user. This component is also rendered as a child of the root route, generating a direct URL to allow sharing the profile page through copy and pasting.
 
-**Objective:** Photos can be uploaded, displayed, edited and destroyed with the user interface.
+  Upon user login, the `Landing` component gets replaced with the `HomeFeed` component at the root route. The `HomeFeed` component makes an API call to the backend, which hits the  `PhotosController#home` method that returns a JSON object of all photos posted by users followed by the current user.
 
-- [x] setup the flux loop with skeleton files
-- [x] setup React Router
-- implement each photo component, building out the flux loop as needed.
-  - [x] `PhotosIndex`
-  - [x] `PhotoIndexItem`
-  - [x] `PhotoDetail`
-  - [x] `CloudinaryWidget`
+  ```ruby
+  def home
+    following = []
+    if current_user
+      following = current_user.followings.map {|acct| acct.id}
+    end
+    @photos = Photo.where(poster_id: following)
+    render "api/photos/home"
+  end
+```
 
-### Phase 4: User Profile Page (1 day, W2 Sun 6pm)
+  Logged in users have the ability to upload photos and edit (or delete) them on the photo detail page. As mentioned earlier, clicking on the photo will pop the photo details out in a modal. The user can then click on the photo again to be redirected to that photo's detail page via the router, changing the URL. If the user is the owner of the photo, the edit button will be available.
 
-**Objective:** Each users show page will have their uploaded pictures and user details
+  ![photo_detail_edit]
 
-- [x] setup flux loop with skeleton files
-- [x] setup React Router
-- implement each photo component, building out the flux loop as needed.
-  - [x] `PhotoIndex`
-  - [x] `PhotoIndexItem`
-  - [x] `PhotoDetail`
 
-### Phase 5: Start Styling (0.5 days, W2 M 12pm)
+### Follows
 
-**Objective:** Existing pages (including signup/signin) will look good.
+   In addition to the user's personalized photo feed, the `HomeFeed` also renders a `FollowIndex` component which randomly shows 5 users the current user can follow, along with a sample of their photo uploads. When the `FollowIndex` mounts, it makes an API call to the `FollowsController#index` method which queries the database for 5 random users the current user can follow along with up to 5 of their most recent photos. The app utilizes a `FollowStore` on the frontend to store the JSON object returned by the backend, allowing the Follow components to render the data quickly.
 
-- [x] create a basic style guide
-- [x] position elements on the page
-- [x] add basic colors & styles
+  ```ruby
+  def index
+		@index = []
+		following = current_user.followings.map {|user| user.id}
+		users = User.where.not({id: following}).order('random()').limit(5)
+		users.each do |user|
+			unless user.id == current_user.id
+				profile = {profile: user,
+                    photos: user.photos.limit(5).select("url"),
+                photoCount: user.photos.count}
+				@index << profile
+			end
+		end
+		render '/api/follows/index'
+	end
+  ```
 
-### Phase 6: Follows (1.5 day, W2 W 6pm)
+![follow_index]
 
-**Objective:** User has many followers and a followee belongs to many users.
 
-- [x] create `Follow` model
-- build out API, Flux loop, and components for:
-  - [x] creating followee/follower associations
-  - [x] implement follows component, building out the flux loop as needed
-    - [x] `FollowsIndex`
-  - [ ] display followers on profile page
-- Use CSS to style new views
+  The `FollowButton` component is rendered on the `FollowIndex` and on the `ProfilePage` component. These 2 components pass the user's `id` and `following` status as props to the `FollowButton` which is used to dynamically render the text for the button.
 
-### Phase 7: Home Feed (1 day, W2 Th 6pm)
+  Each profile also has a `FollowerIndex` and a `FollowingIndex` component which listens to the `FollowStore`. Clicking on "Followers" or "Following" will render the component as a modal, listing all the followers/followees of that user/profile.
 
-**Objective:** Display all photos uploaded by users followed by the current user.
+  Here's the render method of the `FollowerIndex` component:
 
-- [x] create a photo index based off the `Follows` join table.
-- [x] implement photo components
-  - [x] `PhotosIndex`
-  - [x] `PhotoIndexItem`
-  - [x] `PhotoDetail`
+  ```javascript
+  render () {
+    let list = this.state.index.map((follower) => {
+      return (
+      <li className="follows-list" key={follower.id}>
+        <img className="follow-pic" onClick={this.showProfile(follower.id)} src={CloudinaryUtil.image(follower.pic, {width: 40, gravity: 'face', crop: 'thumb'})}/>
+        <div className="suggest-text">
+          <span><strong onClick={this.showProfile(follower.id)}>{follower.name}</strong></span>
+          <div>{follower.photoCount} Photos</div>
+        </div>
+      </li>
+      );
+    });
+    return (
+      <ul className="follows-list-container">
+        <div className="follows-header">Followers</div>
+        {list}
+      </ul>
+    )
+  }
+  ```
 
-### Phase 8: Styling Cleanup and Seeding (1 day, W2 F 6pm)
-
-**objective:** Make the site feel more cohesive and awesome.
-
-- [ ] Get feedback on my UI from others
-- [ ] Refactor HTML classes & CSS rules
-- [ ] Add modals, transitions, and other styling flourishes.
-
-### Bonus Features (TBD)
-- [ ] Tags
-- [ ] Search
-- [ ] Discover
-- [ ] Notifications
-- [ ] Comments
-- [ ] Likes
-
-[phase-one]: docs/phases/phase1.md
-[phase-two]: docs/phases/phase2.md
-[phase-three]: docs/phases/phase3.md
-[phase-four]: docs/phases/phase4.md
-[phase-five]: docs/phases/phase5.md
+[hover_credits]: ./docs/hover_credits.png
+[photo_detail_edit]: ./docs/photo_detail_edit.png
+[follow_index]: ./docs/follow_index.png
