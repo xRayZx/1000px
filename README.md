@@ -71,8 +71,8 @@ end
 		users.each do |user|
 			unless user.id == current_user.id
 				profile = {profile: user,
-                    photos: user.photos.limit(5).select("url"),
-                photoCount: user.photos.count}
+                    		photos: user.photos.limit(5).select("url"),
+                		photoCount: user.photos.count}
 				@index << profile
 			end
 		end
@@ -94,9 +94,15 @@ end
     let list = this.state.index.map((follower) => {
       return (
       <li className="follows-list" key={follower.id}>
-        <img className="follow-pic" onClick={this.showProfile(follower.id)} src={CloudinaryUtil.image(follower.pic, {width: 40, gravity: 'face', crop: 'thumb'})}/>
+        <img className="follow-pic" onClick={this.showProfile(follower.id)}
+				   src={CloudinaryUtil.image(follower.pic, {
+						 									width: 40,
+														   gravity: 'face',
+															  crop: 'thumb'})}/>
         <div className="suggest-text">
-          <span><strong onClick={this.showProfile(follower.id)}>{follower.name}</strong></span>
+          <span>
+			<strong onClick={this.showProfile(follower.id)}>{follower.name}</strong>
+		  </span>
           <div>{follower.photoCount} Photos</div>
         </div>
       </li>
