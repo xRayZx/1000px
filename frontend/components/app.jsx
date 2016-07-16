@@ -122,7 +122,7 @@ const App = React.createClass({
       </nav>
     );
     let homePage = (
-      <Landing modalStyle={modalStyle} showLogin={this.showLogin}/>
+      <Landing modalStyle={modalStyle} showSignup={this.showSignup}/>
     );
     if (this.state.currentUser) {
       homePage = (

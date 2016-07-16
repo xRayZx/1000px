@@ -47,6 +47,7 @@ header {
   z-index: 999;
   height: 50px;
   width: 100%;
+  min-width: 420px;
   top: 0;
   background-color: hsla(0, 0%, 0%, 0.75)
 }
@@ -257,6 +258,7 @@ ul.my-gallery-class {
 
 .my-home-gallery {
   width: 95%;
+  min-width: 420px;
   display: block;
   margin: 5px auto;
 }
@@ -498,6 +500,7 @@ ul.my-gallery-class {
   right: 0px;
   margin: 5px 20px;
   width: 32%;
+  min-width: 290px;
   max-width: 300px;
   position: fixed;
   padding-right: 18px;
