@@ -47183,203 +47183,233 @@ return jQuery;
 	const HomeFeed = __webpack_require__(595);
 	const Landing = __webpack_require__(628);
 	const ProfilePage = __webpack_require__(631);
-	const ProfileEdit = __webpack_require__(632);
+	const ProfileEdit = __webpack_require__(635);
 	
 	//Modals
-	const WaveModal = __webpack_require__(633);
+	const WaveModal = __webpack_require__(636);
 	const DropModal = __webpack_require__(629);
 	
 	const App = React.createClass({
-	  displayName: 'App',
+			displayName: 'App',
 	
-	  getInitialState() {
-	    return { currentUser: UserStore.currentUser() };
-	  },
-	  componentDidMount() {
-	    this.listener = UserStore.addListener(this._updateCurrentUser);
-	  },
-	  componentWillUnmount() {
-	    this.listener.remove();
-	  },
-	  _updateCurrentUser() {
-	    this.setState({
-	      currentUser: UserStore.currentUser()
-	    });
-	  },
-	  showLogin() {
-	    this.refs.loginModal.show();
-	  },
-	  hideLogin() {
-	    this.refs.loginModal.hide();
-	  },
-	  showSignup() {
-	    this.refs.signupModal.show();
-	  },
-	  hideSignup() {
-	    this.refs.signupModal.hide();
-	  },
-	  showUpload() {
-	    this.refs.uploadModal.show();
-	  },
-	  hideUpload() {
-	    this.refs.uploadModal.hide();
-	  },
-	  showEdit() {
-	    this.refs.editModal.show();
-	  },
-	  hideEdit() {
-	    this.refs.editModal.hide();
-	  },
-	  logout() {
-	    UserActions.logout();
-	    this._updateCurrentUser();
-	    hashHistory.push('/');
-	  },
-	  returnHome() {
-	    hashHistory.push('/');
-	  },
-	  myProfile() {
-	    hashHistory.push(`/profile/${ this.state.currentUser.id }`);
-	  },
-	  render() {
-	    const modalStyle = {
-	      width: '250px'
-	    };
-	    let navButtons = React.createElement(
-	      'nav',
-	      {
-	        __self: this
-	      },
-	      React.createElement(
-	        'ul',
-	        {
-	          __self: this
-	        },
-	        React.createElement(
-	          'li',
-	          { onClick: this.showLogin, __self: this
-	          },
-	          'Log In'
-	        ),
-	        React.createElement(
-	          DropModal,
-	          { ref: 'loginModal', modalStyle: modalStyle, __self: this
-	          },
-	          React.createElement(LoginForm, { close: this.hideLogin, showSignup: this.showSignup, __self: this
-	          })
-	        ),
-	        React.createElement(
-	          'li',
-	          { onClick: this.showSignup, __self: this
-	          },
-	          'Sign Up'
-	        ),
-	        React.createElement(
-	          DropModal,
-	          { ref: 'signupModal', modalStyle: modalStyle, __self: this
-	          },
-	          React.createElement(SignupForm, { close: this.hideSignup, showLogin: this.showLogin, __self: this
-	          })
-	        )
-	      )
-	    );
-	    let homePage = React.createElement(Landing, { modalStyle: modalStyle, showLogin: this.showLogin, __self: this
-	    });
-	    if (this.state.currentUser) {
-	      homePage = React.createElement(
-	        'div',
-	        { className: 'home-page', __self: this
-	        },
-	        React.createElement(HomeFeed, { currentUser: this.state.currentUser, __self: this
-	        })
-	      );
-	      let navDrop = React.createElement(
-	        'span',
-	        {
-	          __self: this
-	        },
-	        React.createElement('img', { className: 'nav-img', src: CloudinaryUtil.image(this.state.currentUser.pic_url, { width: 25, gravity: 'face', crop: 'thumb' }), __self: this
-	        }),
-	        this.state.currentUser.first_name
-	      );
-	      navButtons = React.createElement(
-	        'nav',
-	        {
-	          __self: this
-	        },
-	        React.createElement(
-	          'ul',
-	          {
-	            __self: this
-	          },
-	          React.createElement(
-	            NavDropdown,
-	            { className: 'profile-dropdown', title: navDrop, id: 'nav-dropdown', __self: this
-	            },
-	            React.createElement(
-	              MenuItem,
-	              { onClick: this.myProfile, __self: this
-	              },
-	              'My Profile'
-	            ),
-	            React.createElement(
-	              MenuItem,
-	              { onClick: this.showEdit, __self: this
-	              },
-	              'Edit Profile'
-	            ),
-	            React.createElement(MenuItem, { divider: true, __self: this
-	            }),
-	            React.createElement(
-	              MenuItem,
-	              { onClick: this.logout, __self: this
-	              },
-	              'Log Out'
-	            )
-	          ),
-	          React.createElement(
-	            'li',
-	            { onClick: this.showUpload, className: 'nav-upload', __self: this
-	            },
-	            React.createElement('i', { className: 'fa fa-cloud-upload', __self: this
-	            }),
-	            'Upload'
-	          ),
-	          React.createElement(
-	            WaveModal,
-	            { ref: 'uploadModal', __self: this
-	            },
-	            React.createElement(PhotoUploadForm, { currentUser: this.state.currentUser, close: this.hideUpload, __self: this
-	            })
-	          ),
-	          React.createElement(
-	            DropModal,
-	            { ref: 'editModal', __self: this
-	            },
-	            React.createElement(ProfileEdit, { currentUser: this.state.currentUser, close: this.hideEdit, __self: this
-	            })
-	          )
-	        )
-	      );
-	    }
-	    const header = React.createElement(
-	      'header',
-	      {
-	        __self: this
-	      },
-	      React.createElement('img', { src: '/1000px-logo.png', height: '50px', onClick: this.returnHome, __self: this
-	      }),
-	      navButtons
-	    );
-	    return React.createElement(
-	      'div',
-	      {
-	        __self: this
-	      },
-	      header,
-	      this.props.children ? this.props.children : homePage
-	    );
-	  }
+			getInitialState() {
+					// if (UserStore.currentUser()) {
+					//   this.headertext = UserStore.currentUser().first_name;
+					// }
+					return { currentUser: UserStore.currentUser()
+							// profileText: this.headertext,
+							// uploadText: "Upload"
+					};
+			},
+			// componentWillMount () {
+			//   if (UserStore.currentUser()) {
+			//     this.headertext = UserStore.currentUser().first_name;
+			//   } else {
+			//     this.headertext = null;
+			//   }
+			// },
+			// componentWillReceiveProps () {
+			//   if (UserStore.currentUser()) {
+			//     this.setState({profileText: UserStore.currentUser().first_name});
+			//   }
+			// },
+			componentDidMount() {
+					this.listener = UserStore.addListener(this._updateCurrentUser);
+					// window.addEventListener('resize', this.handleResize);
+			},
+			componentWillUnmount() {
+					this.listener.remove();
+			},
+			_updateCurrentUser() {
+					this.setState({
+							currentUser: UserStore.currentUser()
+					});
+			},
+			showLogin() {
+					this.refs.loginModal.show();
+			},
+			hideLogin() {
+					this.refs.loginModal.hide();
+			},
+			showSignup() {
+					this.refs.signupModal.show();
+			},
+			hideSignup() {
+					this.refs.signupModal.hide();
+			},
+			showUpload() {
+					this.refs.uploadModal.show();
+			},
+			hideUpload() {
+					this.refs.uploadModal.hide();
+			},
+			showEdit() {
+					this.refs.editModal.show();
+			},
+			hideEdit() {
+					this.refs.editModal.hide();
+			},
+			logout() {
+					UserActions.logout();
+					this._updateCurrentUser();
+					hashHistory.push('/');
+			},
+			returnHome() {
+					hashHistory.push('/');
+			},
+			myProfile() {
+					hashHistory.push(`/profile/${ this.state.currentUser.id }`);
+			},
+			handleResize() {
+					let mq = window.matchMedia("(min-width: 475px)");
+					if (mq.matches && this.state.currentUser) {
+							this.setState({ profileText: this.state.currentUser.first_name, uploadText: "Upload" });
+					} else {
+							this.setState({ profileText: null, uploadText: null });
+					}
+			},
+			// updateheader () {
+			//   this.setState({profileText: UserStore.currentUser().first_name});
+			// },
+			render() {
+					const modalStyle = {
+							width: '250px'
+					};
+					let navButtons = React.createElement(
+							'nav',
+							{
+									__self: this
+							},
+							React.createElement(
+									'ul',
+									{
+											__self: this
+									},
+									React.createElement(
+											'li',
+											{ onClick: this.showLogin, __self: this
+											},
+											'Log In'
+									),
+									React.createElement(
+											DropModal,
+											{ ref: 'loginModal', modalStyle: modalStyle, __self: this
+											},
+											React.createElement(LoginForm, { close: this.hideLogin, showSignup: this.showSignup, __self: this
+											})
+									),
+									React.createElement(
+											'li',
+											{ onClick: this.showSignup, __self: this
+											},
+											'Sign Up'
+									),
+									React.createElement(
+											DropModal,
+											{ ref: 'signupModal', modalStyle: modalStyle, __self: this
+											},
+											React.createElement(SignupForm, { close: this.hideSignup, showLogin: this.showLogin, __self: this
+											})
+									)
+							)
+					);
+					let homePage = React.createElement(Landing, { modalStyle: modalStyle, showSignup: this.showSignup, __self: this
+					});
+					if (this.state.currentUser) {
+							homePage = React.createElement(
+									'div',
+									{ className: 'home-page', __self: this
+									},
+									React.createElement(HomeFeed, { currentUser: this.state.currentUser, __self: this
+									})
+							);
+							let navDrop = React.createElement(
+									'span',
+									{
+											__self: this
+									},
+									React.createElement('img', { className: 'nav-img', src: CloudinaryUtil.image(this.state.currentUser.pic_url, { width: 25, gravity: 'face', crop: 'thumb' }), __self: this
+									}),
+									this.state.currentUser.first_name
+							);
+							navButtons = React.createElement(
+									'nav',
+									{
+											__self: this
+									},
+									React.createElement(
+											'ul',
+											{
+													__self: this
+											},
+											React.createElement(
+													NavDropdown,
+													{ className: 'profile-dropdown', title: navDrop, id: 'nav-dropdown', __self: this
+													},
+													React.createElement(
+															MenuItem,
+															{ onClick: this.myProfile, __self: this
+															},
+															'My Profile'
+													),
+													React.createElement(
+															MenuItem,
+															{ onClick: this.showEdit, __self: this
+															},
+															'Edit Profile'
+													),
+													React.createElement(MenuItem, { divider: true, __self: this
+													}),
+													React.createElement(
+															MenuItem,
+															{ onClick: this.logout, __self: this
+															},
+															'Log Out'
+													)
+											),
+											React.createElement(
+													'li',
+													{ onClick: this.showUpload, className: 'nav-upload', __self: this
+													},
+													React.createElement('i', { className: 'fa fa-cloud-upload', __self: this
+													}),
+													'Upload'
+											),
+											React.createElement(
+													WaveModal,
+													{ ref: 'uploadModal', __self: this
+													},
+													React.createElement(PhotoUploadForm, { currentUser: this.state.currentUser, close: this.hideUpload, __self: this
+													})
+											),
+											React.createElement(
+													DropModal,
+													{ ref: 'editModal', __self: this
+													},
+													React.createElement(ProfileEdit, { currentUser: this.state.currentUser, close: this.hideEdit, __self: this
+													})
+											)
+									)
+							);
+					}
+					const header = React.createElement(
+							'header',
+							{
+									__self: this
+							},
+							React.createElement('img', { src: '/1000px-logo.png', height: '50px', onClick: this.returnHome, __self: this
+							}),
+							navButtons
+					);
+					return React.createElement(
+							'div',
+							{
+									__self: this
+							},
+							header,
+							this.props.children ? this.props.children : homePage
+					);
+			}
 	});
 	
 	module.exports = App;
@@ -92681,24 +92711,24 @@ return jQuery;
 	    e.preventDefault();
 	    let user = { username: this.state.username, password: this.state.password };
 	    UserActions.login(user);
+	    // this.props.updateHeader();
 	  },
 	  guestLogin(e) {
 	    e.preventDefault();
-	    let guestUser = ['g', 'u', 'e', 's', 't'];
-	    let guestPw = ['p', 'a', 's', 's', 'w', 'o'];
+	    let guestUser = ['g', 'u', 'e', 's', 't', 'p', 'a', 's', 's', 'w', 'o', 'r', 'd'];
 	    let idx = 0;
 	    window.interval = setInterval(() => {
 	      if (idx < 5) {
 	        let name = this.state.username + guestUser[idx];
 	        this.setState({ username: name });
-	      } else if (idx < 11) {
-	        let pw = this.state.password + guestPw[idx];
+	      } else if (idx < 13) {
+	        let pw = this.state.password + guestUser[idx];
 	        this.setState({ password: pw });
 	      } else {
 	        UserActions.guestLogin();
 	      }
 	      idx = idx + 1;
-	    }, 200);
+	    }, 100);
 	  },
 	  showSignup() {
 	    this.props.close();
@@ -93111,6 +93141,9 @@ return jQuery;
 		updatePhoto(photo) {
 			PhotoApiUtil.updatePhoto(photo, PhotoActions.receivePhoto);
 		},
+		deletePhoto(photoId) {
+			PhotoApiUtil.deletePhoto(photoId, PhotoActions.receiveProfile);
+		},
 		receiveAllPhotos(photos) {
 			Dispatcher.dispatch({
 				actionType: "PHOTOS_RECEIVED",
@@ -93195,12 +93228,22 @@ return jQuery;
 				}
 			});
 		},
-		updatePhoto(photo, sucess) {
+		updatePhoto(photo, success) {
 			$.ajax({
 				url: `/api/photos/${ photo.id }`,
 				type: 'PATCH',
 				dataType: 'json',
 				data: { photo: photo },
+				success: function (resp) {
+					success(resp);
+				}
+			});
+		},
+		deletePhoto(photoId, success) {
+			$.ajax({
+				url: `/api/photos/${ photoId }`,
+				type: 'DELETE',
+				dataType: 'json',
 				success: function (resp) {
 					success(resp);
 				}
@@ -93284,7 +93327,7 @@ return jQuery;
 						React.createElement(PhotoIndexItem, { photo: photo, key: photo.id, size: 'home', __self: this
 						})
 					);
-					indexItems.push(indexItem);
+					indexItems.unshift(indexItem);
 				});
 			}
 			return React.createElement(
@@ -93545,6 +93588,9 @@ return jQuery;
 		showEdit() {
 			this.refs.editModal.show();
 		},
+		hideEdit() {
+			this.refs.editModal.hide();
+		},
 		render() {
 			let style = 'detail-modal';
 			let contain = "img-container-modal";
@@ -93568,7 +93614,7 @@ return jQuery;
 							OutlineModal,
 							{ ref: 'editModal', __self: this
 							},
-							React.createElement(PhotoEdit, { photoId: this.photoId, __self: this
+							React.createElement(PhotoEdit, { photoId: this.photoId, close: this.hideEdit, __self: this
 							})
 						)
 					);
@@ -93646,6 +93692,7 @@ return jQuery;
 	const Button = __webpack_require__(262).Button;
 	const PhotoStore = __webpack_require__(596);
 	const PhotoActions = __webpack_require__(593);
+	const hashHistory = __webpack_require__(168).hashHistory;
 	
 	const PhotoEdit = React.createClass({
 		displayName: 'PhotoEdit',
@@ -93677,8 +93724,15 @@ return jQuery;
 		_handleSubmit() {
 			let newInfo = { id: this.state.id, title: this.state.title, description: this.state.description };
 			PhotoActions.updatePhoto(newInfo);
+			this.props.close();
 		},
-		_deletePhoto() {},
+		_deletePhoto() {
+			let result = confirm("Are you sure you want to delete this photo?");
+			if (result) {
+				PhotoActions.deletePhoto(this.state.id);
+				hashHistory.push(`/profile/${ window.currentUser.id }`);
+			}
+		},
 		render() {
 			return React.createElement(
 				'form',
@@ -99262,7 +99316,8 @@ return jQuery;
 						'span',
 						{ className: 'refresh', onClick: this.refresh, __self: this
 						},
-						'Refresh'
+						React.createElement('i', { className: 'fa fa-refresh', 'aria-hidden': 'true', __self: this
+						})
 					)
 				),
 				React.createElement(
@@ -99490,18 +99545,28 @@ return jQuery;
 
 	const React = __webpack_require__(1);
 	const Modal = __webpack_require__(629);
-	const SignupForm = __webpack_require__(591);
+	const LoginForm = __webpack_require__(590);
 	const PhotoIndex = __webpack_require__(630);
+	
+	const settings = {
+	  dots: true,
+	  autoplay: true,
+	  autoplaySpeed: 5000,
+	  centerMode: true,
+	  infinite: true,
+	  lazyLoad: true,
+	  slidesToShow: 1
+	};
 	
 	const Landing = React.createClass({
 	  displayName: 'Landing',
 	
 	  componentDidMount() {},
-	  showSignup() {
-	    this.refs.signupModal.show();
+	  showLogin() {
+	    this.refs.loginModal.show();
 	  },
-	  hideSignup() {
-	    this.refs.signupModal.hide();
+	  hideLogin() {
+	    this.refs.loginModal.hide();
 	  },
 	  render() {
 	    return React.createElement(
@@ -99527,15 +99592,15 @@ return jQuery;
 	        ),
 	        React.createElement(
 	          'button',
-	          { className: 'btn btn-primary get-started fade-in', onClick: this.showSignup, __self: this
+	          { className: 'btn btn-primary get-started fade-in', onClick: this.showLogin, __self: this
 	          },
 	          'Get Started!'
 	        ),
 	        React.createElement(
 	          Modal,
-	          { ref: 'signupModal', modalStyle: this.props.modalStyle, __self: this
+	          { ref: 'loginModal', modalStyle: this.props.modalStyle, __self: this
 	          },
-	          React.createElement(SignupForm, { close: this.hideSignup, showLogin: this.props.showLogin, __self: this
+	          React.createElement(LoginForm, { close: this.hideLogin, showSignup: this.props.showSignup, __self: this
 	          })
 	        )
 	      ),
@@ -99735,7 +99800,7 @@ return jQuery;
 					let photo = this.state.photos[key];
 					let indexItem = React.createElement(PhotoIndexItem, { photo: photo, key: photo.id, size: 'landing', __self: this
 					});
-					indexItems.push(indexItem);
+					indexItems.unshift(indexItem);
 					if (indexItems.length > 20) {
 						return false;
 					} else {
@@ -99768,9 +99833,9 @@ return jQuery;
 	const Masonry = __webpack_require__(612);
 	const CloudinaryUtil = __webpack_require__(525);
 	const FollowButton = __webpack_require__(626);
-	const FollowerIndex = __webpack_require__(634);
-	const FollowingIndex = __webpack_require__(635);
-	const FadeModal = __webpack_require__(636);
+	const FollowerIndex = __webpack_require__(632);
+	const FollowingIndex = __webpack_require__(633);
+	const FadeModal = __webpack_require__(634);
 	
 	const masonryOptions = {
 		isFitWidth: true,
@@ -99778,7 +99843,7 @@ return jQuery;
 	};
 	
 	const modalStyle = {
-		width: 300
+		width: 275
 	};
 	
 	const ProfilePage = React.createClass({
@@ -99834,12 +99899,12 @@ return jQuery;
 						let photo = this.state.photos[key];
 						let indexItem = React.createElement(PhotoIndexItem, { photo: photo, key: photo.id, size: 'profile', __self: this
 						});
-						indexItems.push(indexItem);
+						indexItems.unshift(indexItem);
 					});
 				}
 				let followBtn = React.createElement(FollowButton, { following: this.state.profile.following, user: this.props.params.id, __self: this
 				});
-				if (window.currentUser && window.currentUser.id === parseInt(this.props.params.id, 10)) {
+				if (!window.currentUser || window.currentUser && window.currentUser.id === parseInt(this.props.params.id, 10)) {
 					followBtn = null;
 				}
 				profile = React.createElement(
@@ -99892,29 +99957,29 @@ return jQuery;
 							{ onClick: this.showFollowers, __self: this
 							},
 							'Followers ',
-							this.state.profile.followerCount,
-							React.createElement(
-								FadeModal,
-								{ ref: 'followers', modalStyle: modalStyle, __self: this
-								},
-								React.createElement(FollowerIndex, { userId: this.props.params.id, close: this.hideFollowers, __self: this
-								})
-							)
+							this.state.profile.followerCount
 						),
 						React.createElement(
 							'div',
 							{ onClick: this.showFollowings, __self: this
 							},
 							'Following ',
-							this.state.profile.followingCount,
-							React.createElement(
-								FadeModal,
-								{ ref: 'followings', modalStyle: modalStyle, __self: this
-								},
-								React.createElement(FollowingIndex, { userId: this.props.params.id, close: this.hideFollowings, __self: this
-								})
-							)
+							this.state.profile.followingCount
 						)
+					),
+					React.createElement(
+						FadeModal,
+						{ ref: 'followers', modalStyle: modalStyle, __self: this
+						},
+						React.createElement(FollowerIndex, { userId: this.props.params.id, close: this.hideFollowers, __self: this
+						})
+					),
+					React.createElement(
+						FadeModal,
+						{ ref: 'followings', modalStyle: modalStyle, __self: this
+						},
+						React.createElement(FollowingIndex, { userId: this.props.params.id, close: this.hideFollowings, __self: this
+						})
 					),
 					React.createElement(
 						Masonry,
@@ -99938,6 +100003,281 @@ return jQuery;
 
 /***/ },
 /* 632 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const React = __webpack_require__(1);
+	const FollowStore = __webpack_require__(236);
+	const FollowActions = __webpack_require__(230);
+	const hashHistory = __webpack_require__(168).hashHistory;
+	const CloudinaryUtil = __webpack_require__(525);
+	
+	const FollowerIndex = React.createClass({
+		displayName: 'FollowerIndex',
+	
+		getInitialState() {
+			return {
+				index: []
+			};
+		},
+		componentDidMount() {
+			this.listener = FollowStore.addListener(this._onChange);
+			FollowActions.fetchFollowerIndex(this.props.userId);
+		},
+		componentWillUnmount() {
+			this.listener.remove();
+		},
+		_onChange() {
+			this.setState({ index: FollowStore.followers() });
+		},
+		showProfile(userId) {
+			return e => {
+				hashHistory.push(`/profile/${ userId }`);
+				this.props.close();
+			};
+		},
+		render() {
+			let list = this.state.index.map(follower => {
+				return React.createElement(
+					'li',
+					{ className: 'follows-list', key: follower.id, __self: this
+					},
+					React.createElement('img', { className: 'follow-pic', onClick: this.showProfile(follower.id), src: CloudinaryUtil.image(follower.pic, { width: 40, gravity: 'face', crop: 'thumb' }), __self: this
+					}),
+					React.createElement(
+						'div',
+						{ className: 'suggest-text', __self: this
+						},
+						React.createElement(
+							'span',
+							{
+								__self: this
+							},
+							React.createElement(
+								'strong',
+								{ onClick: this.showProfile(follower.id), __self: this
+								},
+								follower.name
+							)
+						),
+						React.createElement(
+							'div',
+							{
+								__self: this
+							},
+							follower.photoCount,
+							' Photos'
+						)
+					)
+				);
+			});
+			return React.createElement(
+				'ul',
+				{ className: 'follows-list-container', __self: this
+				},
+				React.createElement(
+					'div',
+					{ className: 'follows-header', __self: this
+					},
+					'Followers'
+				),
+				list
+			);
+		}
+	});
+	
+	module.exports = FollowerIndex;
+
+/***/ },
+/* 633 */
+/***/ function(module, exports, __webpack_require__) {
+
+	const React = __webpack_require__(1);
+	const FollowStore = __webpack_require__(236);
+	const FollowActions = __webpack_require__(230);
+	const hashHistory = __webpack_require__(168).hashHistory;
+	const CloudinaryUtil = __webpack_require__(525);
+	
+	const FollowingIndex = React.createClass({
+		displayName: 'FollowingIndex',
+	
+		getInitialState() {
+			return {
+				index: []
+			};
+		},
+		componentDidMount() {
+			this.listener = FollowStore.addListener(this._onChange);
+			FollowActions.fetchFollowingIndex(this.props.userId);
+		},
+		componentWillUnmount() {
+			this.listener.remove();
+		},
+		_onChange() {
+			this.setState({ index: FollowStore.followings() });
+		},
+		showProfile(userId) {
+			return e => {
+				hashHistory.push(`/profile/${ userId }`);
+				this.props.close();
+			};
+		},
+		render() {
+			let list = this.state.index.map(following => {
+				return React.createElement(
+					'li',
+					{ className: 'follows-list', key: following.id, __self: this
+					},
+					React.createElement('img', { className: 'follow-pic', onClick: this.showProfile(following.id), src: CloudinaryUtil.image(following.pic, { width: 40, gravity: 'face', crop: 'thumb' }), __self: this
+					}),
+					React.createElement(
+						'div',
+						{ className: 'suggest-text', __self: this
+						},
+						React.createElement(
+							'span',
+							{
+								__self: this
+							},
+							React.createElement(
+								'strong',
+								{ onClick: this.showProfile(following.id), __self: this
+								},
+								following.name
+							)
+						),
+						React.createElement(
+							'div',
+							{
+								__self: this
+							},
+							following.photoCount,
+							' Photos'
+						)
+					)
+				);
+			});
+			return React.createElement(
+				'ul',
+				{ className: 'follows-list-container', __self: this
+				},
+				React.createElement(
+					'div',
+					{ className: 'follows-header', __self: this
+					},
+					'Following'
+				),
+				list
+			);
+		}
+	});
+	
+	module.exports = FollowingIndex;
+
+/***/ },
+/* 634 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var modalFactory = __webpack_require__(601);
+	var insertKeyframesRule = __webpack_require__(606);
+	var appendVendorPrefix = __webpack_require__(603);
+	
+	var animation = {
+	    show: {
+	        animationDuration: '0.3s',
+	        animationTimingFunction: 'ease-out'
+	    },
+	    hide: {
+	        animationDuration: '0.3s',
+	        animationTimingFunction: 'ease-out'
+	    },
+	    showContentAnimation: insertKeyframesRule({
+	        '0%': {
+	            opacity: 0
+	        },
+	        '100%': {
+	            opacity: 1
+	        }
+	    }),
+	
+	    hideContentAnimation: insertKeyframesRule({
+	        '0%': {
+	            opacity: 1
+	        },
+	        '100%': {
+	            opacity: 0
+	        }
+	    }),
+	
+	    showBackdropAnimation: insertKeyframesRule({
+	        '0%': {
+	            opacity: 0
+	        },
+	        '100%': {
+	            opacity: 0.9
+	        },
+	    }),
+	
+	    hideBackdropAnimation: insertKeyframesRule({
+	        '0%': {
+	            opacity: 0.9
+	        },
+	        '100%': {
+	            opacity: 0
+	        }
+	    })
+	};
+	
+	var showAnimation = animation.show;
+	var hideAnimation = animation.hide;
+	var showContentAnimation = animation.showContentAnimation;
+	var hideContentAnimation = animation.hideContentAnimation;
+	var showBackdropAnimation = animation.showBackdropAnimation;
+	var hideBackdropAnimation = animation.hideBackdropAnimation;
+	
+	module.exports = modalFactory({
+	    getRef: function(willHidden) {
+	        return 'content';
+	    },
+	    getModalStyle: function(willHidden) {
+	        return appendVendorPrefix({
+	            zIndex: 1050,
+	            position: "fixed",
+	            width: "500px",
+	            transform: "translate3d(-50%, -50%, 0)",
+	            top: "50%",
+	            left: "50%"
+	        })
+	    },
+	    getBackdropStyle: function(willHidden) {
+	        return appendVendorPrefix({
+	            position: "fixed",
+	            top: 0,
+	            right: 0,
+	            bottom: 0,
+	            left: 0,
+	            zIndex: 1040,
+	            backgroundColor: "#373A47",
+	            animationFillMode: 'forwards',
+	            animationDuration: '0.3s',
+	            animationName: willHidden ? hideBackdropAnimation : showBackdropAnimation,
+	            animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
+	        });
+	    },
+	    getContentStyle: function(willHidden) {
+	        return appendVendorPrefix({
+	            margin: 0,
+	            backgroundColor: "white",
+	            animationDuration: (willHidden ? hideAnimation : showAnimation).animationDuration,
+	            animationFillMode: 'forwards',
+	            animationName: willHidden ? hideContentAnimation : showContentAnimation,
+	            animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
+	        })
+	    }
+	});
+
+
+/***/ },
+/* 635 */
 /***/ function(module, exports, __webpack_require__) {
 
 	const React = __webpack_require__(1);
@@ -100076,7 +100416,7 @@ return jQuery;
 	module.exports = ProfileEdit;
 
 /***/ },
-/* 633 */
+/* 636 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var modalFactory = __webpack_require__(601);
@@ -100253,283 +100593,6 @@ return jQuery;
 	            opacity: 0,
 	            transform: 'scale3d(0.8, 0.8, 1)'
 	        },
-	    }),
-	
-	    showBackdropAnimation: insertKeyframesRule({
-	        '0%': {
-	            opacity: 0
-	        },
-	        '100%': {
-	            opacity: 0.9
-	        },
-	    }),
-	
-	    hideBackdropAnimation: insertKeyframesRule({
-	        '0%': {
-	            opacity: 0.9
-	        },
-	        '100%': {
-	            opacity: 0
-	        }
-	    })
-	};
-	
-	var showAnimation = animation.show;
-	var hideAnimation = animation.hide;
-	var showContentAnimation = animation.showContentAnimation;
-	var hideContentAnimation = animation.hideContentAnimation;
-	var showBackdropAnimation = animation.showBackdropAnimation;
-	var hideBackdropAnimation = animation.hideBackdropAnimation;
-	
-	module.exports = modalFactory({
-	    getRef: function(willHidden) {
-	        return 'content';
-	    },
-	    getModalStyle: function(willHidden) {
-	        return appendVendorPrefix({
-	            zIndex: 1050,
-	            position: "fixed",
-	            width: "500px",
-	            transform: "translate3d(-50%, -50%, 0)",
-	            top: "50%",
-	            left: "50%"
-	        })
-	    },
-	    getBackdropStyle: function(willHidden) {
-	        return appendVendorPrefix({
-	            position: "fixed",
-	            top: 0,
-	            right: 0,
-	            bottom: 0,
-	            left: 0,
-	            zIndex: 1040,
-	            backgroundColor: "#373A47",
-	            animationFillMode: 'forwards',
-	            animationDuration: '0.3s',
-	            animationName: willHidden ? hideBackdropAnimation : showBackdropAnimation,
-	            animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
-	        });
-	    },
-	    getContentStyle: function(willHidden) {
-	        return appendVendorPrefix({
-	            margin: 0,
-	            backgroundColor: "white",
-	            animationDuration: (willHidden ? hideAnimation : showAnimation).animationDuration,
-	            animationFillMode: 'forwards',
-	            animationName: willHidden ? hideContentAnimation : showContentAnimation,
-	            animationTimingFunction: (willHidden ? hideAnimation : showAnimation).animationTimingFunction
-	        })
-	    }
-	});
-
-
-/***/ },
-/* 634 */
-/***/ function(module, exports, __webpack_require__) {
-
-	const React = __webpack_require__(1);
-	const FollowStore = __webpack_require__(236);
-	const FollowActions = __webpack_require__(230);
-	const hashHistory = __webpack_require__(168).hashHistory;
-	const CloudinaryUtil = __webpack_require__(525);
-	
-	const FollowerIndex = React.createClass({
-		displayName: 'FollowerIndex',
-	
-		getInitialState() {
-			return {
-				index: []
-			};
-		},
-		componentDidMount() {
-			this.listener = FollowStore.addListener(this._onChange);
-			FollowActions.fetchFollowerIndex(this.props.userId);
-		},
-		componentWillUnmount() {
-			this.listener.remove();
-		},
-		_onChange() {
-			this.setState({ index: FollowStore.followers() });
-		},
-		showProfile(userId) {
-			return e => {
-				hashHistory.push(`/profile/${ userId }`);
-				this.props.close();
-			};
-		},
-		render() {
-			console.log(this.state.index);
-			let list = this.state.index.map(follower => {
-				return React.createElement(
-					'li',
-					{ className: 'follows-list', key: follower.id, __self: this
-					},
-					React.createElement('img', { className: 'follow-pic', onClick: this.showProfile(follower.id), src: CloudinaryUtil.image(follower.pic, { width: 40, gravity: 'face', crop: 'thumb' }), __self: this
-					}),
-					React.createElement(
-						'div',
-						{ className: 'suggest-text', __self: this
-						},
-						React.createElement(
-							'span',
-							{
-								__self: this
-							},
-							React.createElement(
-								'strong',
-								{ onClick: this.showProfile(follower.id), __self: this
-								},
-								follower.name
-							)
-						),
-						React.createElement(
-							'div',
-							{
-								__self: this
-							},
-							follower.photoCount,
-							' Photos'
-						)
-					)
-				);
-			});
-			console.log(list);
-			return React.createElement(
-				'ul',
-				{ className: 'follows-list-container', __self: this
-				},
-				React.createElement(
-					'div',
-					{ className: 'follows-header', __self: this
-					},
-					'Followers'
-				),
-				list
-			);
-		}
-	});
-	
-	module.exports = FollowerIndex;
-
-/***/ },
-/* 635 */
-/***/ function(module, exports, __webpack_require__) {
-
-	const React = __webpack_require__(1);
-	const FollowStore = __webpack_require__(236);
-	const FollowActions = __webpack_require__(230);
-	const hashHistory = __webpack_require__(168).hashHistory;
-	const CloudinaryUtil = __webpack_require__(525);
-	
-	const FollowingIndex = React.createClass({
-		displayName: 'FollowingIndex',
-	
-		getInitialState() {
-			return {
-				index: []
-			};
-		},
-		componentDidMount() {
-			this.listener = FollowStore.addListener(this._onChange);
-			FollowActions.fetchFollowingIndex(this.props.userId);
-		},
-		componentWillUnmount() {
-			this.listener.remove();
-		},
-		_onChange() {
-			this.setState({ index: FollowStore.followings() });
-		},
-		showProfile(userId) {
-			return e => {
-				hashHistory.push(`/profile/${ userId }`);
-				this.props.close();
-			};
-		},
-		render() {
-			let list = this.state.index.map(following => {
-				return React.createElement(
-					'li',
-					{ className: 'follows-list', key: following.id, __self: this
-					},
-					React.createElement('img', { className: 'follow-pic', onClick: this.showProfile(following.id), src: CloudinaryUtil.image(following.pic, { width: 40, gravity: 'face', crop: 'thumb' }), __self: this
-					}),
-					React.createElement(
-						'div',
-						{ className: 'suggest-text', __self: this
-						},
-						React.createElement(
-							'span',
-							{
-								__self: this
-							},
-							React.createElement(
-								'strong',
-								{ onClick: this.showProfile(following.id), __self: this
-								},
-								following.name
-							)
-						),
-						React.createElement(
-							'div',
-							{
-								__self: this
-							},
-							following.photoCount,
-							' Photos'
-						)
-					)
-				);
-			});
-			return React.createElement(
-				'ul',
-				{ className: 'follows-list-container', __self: this
-				},
-				React.createElement(
-					'div',
-					{ className: 'follows-header', __self: this
-					},
-					'Following'
-				),
-				list
-			);
-		}
-	});
-	
-	module.exports = FollowingIndex;
-
-/***/ },
-/* 636 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var modalFactory = __webpack_require__(601);
-	var insertKeyframesRule = __webpack_require__(606);
-	var appendVendorPrefix = __webpack_require__(603);
-	
-	var animation = {
-	    show: {
-	        animationDuration: '0.3s',
-	        animationTimingFunction: 'ease-out'
-	    },
-	    hide: {
-	        animationDuration: '0.3s',
-	        animationTimingFunction: 'ease-out'
-	    },
-	    showContentAnimation: insertKeyframesRule({
-	        '0%': {
-	            opacity: 0
-	        },
-	        '100%': {
-	            opacity: 1
-	        }
-	    }),
-	
-	    hideContentAnimation: insertKeyframesRule({
-	        '0%': {
-	            opacity: 1
-	        },
-	        '100%': {
-	            opacity: 0
-	        }
 	    }),
 	
 	    showBackdropAnimation: insertKeyframesRule({
