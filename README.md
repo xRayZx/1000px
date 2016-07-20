@@ -6,6 +6,8 @@
 
 1000px is a full-stack web application inspired by 500px. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend. All JavaScript is written in ES6 syntax.
 
+![home]
+
 ## Features & Implementation
 
 ### Single-Page App
@@ -117,6 +119,14 @@ end
   }
   ```
 
+### Future Plans
+* Add the option to like photos
+	* Users can create a collection of photos that inspire them
+* Search and tags
+	* Enables photos to be organized by similarity
+	* Ability to provide photo suggestions
+	* Look up specific photos for inspiration
+[home]: ./docs/home.png
 [hover_credits]: ./docs/hover_credits.png
 [photo_detail_edit]: ./docs/photo_detail_edit.png
 [follow_index]: ./docs/follow_index.png
