@@ -1,4 +1,6 @@
 //React
+const objectAssign = require('object-assign');
+Object.assign = Object.assign || objectAssign;
 const React = require('react');
 const ReactDOM = require('react-dom');
 const ReactRouter = require('react-router');
