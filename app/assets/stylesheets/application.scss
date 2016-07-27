@@ -543,6 +543,7 @@ ul.my-gallery-class {
       width: 100%;
     }
     .img-container {
+      width: 100%;
       min-height: 300px;
       max-height: 500px;
     }
@@ -550,7 +551,7 @@ ul.my-gallery-class {
       display: none;
     }
     .my-home-gallery {
-      width: 66%;
+      width: 100%;
       display: inline-block;
     }
 }
