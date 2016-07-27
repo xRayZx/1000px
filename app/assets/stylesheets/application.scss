@@ -532,6 +532,19 @@ ul.my-gallery-class {
   }
 }
 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .follow-index {
+      display: block;
+    }
+    .my-home-gallery {
+      width: 66%;
+      display: inline-block;
+    }
+}
+
 .follow-index-item {
   margin: 30px 0px;
 }
