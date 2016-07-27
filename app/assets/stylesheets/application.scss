@@ -535,10 +535,19 @@ ul.my-gallery-class {
 @media only screen
   and (min-device-width: 375px)
   and (max-device-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) {
-    .follow-index {
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .detail-page {
       display: block;
+    }
+    .info {
+      width: 100%;
+    }
+    .img-container {
+      min-height: 300px;
+      max-height: 500px;
+    }
+    .follow-index {
+      display: none;
     }
     .my-home-gallery {
       width: 66%;
