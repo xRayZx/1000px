@@ -37,7 +37,8 @@ const HomeFeed = React.createClass({
 	},
   render () {
 		let indexItems = [];
-		if (this.state.photos) {
+		let welcome = null;
+		if (this.state.photos && this.state.photos.length !== 0) {
 			this.state.photos.forEach( (photo) => {
 				let indexItem = (
 					<div className="home-post" key={photo.id}>
@@ -50,11 +51,25 @@ const HomeFeed = React.createClass({
 				);
 				indexItems.unshift(indexItem);
 			} );
+		} else {
+			welcome = (
+				<div className="welcome-home home-post">
+					<div className="welcome-msg">
+						This is your home feed.
+						<br/>
+						Photos of Photographers that you will will appear here.
+						<br/>
+						Follow some Photographers on the right!
+					</div>
+					<img src="http://res.cloudinary.com/dlgyh9jw/image/upload/c_scale,w_993/v1469678713/Welcome-on-Beach_rgygyi.jpg" alt="welcome to 1000px" className="img-idx welcome-home"/>
+				</div>
+			)
 		}
     return (
       <div>
 				<FollowIndex/>
 				<div className="my-home-gallery">
+					{welcome}
 					<InfiniteScroll pageStart={0} loadMore={this.loadMore} hasMore={this.hasMore()} loader={<div className="loader">Loading...</div>}>
 						{indexItems.slice(0, this.state.loaded)}
 					</InfiniteScroll>

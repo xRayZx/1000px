@@ -13,6 +13,8 @@ const SignupForm = React.createClass({
       username: "",
 			password: "",
 			password2: "",
+      firstName: "",
+      lastName: "",
 			error: null
     };
   },
@@ -29,6 +31,12 @@ const SignupForm = React.createClass({
 			userErrors: UserStore.errors()
 		});
 	},
+  updateFirst (e) {
+    this.setState({firstName: e.target.value});
+  },
+  updateLast (e) {
+    this.setState({lastName: e.target.value});
+  },
   updateUsername (e) {
     this.setState({username: e.target.value});
   },
@@ -61,7 +69,7 @@ const SignupForm = React.createClass({
   handleSubmit (e) {
     e.preventDefault();
 		if (this.state.password === this.state.password2) {
-			let user = {username: this.state.username, password: this.state.password};
+			let user = {username: this.state.username, password: this.state.password, first_name: this.state.firstName, last_name: this.state.lastName};
 			UserActions.signup(user);
 			this.setState({password: "", password2: ""});
 		} else {
@@ -74,10 +82,16 @@ const SignupForm = React.createClass({
         <form onSubmit={this.handleSubmit}>
         <h3 className="form-header">Sign Up</h3>
 				<div className="auth-errors">
-					{this.state.error}
-					{UserStore.errors()}
+					{this.state.error ? <div> this.state.error </div> : null}
+					{UserStore.errors() ? UserStore.errors().map((err) => {return (<div>{err}</div>)}) : null}
 				</div>
           <section>
+            <FormGroup controlId="formControlsText">
+                <FormControl type="text" placeholder="First Name" onChange={this.updateFirst}/>
+            </FormGroup>
+            <FormGroup controlId="formControlsText">
+                <FormControl type="text" placeholder="Last Name" onChange={this.updateLast}/>
+            </FormGroup>
 						<FormGroup controlId="formControlsText">
 								<FormControl type="text" placeholder="Username" onChange={this.updateUsername}/>
 						</FormGroup>
