@@ -57,7 +57,7 @@ const HomeFeed = React.createClass({
 					<div className="welcome-msg">
 						This is your home feed.
 						<br/>
-						Photos of Photographers that you will will appear here.
+						Photos of Photographers that you follow will appear here.
 						<br/>
 						Follow some Photographers on the right!
 					</div>
