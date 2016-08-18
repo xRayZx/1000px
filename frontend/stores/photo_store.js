@@ -20,7 +20,7 @@ PhotoStore.home = function () {
 	homeKeys.forEach((key) => {
 		homeArray.push(_home[key]);
 	});
-	if (homeArray.length === 0) {
+	if (window.currentUser.followingCount === 0) {
 		homeArray = ["welcome"]
 	}
 	return homeArray;
