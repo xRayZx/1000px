@@ -38,7 +38,7 @@ const HomeFeed = React.createClass({
   render () {
 		let indexItems = [];
 		let welcome = null;
-		if (this.state.photos && this.state.photos.length !== 0) {
+		if (this.state.photos && this.state.photos[0] !== "welcome") {
 			this.state.photos.forEach( (photo) => {
 				let indexItem = (
 					<div className="home-post" key={photo.id}>
@@ -51,7 +51,7 @@ const HomeFeed = React.createClass({
 				);
 				indexItems.unshift(indexItem);
 			} );
-		} else {
+		} else if (this.state.photos[0] === "welcome"){
 			welcome = (
 				<div className="welcome-home home-post">
 					<div className="welcome-msg">
