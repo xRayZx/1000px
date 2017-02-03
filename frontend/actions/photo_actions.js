@@ -50,3 +50,27 @@ const PhotoActions = {
 };
 
 module.exports = PhotoActions;;
+
+export const FETCH_ALL_PHOTOS = "FETCH_ALL_PHOTOS";
+export const FETCH_HOMEFEED = "FETCH_HOMEFEED";
+export const FETCH_PROFILE_PHOTOS = "FETCH_PROFILE_PHOTOS";
+export const UPLOAD_PHOTO = "UPLOAD_PHOTO";
+export const UPDATE_PHOTO = "UPDATE_PHOTO";
+export const DELETE_PHOTO = "DELETE_PHOTO";
+export const PHOTOS_RECEIVED = "PHOTOS_RECEIVED";
+export const PHOTO_RECEIVED = "PHOTO_RECEIVED";
+export const PROFILE_PHOTOS_RECEIVED = "PROFILE_PHOTOS_RECEIVED";
+export const HOMEFEED_RECEIVED = "HOMEFEED_RECEIVED";
+
+export const fetchAllPhotos = () => ({
+	type: FETCH_ALL_PHOTOS
+});
+
+export const fetchHomeFeed = () => ({
+	type: FETCH_HOMEFEED
+});
+
+export const fetchProfilePhotos = (profileId) => ({
+	type: FETCH_PROFILE_PHOTOS,
+	profileId: profileId
+});

@@ -14,6 +14,10 @@ window.FollowStore = require('./stores/follow_store.js');
 window.CommentActions = require('./actions/comment_actions.js');
 window.CommentStore = require('./stores/comment_store.js');
 
+//Redux stuff
+import { createStore } from 'redux';
+import reducer from './reducers/root_reducer.js';
+
 //Auth
 const UserActions = require('./actions/user_actions');
 
